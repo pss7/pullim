@@ -9,8 +9,8 @@
 }
 
 /* 비주얼영역 */
-#visualWrap{position: fixed; width: 100%; display: flex; align-items: center; justify-content: center; height: 100vh; overflow: hidden; background-color: #fff; z-index: 99999;}
-#visualWrap .proposalDownloadBtn{width: 119px; height: 119px; position: absolute; top:219px; right:124px; z-index: 999;}
+#visualWrap{position: relative; width: 100%; display: flex; align-items: center; justify-content: center; height: 220vh;  overflow: hidden; background-color: #fff; z-index: 1;}
+#visualWrap .proposalDownloadBtn{width: 119px; height: 119px; position: fixed; top:219px; right:124px; z-index: 999;}
 #visualWrap .proposalDownloadBtn img{position: absolute; top: 0;
     left: 0; width: 100%; height: 100%; animation: proposalRotate 10s linear infinite;}
 #visualWrap .proposalDownloadBtn span{ position: absolute; top: 50%; left: 50%;
@@ -26,21 +26,19 @@
         transform: rotate(360deg);
     }
 }
-#visualWrap .visualVideoBox{ position: absolute; top: 0; left: 0;
-    width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;    overflow: hidden;}
+#visualWrap .visualVideoBox{ position: fixed; inset: 0; display: flex; align-items: center; justify-content: center; overflow: hidden;}
 #visualWrap .visualVideoBox img{display: block; width: 15vw; height: 32vw; object-fit: cover; opacity: 0; transform: scale(.7); will-change: transform;}   
 #visualWrap .visualVideoBox img.active{opacity: 1; transform: scale(1); transition:
         transform 1.2s cubic-bezier(.77, 0, .175, 1), opacity .8s ease;}
 #visualWrap .visualVideoBox img.scrollMotion{transition: none;}
-#visualWrap .visualTextBox{max-width: 71.35vw; padding: 0 1.04vw; margin: 0 auto; display: flex; flex-direction: column; justify-content: center; position: fixed; inset: 0;}
+#visualWrap .visualTextBox{position: fixed; inset: 0; max-width: 71.35vw; padding: 0 1.04vw; margin: 0 auto; display: flex; flex-direction: column; justify-content: center;}
 #visualWrap .visualTextBox h2{font-size: 7.8vw; font-weight: 500; color: #222; font-family: 'HelveticaNowDisplay'; letter-spacing: -0.05vw; white-space: nowrap;}
 #visualWrap .visualTextBox h2 span{margin-top: 2.08vw; font-size: 0.83vw; font-weight: 600; color: #222;}
 #visualWrap .visualText{opacity: 0;
-    visibility: hidden;display: flex; align-items: center; gap: 0 16.67vw; line-height: 1; 
-   will-change: transform, opacity; transform: translateY(100px);}
+    visibility: hidden;display: flex; align-items: center; gap: 0 16.67vw; line-height: 1; will-change: transform, opacity; transform: translateY(100px); transform-origin: center center; backface-visibility: hidden;}
 #visualWrap .visualText02 h2{display: flex; gap: 0 3.96vw}
 #visualWrap .visualText03{justify-content: flex-end;}
-#visualWrap .visualScrollBox{position: absolute; left: 50%;
+#visualWrap .visualScrollBox{position: fixed; left: 50%;
     bottom: 0; display: flex; flex-direction: column; align-items: center; gap: 1.04vw; transform: translateX(-50%);overflow: hidden;}
 #visualWrap .visualScrollText{display: block; font-size: 0.83vw;  color: #B4B4B4; font-weight: 600;}
 #visualWrap .visualScrollLine{position: relative; width: 0.05vw; height: 3.13vw;
@@ -110,27 +108,37 @@
 
 }
 
+.visualOutroSpace{height: 100vh; position: relative;}
+
 /* 소개 영역 */
-#aboutWrap{position: relative; width: 100%; /*height: 100vh;*/ padding: 160px 0; background: #222; color: #fff; z-index: 999; overflow: hidden;}
-#aboutWrap .aboutViewLink{display: flex; align-items: center; padding-left: 20px; width: 162px; height: 36px; margin: 0 auto 120px; border: 1px solid #fff; border-radius: 50px;}
+#aboutWrap{opacity: 0; position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
+    background: #222; color: #fff; overflow: hidden; z-index: 9999999999999;}
+#aboutWrap .container,
+#aboutWrap .aboutBox{height: 100%; display: flex; flex-direction: column; justify-content: center;}
+#aboutWrap .aboutViewLink{display: flex; align-items: center; padding-left: 20px; width: 162px; height: 36px; margin: 0 auto 100px; border: 1px solid #fff; border-radius: 50px;}
 #aboutWrap .aboutViewLink span{display: flex; align-items: center; gap: 0 16px; font-weight: 600; color: #fff;}
 #aboutWrap .aboutViewLink span::after{content: ''; width: 24px; height: 24px; background: url(../images/main/arrow_icon.svg)no-repeat center / contain;}
 #aboutWrap .aboutTitleBox{margin-bottom: 60px; text-align: center;}
 #aboutWrap .aboutTitleBox span{display: block; margin-bottom: 20px; font-size: 16px; font-weight: 600;}
-#aboutWrap .aboutTitleBox h2{font-size: 120px; font-weight: 500; font-family: 'HelveticaNowDisplay'; line-height: 1; word-break: keep-all;}
+#aboutWrap .aboutTitleBox h2{font-size: 80px; font-weight: 500; font-family: 'HelveticaNowDisplay'; line-height: 1; word-break: keep-all;}
+#aboutWrap .aboutTitleBox h2 strong{display: inline-block; font-weight: 500;}
 #aboutWrap .aboutContentBox{display: flex; flex-direction: column; gap: 80px 183px;}
 #aboutWrap .aboutContentBox .aboutContent{width: 50%;}
 #aboutWrap .aboutContentBox .aboutContent span{display: block; margin-bottom: 20px; font-weight: 600; color: #fff;}
-#aboutWrap .aboutContentBox .aboutContent p{font-size: 24px; font-weight: 700;}
+#aboutWrap .aboutContentBox .aboutContent p{font-size: 20px; font-weight: 700;}
 #aboutWrap .aboutContentBox .aboutContent02{align-self: flex-end;}
+#aboutWrap .aboutViewLink span,
+#aboutWrap .aboutTitleBox h2 strong
+#aboutWrap .aboutViewLink,
+#aboutWrap .aboutContent01,
+#aboutWrap .aboutContent02 {will-change: transform;}
 
 @media (max-width: 1199px){
 
-  #aboutWrap{padding: 120px 0 40px;}
   #aboutWrap .aboutTitleBox{margin-bottom: 50px;}
-  #aboutWrap .aboutTitleBox h2{font-size: 70px;}
-  #aboutWrap .aboutContentBox .aboutContent span{margin-bottom: 12px;}
-  #aboutWrap .aboutContentBox .aboutContent p{font-size: 20px;}
+  #aboutWrap .aboutTitleBox h2{font-size: 60px;}
+  #aboutWrap .aboutContentBox .aboutContent span{margin-bottom: 12px; font-size: 14px;}
+  #aboutWrap .aboutContentBox .aboutContent p{font-size: 16px;}
 
 }
 
@@ -138,23 +146,20 @@
 
   #aboutWrap .aboutContentBox{gap: 60px 0;}
   #aboutWrap .aboutContentBox .aboutContent{width: 100%;}
-  #aboutWrap .aboutTitleBox h2{font-size: 50px;}
-  #aboutWrap .aboutContentBox .aboutContent p{font-size: 18px;}
+  #aboutWrap .aboutTitleBox h2{font-size: 40px;}
+  #aboutWrap .aboutContentBox .aboutContent p{font-size: 14px;}
 
 }
 
 @media (max-width: 480px){
 
-  #aboutWrap{padding: 40px 0;}
   #aboutWrap .aboutTitleBox{margin-bottom: 32px;}
   #aboutWrap .aboutTitleBox span{margin-bottom: 12px; font-size: 14px;}
-  #aboutWrap .aboutTitleBox h2{font-size: 36px;}
+  #aboutWrap .aboutTitleBox h2{font-size: 30px;}
   #aboutWrap .aboutViewLink span{gap: 0 12px; font-size: 14px;}
   #aboutWrap .aboutViewLink span::after{width: 16px; height: 16px;}
   #aboutWrap .aboutViewLink{padding-left: 12px; width: 130px; height: 30px;}
   #aboutWrap .aboutContentBox .aboutContent p{font-size: 16px;}
-  #aboutWrap .aboutContentBox .aboutContent span{font-size: 16px;}
-
 
 }
 

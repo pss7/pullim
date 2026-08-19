@@ -57,40 +57,5 @@ $(function () {
     }
   })
 
-  //헤더 메뉴 클릭 시 부드럽게 이동
-  $('#headerWrap .link').click(function (e) {
-    const target = $(this).attr('href');
-
-    if (target == '#') return;
-
-    e.preventDefault();
-
-    const headerHeight = $(window).width() <= 1199 ? 20 : 80;
-
-    const position = $(target).offset().top - headerHeight;
-
-    $('html, body').animate({
-      scrollTop: position
-    }, 600);
-  });
-
-  /* 상단으로 이동 */
-  $('#aside .asideTopBtn').click(function () {
-    $('html, body').animate({
-      scrollTop: 0
-    },
-      500);
-    return false;
-  });
-
-  /* 스크롤 시 top 버튼 */
-  $(window).scroll(function () {
-    if ($(this).scrollTop() > 100) {
-      $('#aside').fadeIn();
-    } else {
-      $('#aside').fadeOut();
-    }
-  });
-
 });
 
