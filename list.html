@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="Keywords" content="" />
+    <meta name="Description" content="" />
+    <meta name="Author" content="" />
+    <meta name="viewport"
+        content="width=device-width, height=device-height, initial-scale=1.0, minimum-scale=1.0, maximum-scale=2.0, user-scalable=yes">
+    <title>작업내역</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            background-color: #f4f6f8;
+            color: #222;
+        }
+
+        #wrap {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 32px 16px 50px;
+        }
+
+        h1 {
+            margin: 0 0 35px;
+            font-size: 28px;
+            font-weight: 700;
+            color: #111;
+        }
+
+        .text {
+            margin: 0 0 20px;
+            font-size: 14px;
+            color: #666;
+        }
+
+        .listWrap {
+            background-color: #fff;
+            border: 1px solid #e3e7eb;
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
+        }
+
+        .tableBox {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            min-width: 760px;
+            border-collapse: collapse;
+            table-layout: fixed;
+        }
+
+        thead th {
+            padding: 14px 16px;
+            border-bottom: 1px solid #dfe5ec;
+            background-color: #f8fafc;
+            font-size: 14px;
+            font-weight: 700;
+            color: #111827;
+            text-align: center;
+        }
+
+        tbody td {
+            padding: 13px 16px;
+            border-bottom: 1px solid #edf1f5;
+            font-size: 14px;
+            color: #222;
+            vertical-align: middle;
+            background-color: #fff;
+        }
+
+        tbody tr:last-child td {
+            border-bottom: 0;
+        }
+
+        .colType {
+            width: 110px;
+            text-align: center;
+        }
+
+        .colMenu {
+            width: auto;
+        }
+
+        .colFile {
+            text-align: center;
+        }
+
+        .section td {
+            padding: 14px 16px;
+            background-color: #f6f8fb;
+            border-top: 1px solid #e7ecf2;
+            border-bottom: 1px solid #e7ecf2;
+            font-size: 15px;
+            font-weight: 700;
+            color: #1f2d3d;
+        }
+
+        .badge {
+            display: inline-block;
+            min-width: 54px;
+            padding: 5px 10px;
+            border-radius: 999px;
+            font-size: 12px;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .badge.main {
+            color: #fff;
+            background-color: #2563eb;
+        }
+
+        .badge.sub {
+            color: #2563eb;
+            background-color: #eff6ff;
+        }
+
+        .badge.common {
+            color: #0f766e;
+            background-color: #ccfbf1;
+        }
+
+        .menuName {
+            display: block;
+            color: #111;
+            word-break: keep-all;
+        }
+
+        .depth01 {
+            font-weight: 700;
+        }
+
+        .depth02 {
+            position: relative;
+            padding-left: 18px;
+            font-weight: 600;
+            color: #1f2937;
+        }
+
+        .depth02:before {
+            content: "";
+            position: absolute;
+            top: 8px;
+            left: 4px;
+            width: 6px;
+            height: 6px;
+            border-left: 1px solid #94a3b8;
+            border-bottom: 1px solid #94a3b8;
+        }
+
+        .depth03 {
+            position: relative;
+            padding-left: 35px;
+            color: #4b5563;
+        }
+
+        .depth03:before {
+            content: "";
+            position: absolute;
+            top: 10px;
+            left: 20px;
+            width: 7px;
+            height: 1px;
+            background-color: #94a3b8;
+        }
+
+        a {
+            display: inline-block;
+            padding: 8px 14px;
+            border: 1px solid #d4dbe3;
+            border-radius: 8px;
+            background-color: #fff;
+            color: #1d4ed8;
+            font-size: 13px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+
+        a:hover,
+        a:focus {
+            border-color: #1d4ed8;
+            background-color: #eff6ff;
+        }
+
+        tbody tr.data:hover td {
+            background-color: #fcfdff;
+        }
+
+        @media (max-width: 768px) {
+            #wrap {
+                padding: 24px 12px 40px;
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+
+            .text {
+                font-size: 13px;
+            }
+
+            thead th,
+            tbody td,
+            .section td {
+                padding: 12px 12px;
+                font-size: 13px;
+            }
+
+            a {
+                padding: 7px 12px;
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="wrap">
+        <h1>풀림 작업내역</h1>
+
+        <div class="listWrap">
+            <div class="tableBox">
+                <table>
+                    <thead>
+                        <tr>
+                            <th class="colType">구분</th>
+                            <th class="colMenu">메뉴명</th>
+                            <th class="colFile">파일명</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        <tr class="section">
+                            <td colspan="3">메인</td>
+                        </tr>
+                        <tr class="data">
+                            <td class="colType"><span class="badge main">메인</span></td>
+                            <td class="colMenu"><span class="menuName depth01">메인</span></td>
+                            <td class="colFile"><a href="index.html" target="_blank">index.html</a></td>
+                        </tr>
+
+                        <tr class="section">
+                            <td colspan="3">서브</td>
+                        </tr>
+
+                        <tr class="data">
+                            <td class="colType"><span class="badge sub">서브</span></td>
+                            <td class="colMenu"><span class="menuName depth02">서브</span></td>
+                            <td class="colFile"><a href="#" target="_blank">서브</a></td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

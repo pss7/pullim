@@ -1,0 +1,347 @@
+@charset "UTF-8";
+
+.container{max-width: 1680px; width: 100%; padding: 0 60px; margin: 0 auto;}
+
+@media (max-width: 1199px){
+
+  .container{padding: 0 20px;}
+
+}
+
+/* 비주얼영역 */
+#visualWrap{position: fixed; width: 100%; display: flex; align-items: center; justify-content: center; height: 100vh; overflow: hidden; background-color: #fff; z-index: 99999;}
+#visualWrap .proposalDownloadBtn{width: 119px; height: 119px; position: absolute; top:219px; right:124px; z-index: 999;}
+#visualWrap .proposalDownloadBtn img{position: absolute; top: 0;
+    left: 0; width: 100%; height: 100%; animation: proposalRotate 10s linear infinite;}
+#visualWrap .proposalDownloadBtn span{ position: absolute; top: 50%; left: 50%;
+    transform: translate(-50%, -50%); display: flex; align-items: center; justify-content: center; width: 80px; height: 80px; border-radius: 50%; background-color: #FD3D32;
+    font-size: 24px; font-weight: 700; color: #fff; font-family: 'HelveticaNowDisplay';}
+
+@keyframes proposalRotate{
+    from{
+        transform: rotate(0deg);
+    }
+
+    to{
+        transform: rotate(360deg);
+    }
+}
+#visualWrap .visualVideoBox{ position: absolute; top: 0; left: 0;
+    width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;    overflow: hidden;}
+#visualWrap .visualVideoBox img{display: block; width: 15vw; height: 32vw; object-fit: cover; opacity: 0; transform: scale(.7); will-change: transform;}   
+#visualWrap .visualVideoBox img.active{opacity: 1; transform: scale(1); transition:
+        transform 1.2s cubic-bezier(.77, 0, .175, 1), opacity .8s ease;}
+#visualWrap .visualVideoBox img.scrollMotion{transition: none;}
+#visualWrap .visualTextBox{max-width: 71.35vw; padding: 0 1.04vw; margin: 0 auto; display: flex; flex-direction: column; justify-content: center; position: fixed; inset: 0;}
+#visualWrap .visualTextBox h2{font-size: 7.8vw; font-weight: 500; color: #222; font-family: 'HelveticaNowDisplay'; letter-spacing: -0.05vw; white-space: nowrap;}
+#visualWrap .visualTextBox h2 span{margin-top: 2.08vw; font-size: 0.83vw; font-weight: 600; color: #222;}
+#visualWrap .visualText{opacity: 0;
+    visibility: hidden;display: flex; align-items: center; gap: 0 16.67vw; line-height: 1; 
+   will-change: transform, opacity; transform: translateY(100px);}
+#visualWrap .visualText02 h2{display: flex; gap: 0 3.96vw}
+#visualWrap .visualText03{justify-content: flex-end;}
+#visualWrap .visualScrollBox{position: absolute; left: 50%;
+    bottom: 0; display: flex; flex-direction: column; align-items: center; gap: 1.04vw; transform: translateX(-50%);overflow: hidden;}
+#visualWrap .visualScrollText{display: block; font-size: 0.83vw;  color: #B4B4B4; font-weight: 600;}
+#visualWrap .visualScrollLine{position: relative; width: 0.05vw; height: 3.13vw;
+    background: #E8E8E8;}
+#visualWrap .visualScrollLine::after{content: ''; position: absolute;
+    top: 0; left: 0; width: 0.05vw; height: 1.04vw; background: #222; animation: scrollLine 1.8s infinite;}
+
+@keyframes scrollLine{
+    0%{
+        transform: translateY(0);
+        opacity: 0;
+    }
+    30%{
+        opacity: 1;
+    }
+    100%{
+        transform: translateY(50px);
+        opacity: 0;
+    }
+}
+
+@media (max-width: 1199px){
+
+  #visualWrap .visualVideoBox img{width: 39vw; height: 50vw;}
+  #visualWrap .visualTextBox{max-width: 90vw;}
+  #visualWrap .visualText{gap: 0 35vw;}
+  #visualWrap .proposalDownloadBtn{top: 120px; right: 50px;}
+
+}
+
+@media (max-width: 768px){
+
+  #visualWrap .visualTextBox{max-width: 99vw;}
+  #visualWrap .visualText{gap: 0 44vw;}
+  #visualWrap .visualVideoBox img{width: 50vw; height: 80vw;}
+
+}
+
+@media (max-width: 480px){
+
+  #visualWrap .visualVideoBox img{width: 75vw; height: 113vw;}
+
+  #visualWrap .visualTextBox{padding: 112px 20px 0; max-width: none; justify-content: flex-start;}
+  #visualWrap .visualTextBox h2{font-size: 48px;}
+  #visualWrap .visualText{justify-content: space-between; gap: 0;}
+  #visualWrap .visualTextBox h2 span{margin-top: 12px; font-size: 10px;}
+  #visualWrap .visualText02{padding-left: 9px; letter-spacing: 1px;}
+  #visualWrap .visualText02 h2{gap: 0 25px;}
+
+  #visualWrap .visualScrollBox{gap:8px;}
+  #visualWrap .visualScrollText{font-size: 10px;}
+  #visualWrap .visualScrollLine{width: 1px; height: 52px;}
+  #visualWrap .visualScrollLine::after{width: 1px; height: 20px;}
+  #visualWrap .proposalDownloadBtn{width: 90px; height: 90px; left:28px; top: 409px;}
+  #visualWrap .proposalDownloadBtn span{width: 60px; height: 60px; font-size: 18px;}
+  
+}
+
+@media (max-width: 360px){
+
+  #visualWrap .visualVideoBox img{width: 69vw; height: 168vw;}
+  #visualWrap .visualTextBox h2{font-size: 38px;}
+  #visualWrap .visualTextBox h2 span{font-size: 8px;}
+  #visualWrap .visualText02 h2{gap: 0 18px;}
+  #visualWrap .proposalDownloadBtn{width: 64px; height: 64px;}
+  #visualWrap .proposalDownloadBtn span{width: 40px; height: 40px; font-size: 10px;}
+
+}
+
+/* 소개 영역 */
+#aboutWrap{position: relative; width: 100%; /*height: 100vh;*/ padding: 160px 0; background: #222; color: #fff; z-index: 999; overflow: hidden;}
+#aboutWrap .aboutViewLink{display: flex; align-items: center; padding-left: 20px; width: 162px; height: 36px; margin: 0 auto 120px; border: 1px solid #fff; border-radius: 50px;}
+#aboutWrap .aboutViewLink span{display: flex; align-items: center; gap: 0 16px; font-weight: 600; color: #fff;}
+#aboutWrap .aboutViewLink span::after{content: ''; width: 24px; height: 24px; background: url(../images/main/arrow_icon.svg)no-repeat center / contain;}
+#aboutWrap .aboutTitleBox{margin-bottom: 60px; text-align: center;}
+#aboutWrap .aboutTitleBox span{display: block; margin-bottom: 20px; font-size: 16px; font-weight: 600;}
+#aboutWrap .aboutTitleBox h2{font-size: 120px; font-weight: 500; font-family: 'HelveticaNowDisplay'; line-height: 1; word-break: keep-all;}
+#aboutWrap .aboutContentBox{display: flex; flex-direction: column; gap: 80px 183px;}
+#aboutWrap .aboutContentBox .aboutContent{width: 50%;}
+#aboutWrap .aboutContentBox .aboutContent span{display: block; margin-bottom: 20px; font-weight: 600; color: #fff;}
+#aboutWrap .aboutContentBox .aboutContent p{font-size: 24px; font-weight: 700;}
+#aboutWrap .aboutContentBox .aboutContent02{align-self: flex-end;}
+
+@media (max-width: 1199px){
+
+  #aboutWrap{padding: 120px 0 40px;}
+  #aboutWrap .aboutTitleBox{margin-bottom: 50px;}
+  #aboutWrap .aboutTitleBox h2{font-size: 70px;}
+  #aboutWrap .aboutContentBox .aboutContent span{margin-bottom: 12px;}
+  #aboutWrap .aboutContentBox .aboutContent p{font-size: 20px;}
+
+}
+
+@media (max-width: 768px){
+
+  #aboutWrap .aboutContentBox{gap: 60px 0;}
+  #aboutWrap .aboutContentBox .aboutContent{width: 100%;}
+  #aboutWrap .aboutTitleBox h2{font-size: 50px;}
+  #aboutWrap .aboutContentBox .aboutContent p{font-size: 18px;}
+
+}
+
+@media (max-width: 480px){
+
+  #aboutWrap{padding: 40px 0;}
+  #aboutWrap .aboutTitleBox{margin-bottom: 32px;}
+  #aboutWrap .aboutTitleBox span{margin-bottom: 12px; font-size: 14px;}
+  #aboutWrap .aboutTitleBox h2{font-size: 36px;}
+  #aboutWrap .aboutViewLink span{gap: 0 12px; font-size: 14px;}
+  #aboutWrap .aboutViewLink span::after{width: 16px; height: 16px;}
+  #aboutWrap .aboutViewLink{padding-left: 12px; width: 130px; height: 30px;}
+  #aboutWrap .aboutContentBox .aboutContent p{font-size: 16px;}
+  #aboutWrap .aboutContentBox .aboutContent span{font-size: 16px;}
+
+
+}
+
+@media (max-width: 360px){
+  
+  #aboutWrap .aboutTitleBox h2 br{display: none;}
+  #aboutWrap .aboutTitleBox span{font-size: 10px;}
+  #aboutWrap .aboutContentBox .aboutContent p br{display: none;}
+  #aboutWrap .aboutContentBox .aboutContent span{font-size: 10px;}
+  #aboutWrap .aboutContentBox .aboutContent p{font-size: 14px;}
+  #aboutWrap .aboutViewLink span{gap: 0 8px; font-size: 12px;}
+  #aboutWrap .aboutViewLink{padding-left: 12px; width: 109px; height: 22px;}
+
+}
+
+/* 프로젝트 영역 */
+#projectWrap{padding: 160px 0 80px;}
+/* #projectWrap .container{max-width: 1500px;} */
+#projectWrap .projectTitleBox{margin-bottom: 160px;}
+#projectWrap .projectTitleBox h2{font-size: 80px; color: #222; font-family: 'HelveticaNowDisplay'; font-weight: 500; line-height: 1;}
+#projectWrap .projectList{display: flex; width: 100%;}
+#projectWrap .projectList li{position: relative; flex: 1; width: 600px;
+   height: 360px; overflow: hidden; transition: all .6s;}
+#projectWrap .projectList li .projectImgBox{position: absolute; top:0; left:0; right:0; bottom: 0;}
+#projectWrap .projectList li .projectImgBox img{display: block; width: 100%; height: 100%; object-fit: cover;}
+#projectWrap .projectList li .projectTextBox{height: 100%; display: flex; flex-direction: column; justify-content: space-between; padding: 40px 40px 40px 32px; position: relative;}
+#projectWrap .projectList li .projectTextBox .projectName{font-size: 32px; font-weight: 700; color: #fff; white-space: nowrap;}
+#projectWrap .projectList li .projectTextBox .projectDesc{font-weight: 600; color: #fff; white-space: nowrap;}
+#projectWrap .projectList li:hover{flex: 4;}
+
+@media (max-width: 1199px){
+
+  #projectWrap{padding: 120px 0 80px;}
+  #projectWrap .projectTitleBox{margin-bottom: 140px;}
+  #projectWrap .projectTitleBox h2{font-size: 70px;}
+  #projectWrap .projectList li .projectTextBox .projectName{font-size: 26px;}
+
+}
+
+@media (max-width: 1024px){
+
+  #projectWrap .projectList li .projectTextBox .projectName{font-size: 22px;}
+
+}
+
+@media (max-width: 768px){
+
+  #projectWrap .projectTitleBox{margin-bottom: 100px;}
+  #projectWrap .projectTitleBox h2{font-size: 40px;}
+  #projectWrap .projectList li .projectTextBox .projectName{font-size: 20px;}
+  #projectWrap .projectList li .projectTextBox .projectDesc{font-size: 14px;}
+
+}
+
+@media (max-width: 480px){
+
+  #projectWrap{padding: 80px 0 40px;}
+  #projectWrap .projectTitleBox{margin-bottom: 70px;}
+  #projectWrap .projectTitleBox h2{font-size: 34px;}
+  #projectWrap .projectList{flex-direction: column;}
+  #projectWrap .projectList li{flex: none; width: 100%; height: 60px; transition: all .6s;}
+  #projectWrap .projectList li:hover{flex: none; height: 250px;}
+  #projectWrap .projectList li .projectTextBox .projectName{font-size: 18px;}
+
+}
+
+@media (max-width: 360px){
+
+
+  #projectWrap .projectList li{height: 20px;}
+  #projectWrap .projectList li:hover{height: 120px;}
+  #projectWrap .projectTitleBox{margin-bottom: 40px;}
+  #projectWrap .projectTitleBox h2{font-size: 24px;}
+  #projectWrap .projectList li .projectTextBox{padding: 12px 16px;}
+  #projectWrap .projectList li .projectTextBox .projectName{font-size: 14px;}
+  #projectWrap .projectList li .projectTextBox .projectDesc{font-size: 10px;}
+
+}
+
+/* 회사정보 영역 */
+#companyInfoWrap{padding: 80px 0 160px;}
+#companyInfoWrap .companyInfoLayoutBox{padding-right: 100px; display: flex; align-items: center; justify-content: space-between; gap: 0 67px;} 
+#companyInfoWrap .companyTitleBox{width: calc(100% - 546px); margin-bottom: -170px;}
+#companyInfoWrap .companyTitleBox span{display: block; margin-bottom: 20px; color: #222; font-weight: 600;}
+#companyInfoWrap .companyTitleBox p{color: #222; font-weight: 700; font-size: 32px;}
+#companyInfoWrap .companyImgBox img{display: block; max-width: 100%;}
+#companyInfoWrap .companyInfoNumberBox{flex-shrink: 0; display: flex; flex-direction: column; gap: 120px 0;}
+#companyInfoWrap .companyInfoNumberBox .companyInfoNumber span{display: block; margin-bottom: 20px; font-weight: 600;} 
+#companyInfoWrap .companyInfoNumberBox .companyInfoNumber strong{display: block; font-size: 120px; font-weight: 500; color: #222; font-family: 'HelveticaNowDisplay'; line-height: 1;}  
+
+@media (max-width: 1199px){
+
+  #companyInfoWrap .companyTitleBox{width: calc(100% - 447px); margin-bottom: -70px;}
+  #companyInfoWrap .companyTitleBox span{margin-bottom: 18px;}
+  #companyInfoWrap .companyTitleBox p{font-size: 26px;}
+  #companyInfoWrap .companyInfoNumberBox .companyInfoNumber strong{font-size: 80px;}
+  #companyInfoWrap .companyInfoNumberBox{gap: 70px 0;}
+
+}
+
+@media (max-width: 1024px){
+  
+  #companyInfoWrap .companyTitleBox{width: 100%; margin-bottom: 70px;}
+  #companyInfoWrap .companyInfoLayoutBox{align-items: flex-start; padding-right: 0;}
+
+}
+
+@media (max-width: 768px){
+
+  #companyInfoWrap .companyTitleBox p{font-size: 20px;}
+  #companyInfoWrap .companyInfoNumberBox{gap: 40px 0;}
+  #companyInfoWrap .companyInfoNumberBox .companyInfoNumber strong{font-size: 46px;}
+  #companyInfoWrap .companyInfoNumberBox .companyInfoNumber span{margin-bottom: 10px; font-size: 14px;}
+
+}
+
+@media (max-width: 480px){
+
+  #companyInfoWrap{padding: 40px 0 120px;}
+  #companyInfoWrap .companyTitleBox{margin-bottom: 56px;}
+  #companyInfoWrap .companyTitleBox span{margin-bottom: 12px;}
+  #companyInfoWrap .companyTitleBox p{font-size: 18px;}
+  #companyInfoWrap .companyInfoNumberBox .companyInfoNumber strong{font-size: 30px;}
+
+}
+
+@media (max-width: 360px){
+
+  #companyInfoWrap .companyTitleBox{margin-bottom: 40px;}
+  #companyInfoWrap .companyTitleBox span{font-size: 10px;}
+  #companyInfoWrap .companyTitleBox p{font-size: 14px;}
+
+}
+
+
+
+
+
+/* 문의하기 영역 */
+#contactWrap{padding: 40px 0; background-color: #FD3D32;}
+#contactWrap .contactTitleBox h2{margin-bottom: 235px; font-weight: 500; color: #222; font-family: 'HelveticaNowDisplay'; font-size: 120px; line-height: 1; word-break: keep-all;}
+#contactWrap .contactContentBox{display: flex; align-items: center; justify-content: space-between;}
+#contactWrap .contactInfoTextBox span{display: block; margin-bottom: 20px; color: #fff; font-weight: 600;}
+#contactWrap .contactInfoTextBox p{font-size: 24px; font-weight: 700; color: #fff; font-family: 'HelveticaNowDisplay';}
+#contactWrap .contactLink{padding: 0 10px; display: flex; align-items: center; justify-content: center; width: 480px; height: 80px; background-color: #222;}
+#contactWrap .contactLink span{display: flex; align-items: center; gap: 0 32px; font-size: 40px; font-weight: 500; color: #fff; font-family: 'HelveticaNowDisplay';}
+#contactWrap .contactLink span::after{content: ''; width: 16px; height: 24px; background: url(../images/main/arrow_icon02.svg)no-repeat center / contain;}
+
+@media (max-width: 1199px){
+  
+  #contactWrap .contactContentBox{ flex-direction: column; align-items: flex-start; gap: 207px 0;}
+  #contactWrap .contactLink{align-self: flex-end;}
+  #contactWrap .contactTitleBox h2{margin-bottom: 140px; font-size: 70px;}
+  #contactWrap .contactInfoTextBox p{font-size: 20px;}
+  #contactWrap .contactInfoTextBox span{margin-bottom: 12px;}
+  #contactWrap .contactLink span{font-size: 26px;}
+  #contactWrap .contactLink{width: 330px; height: 60px;}
+
+}
+
+@media (max-width: 768px){
+
+  #contactWrap .contactContentBox{gap: 145px 0;}
+  #contactWrap .contactTitleBox h2{margin-bottom: 80px; font-size: 40px;}
+  #contactWrap .contactInfoTextBox p{font-size: 18px;}
+  #contactWrap .contactLink span{gap: 0 25px; font-size: 20px;}
+  #contactWrap .contactLink span::after{width: 14px; height: 21px;}
+  #contactWrap .contactLink{width: 250px;}
+  
+}
+
+@media (max-width: 480px){
+
+  #contactWrap .contactTitleBox h2{font-size: 34px;}
+  #contactWrap .contactInfoTextBox span{font-size: 14px;}
+  #contactWrap .contactInfoTextBox p{font-size: 16px;}
+
+}
+
+@media (max-width: 360px){
+
+  #contactWrap{padding: 20px 0;}
+  #contactWrap .contactTitleBox h2{font-size: 24px;}
+  #contactWrap .contactInfoTextBox span{font-size: 10px;}
+  #contactWrap .contactInfoTextBox p{font-size: 12px;}
+  #contactWrap .contactLink{width: 160px; height: 40px;}
+  #contactWrap .contactLink span{gap: 0 20px; font-size: 16px;}
+  #contactWrap .contactLink span::after{width: 8px; height: 12px;}
+
+}
