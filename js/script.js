@@ -38,6 +38,7 @@ $(function () {
     nextArrow: $('#popupContentBox .popupNextBtn'),
   });
 
+  //로드
   $(window).load(function () {
     $('#headerWrap').addClass('active');
   });
