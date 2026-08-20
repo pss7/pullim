@@ -9,54 +9,18 @@
 }
 
 /* 비주얼영역 */
-#visualWrap {
-    position: relative;
-    width: 100%;
-    height: 100vh;
-}
-
-#visualWrap .visualBox {
-    position: sticky;
-    inset: 0;
-
-    width: 100%;
-    height: 100vh;
-
-    overflow: hidden;
-    z-index: 10;
-}
-
-#visualWrap .visualVideoBox{ position: sticky; inset: 0; display: flex; align-items: center; justify-content: center; overflow: hidden;}
-#visualWrap .visualVideoBox img{display: block; width: 15vw; height: 32vw; object-fit: cover;} 
-#visualWrap .visualTextBox{ position: sticky; inset: 0; max-width: 71.35vw; padding: 0 1.04vw; margin: 0 auto; display: flex; flex-direction: column; justify-content: center;}
+#visualWrap {position: relative; width: 100%; height: 400vh;}
+#visualWrap .visualBox{ position: sticky; top: 0; width: 100%; height: 100vh; overflow: hidden; z-index: 10;}
+#visualWrap .visualVideoBox{ position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; overflow: hidden;}
+#visualWrap .visualVideoBox video{ display: block; width: 80%; height: 80%; object-fit: cover; --video-end-width: 12.50vw; --video-end-height: 22.24vw;}
+#visualWrap .visualTextBox{position: absolute; inset: 0; max-width: 71.35vw; padding: 0 1.04vw; margin: 0 auto; display: flex; flex-direction: column; justify-content: center;}
 #visualWrap .visualTextBox h2{font-size: 7.8vw; font-weight: 500; color: #222; font-family: 'HelveticaNowDisplay'; letter-spacing: -0.05vw; white-space: nowrap;}
 #visualWrap .visualTextBox h2 span{margin-top: 2.08vw; font-size: 0.83vw; font-weight: 600; color: #222;}
 #visualWrap .visualText{display: flex; align-items: center; gap: 0 16.67vw; line-height: 1;}
 #visualWrap .visualText02 h2{display: flex; gap: 0 3.96vw}
 #visualWrap .visualText03{justify-content: flex-end;}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 #visualWrap .visualScrollBox{position: fixed; left: 50%;
-    bottom: 0; display: flex; flex-direction: column; align-items: center; gap: 1.04vw; transform: translateX(-50%);overflow: hidden; z-index: 99999999;}
+    bottom: 0; display: flex; flex-direction: column; align-items: center; gap: 1.04vw; transform: translateX(-50%);overflow: hidden; z-index: 9999999;}
 #visualWrap .visualScrollText{display: block; font-size: 0.83vw;  color: #B4B4B4; font-weight: 600;}
 #visualWrap .visualScrollLine{position: relative; width: 0.05vw; height: 3.13vw;
     background: #E8E8E8;}
@@ -94,9 +58,15 @@
     }
 }
 
+#visualWrap .visualVideoBox video{will-change: width, height;}
+#visualWrap .visualText{will-change: transform, opacity;}
+#visualWrap .visualText01,
+#visualWrap .visualText02,
+#visualWrap .visualText03{opacity: 0; transform: translate3d(0, 180px, 0);}
+
 @media (max-width: 1199px){
 
-  #visualWrap .visualVideoBox img{width: 39vw; height: 50vw;}
+  #visualWrap .visualVideoBox video{--video-end-width: 26vw; --video-end-height: 50vw;}
   #visualWrap .visualTextBox{max-width: 90vw;}
   #visualWrap .visualText{gap: 0 35vw;}
   #visualWrap .proposalDownloadBtn{top: 120px; right: 50px;}
@@ -107,13 +77,13 @@
 
   #visualWrap .visualTextBox{max-width: 99vw;}
   #visualWrap .visualText{gap: 0 44vw;}
-  #visualWrap .visualVideoBox img{width: 50vw; height: 80vw;}
+  #visualWrap .visualVideoBox video{--video-end-width: 36vw; --video-end-height: 50vw;}
 
 }
 
 @media (max-width: 480px){
 
-  #visualWrap .visualVideoBox img{width: 75vw; height: 113vw;}
+  #visualWrap .visualVideoBox video{--video-end-width: 45vw; --video-end-height: 65vw;}
 
   #visualWrap .visualTextBox{padding: 112px 20px 0; max-width: none; justify-content: flex-start;}
   #visualWrap .visualTextBox h2{font-size: 48px;}
@@ -133,7 +103,7 @@
 
 @media (max-width: 360px){
 
-  #visualWrap .visualVideoBox img{width: 69vw; height: 168vw;}
+  #visualWrap .visualVideoBox video{--video-end-width: 60vw; --video-end-height: 100vw;}
   #visualWrap .visualTextBox h2{font-size: 38px;}
   #visualWrap .visualTextBox h2 span{font-size: 8px;}
   #visualWrap .visualText02 h2{gap: 0 18px;}
@@ -142,52 +112,14 @@
 
 }
 
-.visualOutroSpace{height: 100vh; position: relative;}
-
-
-
 /* 소개 영역 */
-#aboutSection {
-    position: relative;
-    height: 200vh;
+#aboutSection{position: relative; height: 300vh;}
+#aboutWrap {position: sticky; top: 0; width: 100%; height: 100vh;  background: #222;
+    color: #fff; overflow: hidden; z-index: 20; opacity: 0; transition: opacity .8s ease;
 }
-
-#aboutWrap {
-  position: sticky;
-    top: 0;
-    height: 100vh;
-
-    width: 100%;
-
-    background: #222;
-    color: #fff;
-
-    overflow: hidden;
-
-
-    z-index: 20;
-
-}
-
-
-
-
-
-
-/* 효과 */
-#aboutWrap {
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity .8s ease;
-}
-
-#aboutWrap.active {
-    opacity: 1;
-    visibility: visible;
-}
-
-#aboutWrap .aboutContentBox{display: flex;   flex-direction: column;
-    justify-content: center;}
+#aboutWrap.active {opacity: 1;}
+#aboutWrap.active { opacity: 1; visibility: visible;}
+#aboutWrap .aboutContentBox{display: flex; flex-direction: column; justify-content: center;}
 #aboutWrap .container,
 #aboutWrap .aboutBox,
 #aboutWrap .aboutContentBox{height: 100%;}
@@ -202,6 +134,53 @@
 #aboutWrap .aboutTextBox .aboutText span{display: block; margin-bottom: 20px; font-weight: 600; color: #fff;}
 #aboutWrap .aboutTextBox .aboutText p{font-size: 20px; font-weight: 700; color: #fff;}
 #aboutWrap .aboutText02{padding-top: 196px;}
+
+
+#aboutWrap .aboutTitleBox > span {
+    opacity: 0;
+    transform: translateY(40px);
+    will-change: transform, opacity;
+}
+
+#aboutWrap .aboutTitleBox h2 strong:first-child {
+    opacity: 0;
+    transform: translateX(-300px);
+    will-change: transform, opacity;
+}
+
+#aboutWrap .aboutTitleBox h2 strong:last-child {
+    opacity: 0;
+    transform: translateX(300px);
+    will-change: transform, opacity;
+}
+
+#aboutWrap .aboutViewLink {
+    opacity: 0;
+    transform: translateY(50px);
+    will-change: transform, opacity;
+}
+
+#aboutWrap .aboutText01,
+#aboutWrap .aboutText02 {
+    opacity: 0;
+    transform: translateY(150px);
+    will-change: transform, opacity;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 @media (max-width: 1199px){
 
@@ -249,23 +228,10 @@
 }
 
 /* 프로젝트 영역 */
-#projectWrap {
-  padding: 0 0 80px;
-    position: relative;
-    overflow: hidden;
-}
 
-#projectWrap .projectTitleBox {
-    opacity: 0;
-    transform: translate3d(-500px, 0, 0);
-    will-change: transform, opacity;
-}
 
-#projectWrap .projectList {
-    opacity: 0;
-    transform: translate3d(500px, 0, 0);
-    will-change: transform, opacity;
-}
+
+#projectWrap {padding: 160px 0 80px; position: relative; overflow: hidden; background-color: #F5F5F5;}
 
 
 
@@ -273,11 +239,8 @@
 
 
 
-
-
-
-
-
+#projectWrap .projectTitleBox {opacity: 0; transform: translate3d(-500px, 0, 0); will-change: transform, opacity;}
+#projectWrap .projectList{opacity: 0; transform: translate3d(500px, 0, 0); will-change: transform, opacity;}
 #projectWrap .projectTitleBox{margin-bottom: 160px;}
 #projectWrap .projectTitleBox h2{font-size: 80px; color: #222; font-family: 'HelveticaNowDisplay'; font-weight: 500; line-height: 1;}
 #projectWrap .projectList{display: flex; width: 100%;}
@@ -292,7 +255,7 @@
 
 @media (max-width: 1199px){
 
-  #projectWrap{padding: 120px 0 80px;}
+  #projectWrap{padding: 120px 0 60px;}
   #projectWrap .projectTitleBox{margin-bottom: 140px;}
   #projectWrap .projectTitleBox h2{font-size: 70px;}
   #projectWrap .projectList li .projectTextBox .projectName{font-size: 26px;}
@@ -328,7 +291,6 @@
 
 @media (max-width: 360px){
 
-
   #projectWrap .projectList li{height: 20px;}
   #projectWrap .projectList li:hover{height: 120px;}
   #projectWrap .projectTitleBox{margin-bottom: 40px;}
@@ -341,20 +303,14 @@
 
 /* 회사정보 영역 */
 #companyInfoWrap{padding: 0 0 160px; background-color: #F5F5F5;}
-
-
-
-/* 기존 구조 유지 */
-
-
-#companyInfoWrap .companyInfoLayoutBox {position: relative; display: flex;
-    align-items: flex-start; justify-content: space-between; gap: 0 100px; padding-right: 100px;
-  height: 200vh;}
+#companyInfoWrap .companyInfoLayoutBox {position: relative; display: flex; align-items: flex-start; justify-content: space-between; gap: 0 100px; padding-right: 100px;
+  height: 150vh;}
 #companyInfoWrap .companyTitleBox{margin-bottom: 92px;}
 #companyInfoWrap .companyTitleBox span{display: block; margin-bottom: 20px; color: #222; font-weight: 600;}
 #companyInfoWrap .companyTitleBox p{color: #222; font-weight: 700; font-size: 32px;}
-#companyInfoWrap .companyVisualBox {flex: 1; position: sticky; top: 0;
-    flex-shrink: 0; display: flex; flex-direction: column; align-items: flex-start;  justify-content:  flex-start; overflow: hidden;}
+#companyInfoWrap .companyVisualBox{flex: 1; position: sticky; top: 0; flex-shrink: 0; display: flex;
+    flex-direction: column; align-items: flex-start; justify-content: flex-start; overflow: hidden;}
+#companyInfoWrap .companyVisualContentBox{width: 100%; opacity: 0; transform: translate3d(0, 350px, 0);   will-change: transform, opacity;}
 #companyInfoWrap .companyImgBox {max-width: 360px;}
 #companyInfoWrap .companyImgBox img {display: block; width: 100%; height: 100%; object-fit: cover;
 }
@@ -364,23 +320,14 @@
 #companyInfoWrap .companyInfoNumberBox .companyInfoNumber strong{display: block; font-size: 120px; font-weight: 500; color: #222; font-family: 'HelveticaNowDisplay'; line-height: 1;}  
 #companyInfoWrap .companyVisualBox,
 #companyInfoWrap .companyInfoNumberBox{padding: 80px 0 0;}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+#companyInfoWrap .companyInfoNumberBox{padding: 250px 0 0;}
 
 @media (max-width: 1199px){
   
+  #companyInfoWrap{padding: 0 0 120px;}
+  #companyInfoWrap .companyVisualBox,
+  #companyInfoWrap .companyInfoNumberBox{padding: 60px 0 0;}
+  #companyInfoWrap .companyInfoNumberBox{padding: 230px 0 0;}
   #companyInfoWrap .companyInfoLayoutBox{height: 100vh;}
   #companyInfoWrap .companyTitleBox{width: 100%; margin-bottom: 80px;}
   #companyInfoWrap .companyTitleBox span{margin-bottom: 18px;}
@@ -392,14 +339,12 @@
 
 @media (max-width: 1024px){
 
-  #companyInfoWrap{padding: 0 0 120px;}
   #companyInfoWrap .companyTitleBox{width: 100%; margin-bottom: 70px;}
   #companyInfoWrap .companyInfoLayoutBox{padding-right: 0;}
 
 }
 
 @media (max-width: 768px){
-
 
   #companyInfoWrap .companyTitleBox{margin-bottom: 60px;}
   #companyInfoWrap .companyTitleBox p{font-size: 20px;}
@@ -410,11 +355,11 @@
 
 }
 
-@media (max-width: 576px){
+@media (max-width: 480px){
 
-  #companyInfoWrap .companyInfoLayoutBox{height: 60vh;}
   #companyInfoWrap .companyVisualBox,
-  #companyInfoWrap .companyInfoNumberBox{padding: 80px 0 0;}
+  #companyInfoWrap .companyInfoNumberBox{padding: 40px 0 0;}
+  #companyInfoWrap .companyInfoNumberBox{padding: 210px 0 0;}
   #companyInfoWrap .companyTitleBox{margin-bottom: 56px;}
   #companyInfoWrap .companyTitleBox span{margin-bottom: 12px;}
   #companyInfoWrap .companyTitleBox p{font-size: 18px;}
@@ -431,13 +376,11 @@
 
 }
 
-
-
-
-
 /* 문의하기 영역 */
 #contactWrap{padding: 40px 0; background-color: #FD3D32;}
-#contactWrap .contactTitleBox h2{margin-bottom: 235px; font-weight: 500; color: #222; font-family: 'HelveticaNowDisplay'; font-size: 120px; line-height: 1; word-break: keep-all;}
+#contactWrap .contactTitleBox h2{margin-bottom: 235px; font-weight: 700; color: #222;
+    font-family: 'HelveticaNowDisplay'; font-size: 120px; line-height: 1; word-break: keep-all;
+    transform: scale(0.35); transform-origin: left center; will-change: transform;}
 #contactWrap .contactContentBox{display: flex; align-items: center; justify-content: space-between;}
 #contactWrap .contactInfoTextBox span{display: block; margin-bottom: 20px; color: #fff; font-weight: 600;}
 #contactWrap .contactInfoTextBox p{font-size: 24px; font-weight: 700; color: #fff; font-family: 'HelveticaNowDisplay';}

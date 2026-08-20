@@ -42,15 +42,6 @@ $(function () {
     $('#headerWrap').addClass('active');
   });
 
-
-
-
-
-
-
-
-
-
   //헤더 스크롤
   $(window).scroll(function () {
     if ($(window).scrollTop() > 50) {
