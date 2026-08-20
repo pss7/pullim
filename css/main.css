@@ -12,7 +12,6 @@
 #visualWrap {position: relative; width: 100%; height: 400vh;}
 #visualWrap .visualBox{ position: sticky; top: 0; width: 100%; height: 100vh; overflow: hidden; z-index: 10;}
 #visualWrap .visualVideoBox{ position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; overflow: hidden;}
-#visualWrap .visualVideoBox video{ display: block; width: 80%; height: 80%; object-fit: cover; --video-end-width: 12.50vw; --video-end-height: 22.24vw;}
 #visualWrap .visualTextBox{position: absolute; inset: 0; max-width: 71.35vw; padding: 0 1.04vw; margin: 0 auto; display: flex; flex-direction: column; justify-content: center;}
 #visualWrap .visualTextBox h2{font-size: 7.8vw; font-weight: 500; color: #222; font-family: 'HelveticaNowDisplay'; letter-spacing: -0.05vw; white-space: nowrap;}
 #visualWrap .visualTextBox h2 span{margin-top: 2.08vw; font-size: 0.83vw; font-weight: 600; color: #222;}
@@ -58,7 +57,9 @@
     }
 }
 
-#visualWrap .visualVideoBox video{will-change: width, height;}
+#visualWrap .visualVideoBox video{display: block; width: 80%; height: 80%; object-fit: cover; --video-end-width: 12.50vw;  --video-end-height: 22.24vw; will-change: width, height, transform; transform: scale(0.15); transform-origin: center center;
+    opacity: 0; transition: transform 8s cubic-bezier(.16, 1, .3, 1), opacity .8s ease;}
+#visualWrap.active .visualVideoBox video{transform: scale(1); opacity: 1;}
 #visualWrap .visualText{will-change: transform, opacity;}
 #visualWrap .visualText01,
 #visualWrap .visualText02,
@@ -112,13 +113,137 @@
 
 }
 
+
+
 /* 소개 영역 */
-#aboutSection{position: relative; height: 300vh;}
-#aboutWrap {position: sticky; top: 0; width: 100%; height: 100vh;  background: #222;
-    color: #fff; overflow: hidden; z-index: 20; opacity: 0; transition: opacity .8s ease;
+#aboutWrap {
+    position: relative;
+    width: 100%;
+    height: 500vh;
+
+    background: #222;
+    color: #fff;
+    overflow: hidden;
+
+    z-index: 20;
 }
-#aboutWrap.active {opacity: 1;}
-#aboutWrap.active { opacity: 1; visibility: visible;}
+
+#aboutWrap {
+    position: sticky;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100vh;
+
+    background: #222;
+    color: #fff;
+    overflow: hidden;
+
+    z-index: 20;
+
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+
+#aboutWrap .aboutContentBox {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#aboutWrap .container,
+#aboutWrap .aboutBox,
+#aboutWrap .aboutContentBox {
+    height: 100%;
+}
+
+
+#aboutWrap .aboutTitleBox {
+    margin-bottom: 60px;
+    text-align: center;
+}
+
+#aboutWrap .aboutTitleBox > span {
+    display: block;
+    margin-bottom: 20px;
+
+    font-size: 16px;
+    font-weight: 600;
+
+
+}
+
+
+
+
+
+#aboutWrap .aboutTitleBox h2 strong{
+    display: inline-block;
+    font-weight: 500;
+}
+
+#aboutWrap .aboutViewLink {
+    display: flex;
+    align-items: center;
+
+    padding-left: 20px;
+
+    width: 162px;
+    height: 36px;
+
+    margin: 0 auto 100px;
+
+    border: 1px solid #fff;
+    border-radius: 50px;
+
+
+}
+
+#aboutWrap .aboutViewLink span {
+    display: flex;
+    align-items: center;
+    gap: 0 16px;
+
+    font-weight: 600;
+    color: #fff;
+}
+
+#aboutWrap .aboutViewLink span::after {
+    content: '';
+
+    width: 24px;
+    height: 24px;
+
+    background: url(../images/main/arrow_icon.svg)
+        no-repeat center / contain;
+}
+#aboutWrap .aboutTextBox {
+    display: flex;
+    gap: 0 183px;
+}
+
+#aboutWrap .aboutTextBox .aboutText span {
+    display: block;
+
+    margin-bottom: 20px;
+
+    font-weight: 600;
+    color: #fff;
+}
+
+#aboutWrap .aboutTextBox .aboutText p {
+    font-size: 20px;
+    font-weight: 700;
+
+    color: #fff;
+}
+
+#aboutWrap .aboutText02 {
+    padding-top: 196px;
+}
 #aboutWrap .aboutContentBox{display: flex; flex-direction: column; justify-content: center;}
 #aboutWrap .container,
 #aboutWrap .aboutBox,
@@ -136,48 +261,31 @@
 #aboutWrap .aboutText02{padding-top: 196px;}
 
 
-#aboutWrap .aboutTitleBox > span {
-    opacity: 0;
-    transform: translateY(40px);
-    will-change: transform, opacity;
-}
 
-#aboutWrap .aboutTitleBox h2 strong:first-child {
-    opacity: 0;
-    transform: translateX(-300px);
-    will-change: transform, opacity;
-}
 
-#aboutWrap .aboutTitleBox h2 strong:last-child {
-    opacity: 0;
-    transform: translateX(300px);
-    will-change: transform, opacity;
-}
 
-#aboutWrap .aboutViewLink {
-    opacity: 0;
-    transform: translateY(50px);
-    will-change: transform, opacity;
-}
 
+
+
+
+
+#aboutWrap .aboutTitleBox h2 strong,
+#aboutWrap .aboutTitleBox > span,
+#aboutWrap .aboutViewLink,
 #aboutWrap .aboutText01,
 #aboutWrap .aboutText02 {
-    opacity: 0;
-    transform: translateY(150px);
-    will-change: transform, opacity;
+    will-change: transform;
 }
 
 
 
+#aboutWrap .aboutTitleBox h2 strong:first-child{
+    transform: translate3d(-500px, 0, 0);
+}
 
-
-
-
-
-
-
-
-
+#aboutWrap .aboutTitleBox h2 strong:last-child{
+    transform: translate3d(500px, 0, 0);
+}
 
 
 
@@ -228,17 +336,7 @@
 }
 
 /* 프로젝트 영역 */
-
-
-
 #projectWrap {padding: 160px 0 80px; position: relative; overflow: hidden; background-color: #F5F5F5;}
-
-
-
-
-
-
-
 #projectWrap .projectTitleBox {opacity: 0; transform: translate3d(-500px, 0, 0); will-change: transform, opacity;}
 #projectWrap .projectList{opacity: 0; transform: translate3d(500px, 0, 0); will-change: transform, opacity;}
 #projectWrap .projectTitleBox{margin-bottom: 160px;}
@@ -277,7 +375,7 @@
 
 }
 
-@media (max-width: 480px){
+@media (max-width: 576px){
 
   #projectWrap{padding: 80px 0 40px;}
   #projectWrap .projectTitleBox{margin-bottom: 70px;}
