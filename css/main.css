@@ -113,149 +113,34 @@
 
 }
 
-
-
 /* 소개 영역 */
-#aboutWrap {
-    padding: 160px 0;
-    position: relative;
-    width: 100%;
-    min-height: 100vh;
-    background: #222;
-    color: #fff;
-    overflow: hidden;
-}
-
-#aboutWrap .aboutContentBox {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
+#aboutWrap {padding: 160px 0; position: relative; width: 100%;
+    background: #222; color: #fff; overflow: hidden;}
+#aboutWrap .aboutContentBox{display: flex; flex-direction: column;    justify-content: center;}
 #aboutWrap .container,
 #aboutWrap .aboutBox,
-#aboutWrap .aboutContentBox {
-    height: 100%;
-}
-
-#aboutWrap .aboutTitleBox {
-    margin-bottom: 60px;
-    text-align: center;
-}
-
-#aboutWrap .aboutTitleBox > span {
-    display: block;
-    margin-bottom: 20px;
-
-    font-size: 16px;
-    font-weight: 600;
-
- 
-}
-
-
-#aboutWrap .aboutTitleBox h2 {
-    font-size: 80px;
-    font-family: 'HelveticaNowDisplay';
-    font-weight: 500;
-    line-height: 1;
-    color: #fff;
-    word-break: keep-all;
-}
-#aboutWrap .aboutTitleBox h2 strong {
-    display: inline-block;
-    font-weight: 500;
-   
-}
-#aboutWrap .aboutTitleBox h2 strong:first-child {
-    transform: translate3d(-500px, 0, 0);
-}
-
-#aboutWrap .aboutTitleBox h2 strong:last-child {
-    transform: translate3d(500px, 0, 0);
-}
-
-
-#aboutWrap .aboutViewLink {
-    display: flex;
-    align-items: center;
-
-    padding-left: 20px;
-
-    width: 162px;
-    height: 36px;
-
-    margin: 0 auto 100px;
-
-    border: 1px solid #fff;
-    border-radius: 50px;
-
-  
-}
-
-#aboutWrap .aboutViewLink span {
-    display: flex;
-    align-items: center;
-
-    gap: 0 16px;
-
-    font-weight: 600;
-    color: #fff;
-}
-
-#aboutWrap .aboutViewLink span::after {
-    content: '';
-
-    width: 24px;
-    height: 24px;
-
+#aboutWrap .aboutContentBox {height: 100%;}
+#aboutWrap .aboutTitleBox {margin-bottom: 60px; text-align: center;}
+#aboutWrap .aboutTitleBox > span {display: block; margin-bottom: 20px;
+    font-size: 16px; font-weight: 600; will-change: transform;}
+#aboutWrap .aboutTitleBox h2 {font-size: 80px; font-family: 'HelveticaNowDisplay'; font-weight: 500; line-height: 1;
+    color: #fff; word-break: keep-all;}
+#aboutWrap .aboutTitleBox h2 strong {display: inline-block; font-weight: 500;
+    will-change: transform, opacity;}
+#aboutWrap .aboutViewLink {display: flex; align-items: center;    padding-left: 20px; width: 162px; height: 36px; margin: 0 auto 100px;    border: 1px solid #fff; border-radius: 50px; will-change: transform;}
+#aboutWrap .aboutViewLink span{display: flex; align-items: center;
+    gap: 0 16px; font-weight: 600; color: #fff;}
+#aboutWrap .aboutViewLink span::after {content: ''; width: 24px; height: 24px;
     background:
         url(../images/main/arrow_icon.svg)
-        no-repeat center / contain;
-}
-
-
-
-
-#aboutWrap .aboutTextBox {
-    display: flex;
-    gap: 0 183px;
-}
-
-
-
-
-
-
-
-#aboutWrap .aboutTextBox .aboutText span {
-    display: block;
-
-    margin-bottom: 20px;
-
-    font-weight: 600;
-    color: #fff;
-}
-
-
-/* 텍스트 */
-
-#aboutWrap .aboutTextBox .aboutText p {
-    font-size: 20px;
-    font-weight: 700;
-
-    color: #fff;
-}
-
-
-/* 두 번째 텍스트 */
-
-#aboutWrap .aboutText02 {
-    padding-top: 196px;
-}
-
-
-
+        no-repeat center / contain;}
+#aboutWrap .aboutTextBox {display: flex; gap: 0 183px;}
+#aboutWrap .aboutTextBox .aboutText {will-change: transform;}
+#aboutWrap .aboutTextBox .aboutText span {display: block; margin-bottom: 20px;
+   font-weight: 600; color: #fff;}
+#aboutWrap .aboutTextBox .aboutText p {font-size: 20px; font-weight: 700;
+    color: #fff;}
+#aboutWrap .aboutText02 {padding-top: 196px;}
 #aboutWrap .aboutContentBox{display: flex; flex-direction: column; justify-content: center;}
 #aboutWrap .container,
 #aboutWrap .aboutBox,
@@ -271,32 +156,13 @@
 #aboutWrap .aboutTextBox .aboutText span{display: block; margin-bottom: 20px; font-weight: 600; color: #fff;}
 #aboutWrap .aboutTextBox .aboutText p{font-size: 20px; font-weight: 700; color: #fff;}
 #aboutWrap .aboutText02{padding-top: 196px;}
-
-
-
-
-
-
 #aboutWrap .aboutTitleBox h2 strong,
 #aboutWrap .aboutTitleBox > span,
 #aboutWrap .aboutViewLink,
 #aboutWrap .aboutText01,
-#aboutWrap .aboutText02 {
-    will-change: transform, opacity;
-}
-
-
-
-#aboutWrap .aboutTitleBox h2 strong:first-child{
-    transform: translate3d(-500px, 0, 0);
-}
-
-#aboutWrap .aboutTitleBox h2 strong:last-child{
-    transform: translate3d(500px, 0, 0);
-}
-
-
-
+#aboutWrap .aboutText02 { will-change: transform, opacity;}
+#aboutWrap .aboutTitleBox h2 strong:first-child{transform: translate3d(-500px, 0, 0);}
+#aboutWrap .aboutTitleBox h2 strong:last-child{ transform: translate3d(500px, 0, 0);}
 
 @media (max-width: 1199px){
 
@@ -318,6 +184,7 @@
 
 @media (max-width: 480px){
 
+  #aboutWrap{padding: 120px 0;}
   #aboutWrap .aboutTitleBox{margin-bottom: 32px;}
   #aboutWrap .aboutTitleBox span{margin-bottom: 12px; font-size: 14px;}
   #aboutWrap .aboutTitleBox h2{font-size: 30px;}
@@ -423,23 +290,28 @@
 #companyInfoWrap .companyImgBox img{display: block; max-width: 100%;}
 #companyInfoWrap .companyInfoNumberBox{flex-shrink: 0; display: flex; flex-direction: column; gap: 120px 0;}
 #companyInfoWrap .companyInfoNumberBox .companyInfoNumber span{display: block; margin-bottom: 20px; font-weight: 600;} 
-#companyInfoWrap .companyInfoNumberBox .companyInfoNumber strong{display: block; font-size: 120px; font-weight: 500; color: #222; font-family: 'HelveticaNowDisplay'; line-height: 1;}  
+#companyInfoWrap .companyInfoNumberBox .companyInfoNumber strong,
+#companyInfoWrap .companyInfoNumberBox .companyInfoNumber em{display: block; font-size: 120px; font-weight: 500; color: #222; font-family: 'HelveticaNowDisplay'; line-height: 1;}  
+
 #companyInfoWrap .companyVisualBox,
-#companyInfoWrap .companyInfoNumberBox{padding: 80px 0 0;}
+#companyInfoWrap .companyInfoNumberBox{padding: 150px 0 0;}
 #companyInfoWrap .companyInfoNumberBox{padding: 250px 0 0;}
+#companyInfoWrap .companyInfoNumberBox .companyInfoNumberValue{display: flex; gap: 0 30px;}
 
 @media (max-width: 1199px){
   
   #companyInfoWrap{padding: 0 0 120px;}
   #companyInfoWrap .companyVisualBox,
-  #companyInfoWrap .companyInfoNumberBox{padding: 60px 0 0;}
+  #companyInfoWrap .companyInfoNumberBox{padding: 120px 0 0;}
   #companyInfoWrap .companyInfoNumberBox{padding: 230px 0 0;}
   #companyInfoWrap .companyInfoLayoutBox{height: 100vh;}
   #companyInfoWrap .companyTitleBox{width: 100%; margin-bottom: 80px;}
   #companyInfoWrap .companyTitleBox span{margin-bottom: 18px;}
   #companyInfoWrap .companyTitleBox p{font-size: 26px;}
-  #companyInfoWrap .companyInfoNumberBox .companyInfoNumber strong{font-size: 80px;}
+  #companyInfoWrap .companyInfoNumberBox .companyInfoNumber strong,
+  #companyInfoWrap .companyInfoNumberBox .companyInfoNumber em{font-size: 80px;}
   #companyInfoWrap .companyInfoNumberBox{gap: 70px 0;}
+  #companyInfoWrap .companyInfoNumberBox .companyInfoNumberValue{gap: 0 17px;}
 
 }
 
@@ -455,27 +327,34 @@
   #companyInfoWrap .companyTitleBox{margin-bottom: 60px;}
   #companyInfoWrap .companyTitleBox p{font-size: 20px;}
   #companyInfoWrap .companyInfoNumberBox{gap: 40px 0;}
-  #companyInfoWrap .companyInfoNumberBox .companyInfoNumber strong{font-size: 46px;}
+  #companyInfoWrap .companyInfoNumberBox .companyInfoNumber strong,
+  #companyInfoWrap .companyInfoNumberBox .companyInfoNumber em{font-size: 46px;}
   #companyInfoWrap .companyInfoNumberBox .companyInfoNumber span{margin-bottom: 10px; font-size: 14px;}
   #companyInfoWrap .companyInfoLayoutBox{gap: 0 50px;}
+  #companyInfoWrap .companyInfoNumberBox .companyInfoNumberValue{gap: 0 10px;}
 
 }
 
 @media (max-width: 480px){
 
+  #companyInfoWrap .companyInfoLayoutBox{height: 88vh;}
   #companyInfoWrap .companyVisualBox,
-  #companyInfoWrap .companyInfoNumberBox{padding: 40px 0 0;}
+  #companyInfoWrap .companyInfoNumberBox{padding: 90px 0 0;}
   #companyInfoWrap .companyInfoNumberBox{padding: 210px 0 0;}
   #companyInfoWrap .companyTitleBox{margin-bottom: 56px;}
   #companyInfoWrap .companyTitleBox span{margin-bottom: 12px;}
   #companyInfoWrap .companyTitleBox p{font-size: 18px;}
   #companyInfoWrap .companyTitleBox p br{display: none;}
-  #companyInfoWrap .companyInfoNumberBox .companyInfoNumber strong{font-size: 30px;}
+  #companyInfoWrap .companyInfoNumberBox .companyInfoNumber strong,
+  #companyInfoWrap .companyInfoNumberBox .companyInfoNumber em{font-size: 30px;}
+  #companyInfoWrap .companyInfoNumberBox .companyInfoNumberValue{gap: 0 5px;}
 
 }
 
 @media (max-width: 360px){
-
+  
+  #companyInfoWrap .companyInfoNumberBox{padding: 100px 0 0;}
+  #companyInfoWrap .companyInfoLayoutBox{height: 53vh;}
   #companyInfoWrap .companyTitleBox{margin-bottom: 40px;}
   #companyInfoWrap .companyTitleBox span{font-size: 10px;}
   #companyInfoWrap .companyTitleBox p{font-size: 14px;}
