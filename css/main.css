@@ -224,7 +224,7 @@
 #projectWrap .projectList li .projectTextBox{height: 100%; display: flex; flex-direction: column; justify-content: space-between; padding: 40px 40px 40px 32px; position: relative;}
 #projectWrap .projectList li .projectTextBox .projectName{font-size: 32px; font-weight: 700; color: #fff; white-space: nowrap;}
 #projectWrap .projectList li .projectTextBox .projectDesc{font-weight: 600; color: #fff; white-space: nowrap;}
-#projectWrap .projectList li:active{flex: 4;}
+#projectWrap .projectList li:hover{flex: 4;}
 
 @media (max-width: 1199px){
 
@@ -246,7 +246,8 @@
   #projectWrap .projectTitleBox{margin-bottom: 100px;}
   #projectWrap .projectTitleBox h2{font-size: 40px;}
   #projectWrap .projectList{flex-direction: column;}
-  #projectWrap .projectList li{flex: none; width: 100%; height: 80px; } 
+  #projectWrap .projectList li{flex: none; width: 100%; height: 80px; }
+  #projectWrap .projectList li:hover {flex: none;} 
   #projectWrap .projectList li:active{height: 350px;}
   #projectWrap .projectList li .projectTextBox .projectName{font-size: 20px;}
   #projectWrap .projectList li .projectTextBox .projectDesc{font-size: 14px;}
