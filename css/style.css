@@ -1,7 +1,7 @@
 @charset "UTF-8";
 
 /* 헤더 */
-#headerWrap{position: fixed; top:0; left:0; right:0; padding: 0 40px; display: flex; align-items: center; justify-content: space-between; background-color: #fff; z-index: 999999999;}
+#headerWrap{position: fixed; top:0; left:0; right:0; padding: 0 40px; display: flex; align-items: center; justify-content: space-between; /*background-color: transparent;*/ z-index: 999999999;}
 #headerWrap .headerLogoBox h1 a,
 #headerWrap .headerLogoBox h1 a img{display: block;}
 #headerWrap .headerGnbBox .headerGnbList{display: flex; align-items: center;}

@@ -20,7 +20,7 @@ $(function () {
       .attr('aria-expanded', 'false');
   });
 
-    //팝업
+  //팝업
   $('#popupContentBox .slick').slick({
     autoplay: true,
     arrows: true,
@@ -38,6 +38,9 @@ $(function () {
     nextArrow: $('#popupContentBox .popupNextBtn'),
   });
 
+  $(window).load(function () {
+    $('#headerWrap').addClass('active');
+  });
 
 
 
