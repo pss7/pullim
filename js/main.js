@@ -893,6 +893,7 @@ $(function () {
   });
 
   /* 프로젝트 목록 활성화 */
+   $('#projectWrap .projectList li:last-child').addClass('active');
   $('#projectWrap .projectList li').click(function () {
     $('#projectWrap .projectList li')
       .removeClass('active');
