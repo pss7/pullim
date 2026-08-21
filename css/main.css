@@ -103,26 +103,26 @@
   #visualWrap .proposalDownloadBtn{top: 120px; right: 50px;}
 
   /* 모션 */
-  #visualWrap .visualTextBox{max-width: 89vw;}
-  #visualWrap .visualBox.step01 .visualText{gap: 34vw;}
+  #visualWrap .visualTextBox{max-width: 90vw;}
+  #visualWrap .visualBox.step01 .visualText{gap: 0 35vw;}
 
 }
 
 @media (max-width: 768px){
 
-  #visualWrap .visualTextBox{max-width: 99vw;}
-  #visualWrap .visualText{gap: 0 44vw;}
-  #visualWrap .visualVideoBox video{width: 36vw; height: 50vw;}
+  #visualWrap .visualTextBox{max-width: 96vw;}
+  #visualWrap .visualBox.step01 .visualText{gap: 0 40.7vw;}
+  #visualWrap .visualVideoBox video{width: 32vw; height: 60vw;}
 
 }
 
 @media (max-width: 480px){
 
-  #visualWrap .visualVideoBox video{width: 45vw; height: 65vw;}
-
+  #visualWrap .visualVideoBox video {width: 52vw; height: 79vw;}
+  #visualWrap .visualBox .visualText{gap: 0 16vw;}
   #visualWrap .visualTextBox{padding: 112px 20px 0; max-width: none; justify-content: flex-start;}
   #visualWrap .visualTextBox h2{font-size: 48px;}
-  #visualWrap .visualText{justify-content: space-between; gap: 0;}
+  #visualWrap .visualText{gap: 0;}
   #visualWrap .visualTextBox h2 span{margin-top: 12px; font-size: 10px;}
   #visualWrap .visualText02{padding-left: 9px; letter-spacing: 1px;}
   #visualWrap .visualText02 h2{gap: 0 25px;}
@@ -133,17 +133,27 @@
   #visualWrap .visualScrollLine::after{width: 1px; height: 20px;}
   #visualWrap .proposalDownloadBtn{width: 90px; height: 90px; left:28px; top: 409px;}
   #visualWrap .proposalDownloadBtn span{width: 60px; height: 60px; font-size: 18px;}
+
+  /* 모션 */
+  #visualWrap .visualBox.step01 .visualText02{gap: 0 25.7vw;}
+  #visualWrap .visualBox.step01 .visualText03{transform: translateX(0);}
   
 }
 
 @media (max-width: 360px){
 
-  #visualWrap .visualVideoBox video{width: 60vw; height: 100vw;}
+  #visualWrap .visualVideoBox video{width: 62vw; height: 116vw;}
   #visualWrap .visualTextBox h2{font-size: 38px;}
   #visualWrap .visualTextBox h2 span{font-size: 8px;}
   #visualWrap .visualText02 h2{gap: 0 18px;}
   #visualWrap .proposalDownloadBtn{width: 64px; height: 64px;}
   #visualWrap .proposalDownloadBtn span{width: 40px; height: 40px; font-size: 10px;}
+
+    /* 모션 */
+  #visualWrap .visualBox.step01 .visualText02{gap: 0 19.7vw;}
+  #visualWrap .visualBox.step01 .visualText03{gap: 0 33.7vw; transform: translateX(0);}
+  
+  
 
 }
 
