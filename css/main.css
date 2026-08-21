@@ -257,145 +257,20 @@
 
 }
 
+
 /* 프로젝트 영역 */
-#projectWrap {padding: 0 60px 0; position: relative; overflow: hidden; background-color: #F5F5F5;}
-#projectWrap .projectTitleBox{margin-bottom: 160px;}
-#projectWrap .projectTitleBox h2{font-size: 80px; color: #222; font-family: 'HelveticaNowDisplay'; font-weight: 500; line-height: 1;}
-
-
-
-
-
-/* ==================================================
-   프로젝트 화면 고정
-================================================== */
-
-#projectWrap .projectBox {
-    position: sticky;
-    top: 0;
-
-    width: 100%;
-    height: 100vh;
-
-    overflow: hidden;
-}
-
-
-/* ==================================================
-   제목
-================================================== */
-
-
-#projectWrap .projectTitleBox h2 {
-    font-size: 80px;
-    color: #222;
-
-    font-family: 'HelveticaNowDisplay';
-
-    font-weight: 500;
-    line-height: 1;
-}
-
-
-/* ==================================================
-   카드 영역
-================================================== */
-
-#projectWrap .projectList {
-    position: absolute;
-
-    top: 50%;
-    left: 0;
-
-    width: 100%;
-    height: 360px;
-
-    margin: 0;
-    padding: 0;
-
-    transform: translateY(-50%);
-
-    list-style: none;
-}
-
-
-/* ==================================================
-   카드
-================================================== */
-
-#projectWrap .projectList li {
-    position: absolute;
-
-    top: 0;
-    left: 0;
-
-    width: 600px;
-    height: 360px;
-
-    overflow: hidden;
-
-    transition:
-        width 0.8s cubic-bezier(0.65, 0, 0.35, 1),
-        transform 0.8s cubic-bezier(0.65, 0, 0.35, 1);
-
-    will-change: width, transform;
-}
-
-
-/* ==================================================
-   이미지
-================================================== */
-
-#projectWrap .projectList li .projectImgBox {
-    position: absolute;
-    inset: 0;
-}
-
-#projectWrap .projectList li .projectImgBox img {
-    display: block;
-
-    width: 100%;
-    height: 100%;
-
-    object-fit: cover;
-}
-
-
-/* ==================================================
-   텍스트
-================================================== */
-
-#projectWrap .projectList li .projectTextBox {
-    position: relative;
-
-    width: 100%;
-    height: 100%;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-
-    padding: 40px 40px 40px 32px;
-}
-
-
-#projectWrap .projectList li .projectTextBox .projectName {
-    font-size: 32px;
-    font-weight: 700;
-    color: #fff;
-
-    white-space: nowrap;
-}
-
-
-#projectWrap .projectList li .projectTextBox .projectDesc {
-    font-weight: 600;
-    color: #fff;
-
-    white-space: nowrap;
-}
-
-
+#projectWrap{position:relative;width:100%;padding:0 0 0 60px;background-color:#F5F5F5;}
+#projectWrap .projectBox{position:sticky;top:0;width:100%;height:100vh;overflow:hidden;display:flex;align-items:center;}
+#projectWrap .projectContentBox{width:100%;display:flex;flex-direction:column;gap:160px;box-sizing:border-box;}
+#projectWrap .projectTitleBox{width:100%;margin:0;}
+#projectWrap .projectTitleBox h2{margin:0;font-size:70px;color:#222;font-family:'HelveticaNowDisplay';font-weight:500;line-height:1;text-align:left;}
+#projectWrap .projectList{position:relative;width:100%;height:360px;margin:0;padding:0;list-style:none;}
+#projectWrap .projectList li{position:absolute;top:0;left:0;width:600px;height:360px;overflow:hidden;transition:width .8s cubic-bezier(.65,0,.35,1),transform .8s cubic-bezier(.65,0,.35,1);will-change:width,transform;}
+#projectWrap .projectList li .projectImgBox{position:absolute;inset:0;}
+#projectWrap .projectList li .projectImgBox img{display:block;width:100%;height:100%;object-fit:cover;}
+#projectWrap .projectList li .projectTextBox{position:relative;width:100%;height:100%;display:flex;flex-direction:column;justify-content:space-between;padding:40px 40px 40px 32px;box-sizing:border-box;}
+#projectWrap .projectList li .projectTextBox .projectName{margin:0;font-size:32px;font-weight:700;color:#fff;white-space:nowrap;}
+#projectWrap .projectList li .projectTextBox .projectDesc{margin:0;font-weight:600;color:#fff;white-space:nowrap;}
 
 @media (max-width: 1199px){
 
