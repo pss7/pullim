@@ -101,7 +101,8 @@
 }
 
 /* 팝업 영역 */
-#popupContentBox{display: none; align-items: center; justify-content: space-between; position: fixed; left:40px; right: 40px; bottom: 28px; z-index: 999999999;}
+#popupContentBox{display: flex; align-items: center; justify-content: space-between; position: fixed; left:40px; right: 40px; /*bottom: 28px;*/ bottom: -150px; z-index: 999999999; transition: all 1.3s;}
+#popupContentBox.active{ bottom: 28px;}
 #popupContentBox .popupSlideBox{width: 380px; position: relative; border-radius: 4px; overflow: hidden;}
 #popupContentBox .popupSlideBox .popupSlide{display: flex; flex-direction: column; justify-content: center; position: relative; padding: 19px 48px 19px 32px; width: 380px; border: 1px solid #E8E8E8; background-color: #fff;}
 #popupContentBox .popupSlideBox .popupSlide::before{content: ''; position: absolute; top:0; left:8px; bottom: 0; width: 3px; background-color: #FD3D32; border-radius: 50px;}
