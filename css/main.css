@@ -10,30 +10,40 @@
 
 /* 비주얼영역 */
 #visualWrap {position: relative; width: 100%; height: 400vh;}
-#visualWrap .visualBox{ position: sticky; top: 0; width: 100%; height: 100vh; overflow: hidden; z-index: 10;}
+#visualWrap .visualBox{position: sticky; top: 0; width: 100%; height: 100vh; overflow: hidden; z-index: 10;}
 #visualWrap .visualVideoBox{ position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; overflow: hidden;}
 #visualWrap .visualTextBox{position: absolute; inset: 0; max-width: 71.35vw; padding: 0 1.04vw; margin: 0 auto; display: flex; flex-direction: column; justify-content: center;}
 #visualWrap .visualTextBox h2{font-size: 7.8vw; font-weight: 500; color: #222; font-family: 'HelveticaNowDisplay'; letter-spacing: -0.05vw; white-space: nowrap;}
 #visualWrap .visualTextBox h2 span{margin-top: 2.08vw; font-size: 0.83vw; font-weight: 600; color: #222;}
-#visualWrap .visualText{display: flex; align-items: center; gap: 0 16.67vw; line-height: 1;}
+#visualWrap .visualText{display: flex; align-items: center; line-height: 1;}
 #visualWrap .visualText02 h2{display: flex; gap: 0 3.96vw}
-#visualWrap .visualText03{justify-content: flex-end;}
 
+/* 모션 */
+#visualWrap .visualText,
+#visualWrap .visualVideoBox{transition: all 1.3s;}
 
+/* 초기 */
+#visualWrap .visualVideoBox,
+#visualWrap .visualText{opacity: 0;}
+#visualWrap .visualText{gap: 0 0;}
+#visualWrap .visualText02{gap: 0 10vw;}
+#visualWrap .visualText03{gap: 0 20vw;}
+#visualWrap .visualText01{transform: translateX(-10vw);}
+#visualWrap .visualText02{transform: translateX(20vw);}
+#visualWrap .visualText03{transform: translateX(-10vw);}
 
+/*  페이지 진입 */
+#visualWrap .visualBox.active .visualText{opacity: 1;}
+#visualWrap .visualBox.active .visualText01{transform: translateX(0);}
+#visualWrap .visualBox.active .visualText02{transform: translateX(10vw);}
+#visualWrap .visualBox.active .visualText03{transform: translateX(6vw);}
 
-
-
-
-
-
-
-
-
-
-
-
-
+/* 스크롤 1회 비디오 + 텍스트 최종 위치 */
+#visualWrap .visualBox.step01 .visualVideoBox{opacity: 1;}
+#visualWrap .visualBox.step01 .visualText{gap: 0 16.67vw;}
+#visualWrap .visualBox.step01 .visualText01{transform: translateX(0);}
+#visualWrap .visualBox.step01 .visualText02{transform: translateX(0);}
+#visualWrap .visualBox.step01 .visualText03{transform: translateX(12vw);}
 
 
 
@@ -90,9 +100,11 @@
 @media (max-width: 1199px){
 
   #visualWrap .visualVideoBox video{width: 26vw; height: 50vw;}
-  #visualWrap .visualTextBox{max-width: 90vw;}
-  #visualWrap .visualText{gap: 0 35vw;}
   #visualWrap .proposalDownloadBtn{top: 120px; right: 50px;}
+
+  /* 모션 */
+  #visualWrap .visualTextBox{max-width: 89vw;}
+  #visualWrap .visualBox.step01 .visualText{gap: 34vw;}
 
 }
 
