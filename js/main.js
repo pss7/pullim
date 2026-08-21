@@ -58,6 +58,298 @@ $(function () {
 
 
     /* ==================================================
+       COMPANY INFORMATION
+    ================================================== */
+
+    const companyInfoWrap =
+        document.querySelector('#companyInfoWrap');
+
+    const companyNumbers =
+        document.querySelectorAll(
+            '#companyInfoWrap .companyInfoNumber strong'
+        );
+
+    const companyImages =
+        document.querySelectorAll(
+            '#companyInfoWrap .companyImgBox img'
+        );
+
+
+    let companyCountStarted = false;
+
+    let companyImageIndex = 0;
+
+
+
+    /* ==================================================
+       COMPANY IMAGE 초기화
+    ================================================== */
+
+    if (companyImages.length > 0) {
+
+        companyImages.forEach(function (image, index) {
+
+            image.classList.toggle(
+                'active',
+                index === 0
+            );
+
+        });
+
+    }
+
+
+
+    /* ==================================================
+       COMPANY NUMBER COUNT
+    ================================================== */
+
+    function startCompanyCount() {
+
+        if (companyCountStarted) {
+            return;
+        }
+
+
+        if (companyNumbers.length === 0) {
+            return;
+        }
+
+
+        companyCountStarted = true;
+
+
+        companyNumbers.forEach(function (number) {
+
+            const target =
+                Number(number.dataset.target);
+
+
+            const duration = 1500;
+
+
+            const startTime =
+                performance.now();
+
+
+            function count(currentTime) {
+
+                const progress =
+                    Math.min(
+                        (currentTime - startTime) / duration,
+                        1
+                    );
+
+
+                /*
+                 * easeOut
+                 */
+
+                const ease =
+                    1 - Math.pow(1 - progress, 3);
+
+
+                const value =
+                    Math.floor(target * ease);
+
+
+                number.textContent =
+                    value.toLocaleString();
+
+
+                if (progress < 1) {
+
+                    requestAnimationFrame(count);
+
+                } else {
+
+                    number.textContent =
+                        target.toLocaleString();
+
+                }
+
+            }
+
+
+            requestAnimationFrame(count);
+
+        });
+
+    }
+
+
+
+    /* ==================================================
+       COMPANY IMAGE 변경
+    ================================================== */
+
+    function updateCompanyImage(progress) {
+
+        if (companyImages.length === 0) {
+            return;
+        }
+
+
+        let nextIndex = 0;
+
+
+        /*
+         * 0 ~ 33%
+         * IMG 01
+         */
+
+        if (progress < 0.33) {
+
+            nextIndex = 0;
+
+        }
+
+
+        /*
+         * 33 ~ 66%
+         * IMG 02
+         */
+
+        else if (progress < 0.66) {
+
+            nextIndex = 1;
+
+        }
+
+
+        /*
+         * 66 ~ 100%
+         * IMG 03
+         */
+
+        else {
+
+            nextIndex = 2;
+
+        }
+
+
+        /*
+         * 이미지가 없으면 종료
+         */
+
+        if (!companyImages[nextIndex]) {
+            return;
+        }
+
+
+        /*
+         * 같은 이미지면 실행하지 않음
+         */
+
+        if (companyImageIndex === nextIndex) {
+            return;
+        }
+
+
+        companyImageIndex =
+            nextIndex;
+
+
+        companyImages.forEach(function (image, index) {
+
+            image.classList.toggle(
+                'active',
+                index === companyImageIndex
+            );
+
+        });
+
+    }
+
+
+
+    /* ==================================================
+       COMPANY SCROLL 진행률
+    ================================================== */
+
+    function updateCompanyScroll() {
+
+        if (!companyInfoWrap) {
+            return;
+        }
+
+
+        const rect =
+            companyInfoWrap.getBoundingClientRect();
+
+
+        /*
+         * 회사정보 영역이 화면에 들어왔는지
+         */
+
+        const companyActive =
+            rect.top < window.innerHeight &&
+            rect.bottom > 0;
+
+
+        if (!companyActive) {
+            return;
+        }
+
+
+        /* ==================================================
+           숫자 카운팅
+        ================================================== */
+
+        startCompanyCount();
+
+
+        /* ==================================================
+           회사정보 전체 스크롤 진행률
+        ================================================== */
+
+        const scrollHeight =
+            companyInfoWrap.offsetHeight -
+            window.innerHeight;
+
+
+        /*
+         * 진행률 계산
+         */
+
+        let progress = 0;
+
+
+        if (scrollHeight > 0) {
+
+            progress =
+                (-rect.top) /
+                scrollHeight;
+
+        }
+
+
+        /*
+         * 0 ~ 1 제한
+         */
+
+        progress =
+            Math.max(
+                0,
+                Math.min(
+                    1,
+                    progress
+                )
+            );
+
+
+        /* ==================================================
+           이미지 변경
+        ================================================== */
+
+        updateCompanyImage(progress);
+
+    }
+
+
+
+    /* ==================================================
        WHEEL
     ================================================== */
 
@@ -99,21 +391,19 @@ $(function () {
 
 
 
-            /* ==========================================
-               Visual 애니메이션 중
-            ========================================== */
+            /* ==================================================
+               VISUAL 애니메이션 중
+            ================================================== */
 
             if (visualAnimating) {
-
                 return;
-
             }
 
 
 
-            /* ==========================================
+            /* ==================================================
                DOWN
-            ========================================== */
+            ================================================== */
 
             if (e.deltaY > 0) {
 
@@ -309,15 +599,15 @@ $(function () {
        LENIS SCROLL
     ================================================== */
 
-    lenis.on('scroll', function () {
+    lenis.on('scroll', function (e) {
 
-        /*
-         * 일반 영역
-         * → Lenis
-         *
-         * Visual
-         * → STEP
-         */
+
+        /* ==================================================
+           COMPANY INFORMATION
+        ================================================== */
+
+        updateCompanyScroll();
+
 
     });
 
