@@ -1,6 +1,6 @@
 @charset "UTF-8";
 
-.container{max-width: 1680px; width: 100%; padding: 0 60px; margin: 0 auto;}
+.container{max-width: 1980px; width: 100%; padding: 0 60px; margin: 0 auto;}
 
 @media (max-width: 1199px){
 
@@ -259,7 +259,7 @@
 
 
 /* 프로젝트 영역 */
-#projectWrap{position:relative;width:100%;padding:0 0 0 60px;background-color:#F5F5F5;}
+#projectWrap{position:relative;width:100%;background-color:#F5F5F5;}
 #projectWrap .projectBox{position:sticky;top:0;width:100%;height:100vh;overflow:hidden;display:flex;align-items:center;}
 #projectWrap .projectContentBox{width:100%;display:flex;flex-direction:column;gap:160px;box-sizing:border-box;}
 #projectWrap .projectTitleBox{width:100%;margin:0;}
