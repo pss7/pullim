@@ -17,7 +17,6 @@ $(function () {
   );
 
   /* Lenis 초기화 */
-  /* Lenis 초기화 */
   const lenis = new window.Lenis({
     /*
      * 낮을수록 스크롤이 화면을 천천히 따라옵니다.
