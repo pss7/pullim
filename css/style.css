@@ -112,8 +112,12 @@
 #popupContentBox .popupSlideBox .controlBox .popupSlideBtn{ position: relative; margin-bottom: -1px; width: 32px; flex: 1; border: 1px solid #E8E8E8; background-color: #fff;}
 #popupContentBox .popupSlideBox .controlBox .popupSlideBtn::after{content: ''; width: 20px; height: 20px; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);}
 #popupContentBox .popupSlideBox .controlBox .popupPrevBtn::after{background: url(../images/common/arrow_icon02.svg)no-repeat center / contain;} 
-#popupContentBox .popupSlideBox .controlBox .popupNextBtn::after{background: url(../images/common/arrow_icon02.svg)no-repeat center / contain; transform: translate(-50%, -50%) rotate(180deg);} 
-#popupContentBox .popupVideoBox{width: 107px; display: flex; align-items: center; justify-content: space-between; gap: 0 20px; padding: 19px 20px 19px 32px; width: 366px; border: 1px solid #E8E8E8; border-radius: 4px; background-color: #fff;}
+#popupContentBox .popupSlideBox .controlBox .popupNextBtn::after{background: url(../images/common/arrow_icon02.svg)no-repeat center / contain; transform: translate(-50%, -50%) rotate(180deg);}
+
+
+
+#popupContentBox .popupVideoBox{width: 107px;padding: 19px 20px 19px 32px; width: 366px; border: 1px solid #E8E8E8; border-radius: 4px; background-color: #fff;}
+#popupContentBox .popupVideoBox a{display: flex; align-items: center; justify-content: space-between;  gap: 0 20px;}
 #popupContentBox .popupVideoBox .popupVideoInfoText h3{font-weight: 600; color: #222; font-size: 16px;}
 #popupContentBox .popupVideoBox .popupVideoInfoText{font-size: 12px; font-weight: 600; }
 #popupContentBox .popupVideoBox .popupVideoInfoText span{font-size: 12px; font-weight: 600; color: #B4B4B4;}
