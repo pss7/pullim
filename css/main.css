@@ -32,6 +32,10 @@
 #visualWrap .visualText02{transform: translateX(20vw);}
 #visualWrap .visualText03{transform: translateX(-10vw);}
 
+#visualWrap .visualText h2 {opacity: 1; transform: translateY(0) rotate(0deg); transition:
+        transform 0.8s cubic-bezier(0.65, 0, 0.35, 1),  opacity 0.6s ease;}
+
+
 /*  페이지 진입 */
 #visualWrap .visualBox.active .visualText{opacity: 1;}
 #visualWrap .visualBox.active .visualText01{transform: translateX(0);}
@@ -45,95 +49,23 @@
 #visualWrap .visualBox.step01 .visualText02{transform: translateX(0);}
 #visualWrap .visualBox.step01 .visualText03{transform: translateX(12vw);}
 
-
-
-
-
-
-/* ==================================================
-   VISUAL TEXT
-================================================== */
-
-
 /* 부모 transition */
 #visualWrap .visualText01,
 #visualWrap .visualText02,
-#visualWrap .visualText03 {
-    transition: transform 0.8s cubic-bezier(0.65, 0, 0.35, 1);
-}
+#visualWrap .visualText03 {transition: transform 0.8s cubic-bezier(0.65, 0, 0.35, 1);}
 
-
-
-
-/* ==================================================
-   H2
-   실제 떨어지는 대상
-================================================== */
-
-#visualWrap .visualText h2 {
-    opacity: 1;
-    transform: translateY(0) rotate(0deg);
-
-    transition:
-        transform 0.8s cubic-bezier(0.65, 0, 0.35, 1),
-        opacity 0.6s ease;
-}
-
-
-/* ==================================================
-   STEP 02
-   TEXT DROP
-================================================== */
-
-
-/* Building */
-#visualWrap .visualBox.step02 .visualText01 h2 {
-    transform: translateY(100vh) rotate(50deg);
-    opacity: 0;
-    transition-delay: 0s;
-}
-
-
-/* [ A ] Better */
-#visualWrap .visualBox.step02 .visualText02 h2:nth-child(1) {
-    transform: translateY(100vh) rotate(-50deg);
-    opacity: 0;
-    transition-delay: 0.05s;
-}
-
-
-/* Future */
-#visualWrap .visualBox.step02 .visualText02 h2:nth-child(2) {
-    transform: translateY(100vh) rotate(50deg);
-    opacity: 0;
-    transition-delay: 0.1s;
-}
-
-
-/* with */
-#visualWrap .visualBox.step02 .visualText03 h2:nth-child(1) {
-    transform: translateY(100vh) rotate(50deg);
-    opacity: 0;
-    transition-delay: 0.15s;
-}
-
-
-/* AdTech */
-#visualWrap .visualBox.step02 .visualText03 h2:nth-child(2) {
-    transform: translateY(100vh) rotate(-50deg);
-    opacity: 0;
-    transition-delay: 0.2s;
-}
-
-
-
-
-
-
-
-
-
-
+/* 텍스트 하단 낙하 + 회전 + 페이드아웃
+   순차적으로 떨어지는 효과 */
+#visualWrap .visualBox.step02 .visualText01 h2 {transform: translateY(100vh) rotate(50deg); opacity: 0;
+    transition-delay: 0s;}
+#visualWrap .visualBox.step02 .visualText02 h2:nth-child(1) { transform: translateY(100vh) rotate(-50deg);
+    opacity: 0; transition-delay: 0.05s;}
+#visualWrap .visualBox.step02 .visualText02 h2:nth-child(2) {transform: translateY(100vh) rotate(50deg);
+    opacity: 0; transition-delay: 0.1s;}
+#visualWrap .visualBox.step02 .visualText03 h2:nth-child(1) {transform: translateY(100vh) rotate(50deg);
+    opacity: 0; transition-delay: 0.15s;}
+#visualWrap .visualBox.step02 .visualText03 h2:nth-child(2) { transform: translateY(100vh) rotate(-50deg);
+    opacity: 0; transition-delay: 0.2s;}
 
 #visualWrap .visualScrollBox{position: fixed; left: 50%;
     bottom: 0; display: flex; flex-direction: column; align-items: center; gap: 1.04vw; transform: translateX(-50%);overflow: hidden; z-index: 9999999;}
@@ -236,34 +168,6 @@
 
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /* 소개 영역 */
 #aboutWrap {padding: 160px 0; position: relative; width: 100%;
     background: #222; color: #fff; overflow: hidden;}
@@ -306,15 +210,6 @@
 #aboutWrap .aboutTextBox .aboutText span{display: block; margin-bottom: 20px; font-weight: 600; color: #fff;}
 #aboutWrap .aboutTextBox .aboutText p{font-size: 20px; font-weight: 700; color: #fff;}
 #aboutWrap .aboutText02{padding-top: 196px;}
-
-
-
-
-
-
-
-
-
 
 @media (max-width: 1199px){
 
@@ -363,18 +258,144 @@
 }
 
 /* 프로젝트 영역 */
-#projectWrap {padding: 160px 0 80px; position: relative; overflow: hidden; background-color: #F5F5F5;}
+#projectWrap {padding: 0 60px 0; position: relative; overflow: hidden; background-color: #F5F5F5;}
 #projectWrap .projectTitleBox{margin-bottom: 160px;}
 #projectWrap .projectTitleBox h2{font-size: 80px; color: #222; font-family: 'HelveticaNowDisplay'; font-weight: 500; line-height: 1;}
-#projectWrap .projectList{display: flex; width: 100%;}
-#projectWrap .projectList li{position: relative; flex: 1; width: 600px;
-   height: 360px; overflow: hidden; transition: all .6s;}
-#projectWrap .projectList li .projectImgBox{position: absolute; top:0; left:0; right:0; bottom: 0;}
-#projectWrap .projectList li .projectImgBox img{display: block; width: 100%; height: 100%; object-fit: cover;}
-#projectWrap .projectList li .projectTextBox{height: 100%; display: flex; flex-direction: column; justify-content: space-between; padding: 40px 40px 40px 32px; position: relative;}
-#projectWrap .projectList li .projectTextBox .projectName{font-size: 32px; font-weight: 700; color: #fff; white-space: nowrap;}
-#projectWrap .projectList li .projectTextBox .projectDesc{font-weight: 600; color: #fff; white-space: nowrap;}
-#projectWrap .projectList li.active{flex: 4;}
+
+
+
+
+
+/* ==================================================
+   프로젝트 화면 고정
+================================================== */
+
+#projectWrap .projectBox {
+    position: sticky;
+    top: 0;
+
+    width: 100%;
+    height: 100vh;
+
+    overflow: hidden;
+}
+
+
+/* ==================================================
+   제목
+================================================== */
+
+
+#projectWrap .projectTitleBox h2 {
+    font-size: 80px;
+    color: #222;
+
+    font-family: 'HelveticaNowDisplay';
+
+    font-weight: 500;
+    line-height: 1;
+}
+
+
+/* ==================================================
+   카드 영역
+================================================== */
+
+#projectWrap .projectList {
+    position: absolute;
+
+    top: 50%;
+    left: 0;
+
+    width: 100%;
+    height: 360px;
+
+    margin: 0;
+    padding: 0;
+
+    transform: translateY(-50%);
+
+    list-style: none;
+}
+
+
+/* ==================================================
+   카드
+================================================== */
+
+#projectWrap .projectList li {
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 600px;
+    height: 360px;
+
+    overflow: hidden;
+
+    transition:
+        width 0.8s cubic-bezier(0.65, 0, 0.35, 1),
+        transform 0.8s cubic-bezier(0.65, 0, 0.35, 1);
+
+    will-change: width, transform;
+}
+
+
+/* ==================================================
+   이미지
+================================================== */
+
+#projectWrap .projectList li .projectImgBox {
+    position: absolute;
+    inset: 0;
+}
+
+#projectWrap .projectList li .projectImgBox img {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+}
+
+
+/* ==================================================
+   텍스트
+================================================== */
+
+#projectWrap .projectList li .projectTextBox {
+    position: relative;
+
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    padding: 40px 40px 40px 32px;
+}
+
+
+#projectWrap .projectList li .projectTextBox .projectName {
+    font-size: 32px;
+    font-weight: 700;
+    color: #fff;
+
+    white-space: nowrap;
+}
+
+
+#projectWrap .projectList li .projectTextBox .projectDesc {
+    font-weight: 600;
+    color: #fff;
+
+    white-space: nowrap;
+}
+
+
 
 @media (max-width: 1199px){
 
