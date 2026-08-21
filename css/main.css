@@ -9,7 +9,7 @@
 }
 
 /* 비주얼영역 */
-#visualWrap {position: relative; width: 100%; height: 400vh;}
+#visualWrap {position: relative; width: 100%; height: 120vh;}
 #visualWrap .visualBox{position: sticky; top: 0; width: 100%; height: 100vh; overflow: hidden; z-index: 10;}
 #visualWrap .visualVideoBox{ position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; overflow: hidden;}
 #visualWrap .visualTextBox{position: absolute; inset: 0; max-width: 71.35vw; padding: 0 1.04vw; margin: 0 auto; display: flex; flex-direction: column; justify-content: center;}
@@ -44,6 +44,87 @@
 #visualWrap .visualBox.step01 .visualText01{transform: translateX(0);}
 #visualWrap .visualBox.step01 .visualText02{transform: translateX(0);}
 #visualWrap .visualBox.step01 .visualText03{transform: translateX(12vw);}
+
+
+
+
+
+
+/* ==================================================
+   VISUAL TEXT
+================================================== */
+
+
+/* 부모 transition */
+#visualWrap .visualText01,
+#visualWrap .visualText02,
+#visualWrap .visualText03 {
+    transition: transform 0.8s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+
+
+
+/* ==================================================
+   H2
+   실제 떨어지는 대상
+================================================== */
+
+#visualWrap .visualText h2 {
+    opacity: 1;
+    transform: translateY(0) rotate(0deg);
+
+    transition:
+        transform 0.8s cubic-bezier(0.65, 0, 0.35, 1),
+        opacity 0.6s ease;
+}
+
+
+/* ==================================================
+   STEP 02
+   TEXT DROP
+================================================== */
+
+
+/* Building */
+#visualWrap .visualBox.step02 .visualText01 h2 {
+    transform: translateY(100vh) rotate(50deg);
+    opacity: 0;
+    transition-delay: 0s;
+}
+
+
+/* [ A ] Better */
+#visualWrap .visualBox.step02 .visualText02 h2:nth-child(1) {
+    transform: translateY(100vh) rotate(-50deg);
+    opacity: 0;
+    transition-delay: 0.05s;
+}
+
+
+/* Future */
+#visualWrap .visualBox.step02 .visualText02 h2:nth-child(2) {
+    transform: translateY(100vh) rotate(50deg);
+    opacity: 0;
+    transition-delay: 0.1s;
+}
+
+
+/* with */
+#visualWrap .visualBox.step02 .visualText03 h2:nth-child(1) {
+    transform: translateY(100vh) rotate(50deg);
+    opacity: 0;
+    transition-delay: 0.15s;
+}
+
+
+/* AdTech */
+#visualWrap .visualBox.step02 .visualText03 h2:nth-child(2) {
+    transform: translateY(100vh) rotate(-50deg);
+    opacity: 0;
+    transition-delay: 0.2s;
+}
+
 
 
 
@@ -151,9 +232,7 @@
 
     /* 모션 */
   #visualWrap .visualBox.step01 .visualText02{gap: 0 19.7vw;}
-  #visualWrap .visualBox.step01 .visualText03{gap: 0 33.7vw; transform: translateX(0);}
-  
-  
+  #visualWrap .visualBox.step01 .visualText03{gap: 0 33.7vw; transform: translateX(0);} 
 
 }
 
@@ -227,6 +306,14 @@
 #aboutWrap .aboutTextBox .aboutText span{display: block; margin-bottom: 20px; font-weight: 600; color: #fff;}
 #aboutWrap .aboutTextBox .aboutText p{font-size: 20px; font-weight: 700; color: #fff;}
 #aboutWrap .aboutText02{padding-top: 196px;}
+
+
+
+
+
+
+
+
 
 
 @media (max-width: 1199px){
