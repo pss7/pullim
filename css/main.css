@@ -228,6 +228,7 @@
   #aboutWrap .aboutTextBox .aboutText{width: 100%;}
   #aboutWrap .aboutTitleBox h2{font-size: 40px;}
   #aboutWrap .aboutTextBox .aboutText p{font-size: 14px;}
+  #aboutWrap .aboutTextBox .aboutText p br{display: none;}
 
 }
 

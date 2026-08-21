@@ -21,16 +21,35 @@ $(function () {
     document.querySelector('#visualWrap');
 
   const visualBox =
-    document.querySelector('#visualWrap .visualBox');
+    document.querySelector(
+      '#visualWrap .visualBox'
+    );
 
   const popupContentBox =
-    document.querySelector('#popupContentBox');
+    document.querySelector(
+      '#popupContentBox'
+    );
 
   const proposalDownloadBtn =
-    document.querySelector('.proposalDownloadBtn');
+    document.querySelector(
+      '.proposalDownloadBtn'
+    );
 
+
+  /* 비주얼 상태 */
   let visualStep = 0;
   let visualAnimating = false;
+
+
+  /* 모바일 비주얼 터치 상태 */
+  let visualTouchStartY = 0;
+  let visualTouchCurrentY = 0;
+  let visualTouchTracking = false;
+  let visualTouchHandled = false;
+
+
+  /* 스와이프로 판단할 최소 이동 거리 */
+  const VISUAL_TOUCH_DISTANCE = 45;
 
 
   /* 비주얼 첫 등장 */
@@ -41,13 +60,196 @@ $(function () {
   }, 100);
 
 
+  /* 비주얼 영역이 화면에 고정된 상태인지 확인 */
+  function isVisualPinned() {
+    if (!visualWrap || !visualBox) {
+      return false;
+    }
+
+    const rect =
+      visualWrap.getBoundingClientRect();
+
+    return (
+      rect.top <= 2 &&
+      rect.bottom >=
+        window.innerHeight - 2
+    );
+  }
+
+
+  /* 비주얼 단계 애니메이션 시작 */
+  function startVisualAnimation(change) {
+    visualAnimating = true;
+
+    lenis.stop();
+
+    change();
+
+    setTimeout(function () {
+      visualAnimating = false;
+    }, 600);
+  }
+
+
+  /* 비주얼 단계 변경 */
+  function changeVisualStep(direction) {
+    if (visualAnimating) {
+      return true;
+    }
+
+
+    /* 아래 방향 */
+    if (direction > 0) {
+      /* 첫 번째 단계 */
+      if (visualStep === 0) {
+        startVisualAnimation(function () {
+          visualStep = 1;
+
+          visualBox.classList.add(
+            'step01'
+          );
+
+          if (popupContentBox) {
+            popupContentBox.classList.add(
+              'active'
+            );
+          }
+
+          if (proposalDownloadBtn) {
+            proposalDownloadBtn.classList.add(
+              'active'
+            );
+          }
+        });
+
+        return true;
+      }
+
+
+      /* 두 번째 단계 */
+      if (visualStep === 1) {
+        startVisualAnimation(function () {
+          visualStep = 2;
+
+          visualBox.classList.add(
+            'step02'
+          );
+
+          visualWrap.classList.add(
+            'step02'
+          );
+        });
+
+        return true;
+      }
+
+
+      /* 마지막 단계에서는 아래 영역으로 이동 */
+      lenis.start();
+
+      return false;
+    }
+
+
+    /* 위 방향 */
+    if (direction < 0) {
+      /* 마지막 단계에서 두 번째 단계로 이동 */
+      if (visualStep === 2) {
+        startVisualAnimation(function () {
+          visualStep = 1;
+
+          visualBox.classList.remove(
+            'step02'
+          );
+
+          visualWrap.classList.remove(
+            'step02'
+          );
+        });
+
+        return true;
+      }
+
+
+      /* 두 번째 단계에서 첫 번째 단계로 이동 */
+      if (visualStep === 1) {
+        startVisualAnimation(function () {
+          visualStep = 0;
+
+          visualBox.classList.remove(
+            'step01'
+          );
+
+          if (popupContentBox) {
+            popupContentBox.classList.remove(
+              'active'
+            );
+          }
+
+          if (proposalDownloadBtn) {
+            proposalDownloadBtn.classList.remove(
+              'active'
+            );
+          }
+        });
+
+        return true;
+      }
+
+
+      /* 첫 단계에서는 위 영역으로 이동 */
+      lenis.start();
+    }
+
+    return false;
+  }
+
+
+  /* 마우스와 트랙패드의 비주얼 스크롤 처리 */
+  function handleVisualWheel(e) {
+    if (!isVisualPinned()) {
+      return false;
+    }
+
+    const direction =
+      e.deltaY > 0 ? 1 : -1;
+
+    const shouldStopPage =
+      visualAnimating ||
+      (
+        direction > 0 &&
+        visualStep < 2
+      ) ||
+      (
+        direction < 0 &&
+        visualStep > 0
+      );
+
+    if (!shouldStopPage) {
+      lenis.start();
+
+      return false;
+    }
+
+    e.preventDefault();
+
+    changeVisualStep(direction);
+
+    return true;
+  }
+
+
   /* 프로젝트 요소 */
   const projectWrap =
-    document.querySelector('#projectWrap');
+    document.querySelector(
+      '#projectWrap'
+    );
 
   const projectContainer =
     projectWrap
-      ? projectWrap.querySelector('.container')
+      ? projectWrap.querySelector(
+          '.container'
+        )
       : null;
 
   const projectList =
@@ -84,7 +286,10 @@ $(function () {
 
   /* 데스크톱 프로젝트 확인 */
   function isProjectDesktop() {
-    return window.innerWidth > PROJECT_BREAKPOINT;
+    return (
+      window.innerWidth >
+      PROJECT_BREAKPOINT
+    );
   }
 
 
@@ -96,9 +301,17 @@ $(function () {
         'prev'
       );
 
-      item.style.removeProperty('width');
-      item.style.removeProperty('transform');
-      item.style.removeProperty('z-index');
+      item.style.removeProperty(
+        'width'
+      );
+
+      item.style.removeProperty(
+        'transform'
+      );
+
+      item.style.removeProperty(
+        'z-index'
+      );
     });
   }
 
@@ -128,11 +341,13 @@ $(function () {
 
     projectWrap.style.height =
       window.innerHeight +
-      stepCount * PROJECT_STEP_HEIGHT +
+      stepCount *
+        PROJECT_STEP_HEIGHT +
       'px';
 
     if (
-      typeof lenis.resize === 'function'
+      typeof lenis.resize ===
+      'function'
     ) {
       lenis.resize();
     }
@@ -163,62 +378,76 @@ $(function () {
     const currentX =
       Math.max(
         listWidth -
-        cardWidth -
-        RIGHT_GAP,
+          cardWidth -
+          RIGHT_GAP,
         0
       );
 
-    projectItems.forEach(function (item, index) {
-      /* 아직 나오지 않은 카드 */
-      if (index > projectStep) {
+    projectItems.forEach(
+      function (item, index) {
+        /* 아직 나오지 않은 카드 */
+        if (index > projectStep) {
+          item.classList.remove(
+            'current',
+            'prev'
+          );
+
+          item.style.width =
+            cardWidth + 'px';
+
+          item.style.transform =
+            `translate3d(${listWidth}px, 0, 0)`;
+
+          item.style.zIndex = '1';
+
+          return;
+        }
+
+
+        /* 현재 카드 */
+        if (index === projectStep) {
+          item.classList.remove(
+            'prev'
+          );
+
+          item.classList.add(
+            'current'
+          );
+
+          item.style.width =
+            cardWidth + 'px';
+
+          item.style.transform =
+            `translate3d(${currentX}px, 0, 0)`;
+
+          item.style.zIndex = '100';
+
+          return;
+        }
+
+
+        /* 이전 카드 */
         item.classList.remove(
-          'current',
+          'current'
+        );
+
+        item.classList.add(
           'prev'
         );
 
         item.style.width =
-          cardWidth + 'px';
+          Math.min(
+            PREV_WIDTH,
+            cardWidth
+          ) + 'px';
 
         item.style.transform =
-          `translate3d(${listWidth}px, 0, 0)`;
+          `translate3d(${index * CARD_VISIBLE}px, 0, 0)`;
 
-        item.style.zIndex = '1';
-
-        return;
+        item.style.zIndex =
+          String(index + 10);
       }
-
-      /* 현재 카드 */
-      if (index === projectStep) {
-        item.classList.remove('prev');
-        item.classList.add('current');
-
-        item.style.width =
-          cardWidth + 'px';
-
-        item.style.transform =
-          `translate3d(${currentX}px, 0, 0)`;
-
-        item.style.zIndex = '100';
-
-        return;
-      }
-
-      /* 이전 카드 */
-      item.classList.remove('current');
-      item.classList.add('prev');
-
-      item.style.width =
-        Math.min(
-          PREV_WIDTH,
-          cardWidth
-        ) + 'px';
-
-      item.style.transform =
-        `translate3d(${index * CARD_VISIBLE}px, 0, 0)`;
-
-      item.style.zIndex =
-        String(index + 10);
-    });
+    );
   }
 
 
@@ -238,7 +467,7 @@ $(function () {
     return (
       rect.top <= 1 &&
       rect.bottom >=
-      window.innerHeight - 1
+        window.innerHeight - 1
     );
   }
 
@@ -318,8 +547,8 @@ $(function () {
         Math.min(
           maximumY,
           currentY +
-          direction *
-          PROJECT_STEP_HEIGHT
+            direction *
+              PROJECT_STEP_HEIGHT
         )
       );
 
@@ -347,12 +576,12 @@ $(function () {
   }
 
 
-  /* 다음 카드 표시 */
+  /* 다음 프로젝트 카드 표시 */
   function showNextProject() {
     if (
       projectAnimating ||
       projectStep >=
-      projectItems.length - 1
+        projectItems.length - 1
     ) {
       return false;
     }
@@ -387,7 +616,7 @@ $(function () {
   }
 
 
-  /* 이전 카드 표시 */
+  /* 이전 프로젝트 카드 표시 */
   function showPreviousProject() {
     if (
       projectAnimating ||
@@ -421,6 +650,7 @@ $(function () {
       return false;
     }
 
+
     /*
      * 프로젝트 영역에 처음 들어왔을 때
      * 프로젝트 모드를 시작합니다.
@@ -429,6 +659,7 @@ $(function () {
       enterProject();
     }
 
+
     /*
      * 마지막 카드 이후에는
      * 페이지 일반 스크롤을 다시 시작합니다.
@@ -436,7 +667,7 @@ $(function () {
     if (
       e.deltaY > 0 &&
       projectStep ===
-      projectItems.length - 1 &&
+        projectItems.length - 1 &&
       lastCardReady
     ) {
       e.preventDefault();
@@ -445,6 +676,7 @@ $(function () {
 
       return true;
     }
+
 
     /*
      * 카드 애니메이션 중에는
@@ -456,7 +688,7 @@ $(function () {
       if (
         e.deltaY > 0 &&
         projectStep ===
-        projectItems.length - 1
+          projectItems.length - 1
       ) {
         projectExitRequested = true;
       }
@@ -464,9 +696,8 @@ $(function () {
       return true;
     }
 
-    /*
-     * 아래로 스크롤
-     */
+
+    /* 아래로 스크롤 */
     if (e.deltaY > 0) {
       e.preventDefault();
 
@@ -475,13 +706,12 @@ $(function () {
       return true;
     }
 
-    /*
-     * 위로 스크롤
-     */
+
+    /* 위로 스크롤 */
     if (e.deltaY < 0) {
       /*
-       * 첫 카드 또는 첫 카드 이전이면
-       * 프로젝트 제어를 종료합니다.
+       * 첫 카드 또는 첫 카드 이전에는
+       * Lenis 일반 스크롤로 전환합니다.
        */
       if (projectStep <= 0) {
         e.preventDefault();
@@ -492,13 +722,15 @@ $(function () {
         exitProject();
 
         /*
-         * Lenis가 정지된 상태에서 받은 현재 휠도
-         * 위쪽 페이지 이동에 반영합니다.
+         * Lenis가 정지 상태에서 받은 현재 휠도
+         * 위쪽 이동에 반영합니다.
          */
-        const previousY = Math.max(
-          0,
-          window.scrollY + e.deltaY * 4
-        );
+        const previousY =
+          Math.max(
+            0,
+            window.scrollY +
+              e.deltaY * 4
+          );
 
         lenis.scrollTo(previousY, {
           duration: 0.6,
@@ -509,7 +741,8 @@ $(function () {
         return true;
       }
 
-      /* 두 번째 카드부터 이전 카드로 이동합니다. */
+
+      /* 두 번째 카드부터는 이전 카드로 이동 */
       e.preventDefault();
 
       showPreviousProject();
@@ -523,34 +756,36 @@ $(function () {
 
   /* 모바일 프로젝트 클릭 */
   function setupMobileProject() {
-    projectItems.forEach(function (item) {
-      item.addEventListener(
-        'click',
-        function () {
-          if (isProjectDesktop()) {
-            return;
-          }
+    projectItems.forEach(
+      function (item) {
+        item.addEventListener(
+          'click',
+          function () {
+            if (isProjectDesktop()) {
+              return;
+            }
 
-          const willOpen =
-            !item.classList.contains(
-              'active'
-            );
-
-          projectItems.forEach(
-            function (otherItem) {
-              otherItem.classList.remove(
+            const willOpen =
+              !item.classList.contains(
                 'active'
               );
-            }
-          );
 
-          item.classList.toggle(
-            'active',
-            willOpen
-          );
-        }
-      );
-    });
+            projectItems.forEach(
+              function (otherItem) {
+                otherItem.classList.remove(
+                  'active'
+                );
+              }
+            );
+
+            item.classList.toggle(
+              'active',
+              willOpen
+            );
+          }
+        );
+      }
+    );
   }
 
 
@@ -572,6 +807,8 @@ $(function () {
       return;
     }
 
+
+    /* 모바일에서는 프로젝트 고정 기능 해제 */
     if (projectMode) {
       exitProject();
     }
@@ -590,6 +827,7 @@ $(function () {
 
     resetProjectStyles();
   }
+
 
   setupMobileProject();
   refreshProjectLayout();
@@ -611,17 +849,21 @@ $(function () {
       '#companyInfoWrap .companyImgBox img'
     );
 
+
+  /* 회사 정보 상태 */
   let companyCountStarted = false;
   let companyImageIndex = 0;
 
 
   /* 회사 이미지 초기화 */
-  companyImages.forEach(function (image, index) {
-    image.classList.toggle(
-      'active',
-      index === 0
-    );
-  });
+  companyImages.forEach(
+    function (image, index) {
+      image.classList.toggle(
+        'active',
+        index === 0
+      );
+    }
+  );
 
 
   /* 회사 숫자 카운트 */
@@ -635,40 +877,55 @@ $(function () {
 
     companyCountStarted = true;
 
-    companyNumbers.forEach(function (number) {
-      const target =
-        Number(number.dataset.target);
-
-      const duration = 1500;
-      const startTime =
-        performance.now();
-
-      function count(currentTime) {
-        const progress =
-          Math.min(
-            (currentTime - startTime) /
-            duration,
-            1
+    companyNumbers.forEach(
+      function (number) {
+        const target =
+          Number(
+            number.dataset.target
           );
 
-        const ease =
-          1 - Math.pow(1 - progress, 3);
+        const duration = 1500;
 
-        number.textContent =
-          Math.floor(
-            target * ease
-          ).toLocaleString();
+        const startTime =
+          performance.now();
 
-        if (progress < 1) {
-          requestAnimationFrame(count);
-        } else {
+        function count(currentTime) {
+          const progress =
+            Math.min(
+              (
+                currentTime -
+                startTime
+              ) / duration,
+              1
+            );
+
+          const ease =
+            1 -
+            Math.pow(
+              1 - progress,
+              3
+            );
+
           number.textContent =
-            target.toLocaleString();
-        }
-      }
+            Math.floor(
+              target * ease
+            ).toLocaleString();
 
-      requestAnimationFrame(count);
-    });
+          if (progress < 1) {
+            requestAnimationFrame(
+              count
+            );
+          } else {
+            number.textContent =
+              target.toLocaleString();
+          }
+        }
+
+        requestAnimationFrame(
+          count
+        );
+      }
+    );
   }
 
 
@@ -692,18 +949,24 @@ $(function () {
       return;
     }
 
-    if (companyImageIndex === nextIndex) {
+    if (
+      companyImageIndex ===
+      nextIndex
+    ) {
       return;
     }
 
-    companyImageIndex = nextIndex;
+    companyImageIndex =
+      nextIndex;
 
-    companyImages.forEach(function (image, index) {
-      image.classList.toggle(
-        'active',
-        index === companyImageIndex
-      );
-    });
+    companyImages.forEach(
+      function (image, index) {
+        image.classList.toggle(
+          'active',
+          index === companyImageIndex
+        );
+      }
+    );
   }
 
 
@@ -734,179 +997,188 @@ $(function () {
 
     if (scrollHeight > 0) {
       progress =
-        (-rect.top) / scrollHeight;
+        (-rect.top) /
+        scrollHeight;
     }
 
     progress =
       Math.max(
         0,
-        Math.min(1, progress)
+        Math.min(
+          1,
+          progress
+        )
       );
 
     updateCompanyImage(progress);
   }
 
 
-  /* 휠 이벤트 */
+  /* 마우스 휠과 트랙패드 이벤트 */
   window.addEventListener(
     'wheel',
     function (e) {
       /*
-       * 프로젝트를 먼저 처리합니다.
+       * 프로젝트 기능을 먼저 확인합니다.
        */
       if (handleProjectWheel(e)) {
         return;
       }
 
       /*
-       * 비주얼 영역 확인
+       * 프로젝트에서 처리되지 않았다면
+       * 비주얼 기능을 확인합니다.
        */
+      handleVisualWheel(e);
+    },
+    {
+      passive: false,
+      capture: true
+    }
+  );
+
+
+  /* 모바일 터치 시작 */
+  window.addEventListener(
+    'touchstart',
+    function (e) {
       if (
-        !visualWrap ||
-        !visualBox
+        !isVisualPinned() ||
+        e.touches.length !== 1
+      ) {
+        visualTouchTracking = false;
+
+        return;
+      }
+
+      visualTouchStartY =
+        e.touches[0].clientY;
+
+      visualTouchCurrentY =
+        visualTouchStartY;
+
+      visualTouchTracking = true;
+      visualTouchHandled = false;
+    },
+    {
+      passive: true,
+      capture: true
+    }
+  );
+
+
+  /* 모바일 터치 이동 */
+  window.addEventListener(
+    'touchmove',
+    function (e) {
+      if (
+        !visualTouchTracking ||
+        e.touches.length !== 1 ||
+        !isVisualPinned()
       ) {
         return;
       }
 
-      const rect =
-        visualWrap.getBoundingClientRect();
+      visualTouchCurrentY =
+        e.touches[0].clientY;
 
-      const isVisible =
-        rect.top <= 0 &&
-        rect.bottom >=
-        window.innerHeight;
+      /*
+       * 손가락을 위로 올리면 양수
+       * 손가락을 아래로 내리면 음수가 됩니다.
+       */
+      const distance =
+        visualTouchStartY -
+        visualTouchCurrentY;
 
-      if (!isVisible) {
+      if (
+        Math.abs(distance) <
+        VISUAL_TOUCH_DISTANCE
+      ) {
         return;
       }
 
+      const direction =
+        distance > 0 ? 1 : -1;
+
+      const shouldStopPage =
+        visualAnimating ||
+        (
+          direction > 0 &&
+          visualStep < 2
+        ) ||
+        (
+          direction < 0 &&
+          visualStep > 0
+        );
+
+
+      /*
+       * 비주얼 첫 단계에서 위로 이동하거나
+       * 마지막 단계에서 아래로 이동할 때는
+       * 일반 페이지 스크롤을 허용합니다.
+       */
+      if (!shouldStopPage) {
+        lenis.start();
+
+        visualTouchTracking = false;
+
+        return;
+      }
+
+
+      /*
+       * 비주얼 단계가 변경되는 동안에는
+       * 페이지가 같이 움직이지 않게 막습니다.
+       */
       e.preventDefault();
 
-      if (visualAnimating) {
+
+      /*
+       * 한 번의 스와이프에서
+       * 단계가 여러 번 변경되는 것을 방지합니다.
+       */
+      if (visualTouchHandled) {
         return;
       }
 
-      /*
-       * 비주얼 아래 방향
-       */
-      if (e.deltaY > 0) {
-        if (visualStep === 0) {
-          visualAnimating = true;
+      visualTouchHandled = true;
 
-          lenis.stop();
-          visualStep = 1;
-
-          visualBox.classList.add(
-            'step01'
-          );
-
-          if (popupContentBox) {
-            popupContentBox.classList.add(
-              'active'
-            );
-          }
-
-          if (proposalDownloadBtn) {
-            proposalDownloadBtn.classList.add(
-              'active'
-            );
-          }
-
-          setTimeout(function () {
-            visualAnimating = false;
-          }, 600);
-
-          return;
-        }
-
-        if (visualStep === 1) {
-          visualAnimating = true;
-
-          lenis.stop();
-          visualStep = 2;
-
-          visualBox.classList.add(
-            'step02'
-          );
-
-          visualWrap.classList.add(
-            'step02'
-          );
-
-          setTimeout(function () {
-            visualAnimating = false;
-          }, 600);
-
-          return;
-        }
-
-        if (visualStep === 2) {
-          lenis.start();
-          return;
-        }
-      }
-
-      /*
-       * 비주얼 위 방향
-       */
-      if (e.deltaY < 0) {
-        if (visualStep === 2) {
-          visualAnimating = true;
-
-          lenis.stop();
-          visualStep = 1;
-
-          visualBox.classList.remove(
-            'step02'
-          );
-
-          visualWrap.classList.remove(
-            'step02'
-          );
-
-          setTimeout(function () {
-            visualAnimating = false;
-          }, 600);
-
-          return;
-        }
-
-        if (visualStep === 1) {
-          visualAnimating = true;
-
-          lenis.stop();
-          visualStep = 0;
-
-          visualBox.classList.remove(
-            'step01'
-          );
-
-          if (popupContentBox) {
-            popupContentBox.classList.remove(
-              'active'
-            );
-          }
-
-          if (proposalDownloadBtn) {
-            proposalDownloadBtn.classList.remove(
-              'active'
-            );
-          }
-
-          setTimeout(function () {
-            visualAnimating = false;
-          }, 600);
-
-          return;
-        }
-
-        if (visualStep === 0) {
-          lenis.start();
-        }
-      }
+      changeVisualStep(direction);
     },
     {
-      passive: false
+      passive: false,
+      capture: true
+    }
+  );
+
+
+  /* 모바일 터치 상태 초기화 */
+  function finishVisualTouch() {
+    visualTouchTracking = false;
+    visualTouchHandled = false;
+    visualTouchStartY = 0;
+    visualTouchCurrentY = 0;
+  }
+
+
+  /* 모바일 터치 종료 */
+  window.addEventListener(
+    'touchend',
+    finishVisualTouch,
+    {
+      passive: true,
+      capture: true
+    }
+  );
+
+
+  /* 모바일 터치 취소 */
+  window.addEventListener(
+    'touchcancel',
+    finishVisualTouch,
+    {
+      passive: true,
+      capture: true
     }
   );
 
