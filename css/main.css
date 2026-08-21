@@ -18,6 +18,32 @@
 #visualWrap .visualText{display: flex; align-items: center; gap: 0 16.67vw; line-height: 1;}
 #visualWrap .visualText02 h2{display: flex; gap: 0 3.96vw}
 #visualWrap .visualText03{justify-content: flex-end;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 #visualWrap .visualScrollBox{position: fixed; left: 50%;
     bottom: 0; display: flex; flex-direction: column; align-items: center; gap: 1.04vw; transform: translateX(-50%);overflow: hidden; z-index: 9999999;}
 #visualWrap .visualScrollText{display: block; font-size: 0.83vw;  color: #B4B4B4; font-weight: 600;}
@@ -57,17 +83,13 @@
     }
 }
 
-#visualWrap .visualVideoBox video{display: block; width: 80%; height: 80%; object-fit: cover; --video-end-width: 12.50vw;  --video-end-height: 22.24vw; will-change: width, height, transform; transform: scale(0.15); transform-origin: center center;
-    opacity: 0; transition: transform 8s cubic-bezier(.16, 1, .3, 1), opacity .8s ease;}
+#visualWrap .visualVideoBox video{display: block; object-fit: cover; width: 12.50vw;  height: 22.24vw; }
 #visualWrap.active .visualVideoBox video{transform: scale(1); opacity: 1;}
-#visualWrap .visualText{will-change: transform, opacity;}
-#visualWrap .visualText01,
-#visualWrap .visualText02,
-#visualWrap .visualText03{opacity: 0; transform: translate3d(0, 180px, 0);}
+
 
 @media (max-width: 1199px){
 
-  #visualWrap .visualVideoBox video{--video-end-width: 26vw; --video-end-height: 50vw;}
+  #visualWrap .visualVideoBox video{width: 26vw; height: 50vw;}
   #visualWrap .visualTextBox{max-width: 90vw;}
   #visualWrap .visualText{gap: 0 35vw;}
   #visualWrap .proposalDownloadBtn{top: 120px; right: 50px;}
@@ -78,13 +100,13 @@
 
   #visualWrap .visualTextBox{max-width: 99vw;}
   #visualWrap .visualText{gap: 0 44vw;}
-  #visualWrap .visualVideoBox video{--video-end-width: 36vw; --video-end-height: 50vw;}
+  #visualWrap .visualVideoBox video{width: 36vw; height: 50vw;}
 
 }
 
 @media (max-width: 480px){
 
-  #visualWrap .visualVideoBox video{--video-end-width: 45vw; --video-end-height: 65vw;}
+  #visualWrap .visualVideoBox video{width: 45vw; height: 65vw;}
 
   #visualWrap .visualTextBox{padding: 112px 20px 0; max-width: none; justify-content: flex-start;}
   #visualWrap .visualTextBox h2{font-size: 48px;}
@@ -104,7 +126,7 @@
 
 @media (max-width: 360px){
 
-  #visualWrap .visualVideoBox video{--video-end-width: 60vw; --video-end-height: 100vw;}
+  #visualWrap .visualVideoBox video{width: 60vw; height: 100vw;}
   #visualWrap .visualTextBox h2{font-size: 38px;}
   #visualWrap .visualTextBox h2 span{font-size: 8px;}
   #visualWrap .visualText02 h2{gap: 0 18px;}
@@ -113,21 +135,48 @@
 
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* 소개 영역 */
 #aboutWrap {padding: 160px 0; position: relative; width: 100%;
     background: #222; color: #fff; overflow: hidden;}
-#aboutWrap .aboutContentBox{display: flex; flex-direction: column;    justify-content: center;}
+#aboutWrap .aboutContentBox{display: flex; flex-direction: column; justify-content: center;}
 #aboutWrap .container,
 #aboutWrap .aboutBox,
 #aboutWrap .aboutContentBox {height: 100%;}
 #aboutWrap .aboutTitleBox {margin-bottom: 60px; text-align: center;}
 #aboutWrap .aboutTitleBox > span {display: block; margin-bottom: 20px;
-    font-size: 16px; font-weight: 600; will-change: transform;}
+    font-size: 16px; font-weight: 600}
 #aboutWrap .aboutTitleBox h2 {font-size: 80px; font-family: 'HelveticaNowDisplay'; font-weight: 500; line-height: 1;
     color: #fff; word-break: keep-all;}
-#aboutWrap .aboutTitleBox h2 strong {display: inline-block; font-weight: 500;
-    will-change: transform, opacity;}
-#aboutWrap .aboutViewLink {display: flex; align-items: center;    padding-left: 20px; width: 162px; height: 36px; margin: 0 auto 100px;    border: 1px solid #fff; border-radius: 50px; will-change: transform;}
+#aboutWrap .aboutTitleBox h2 strong {display: inline-block; font-weight: 500;}
+#aboutWrap .aboutViewLink {display: flex; align-items: center;    padding-left: 20px; width: 162px; height: 36px; margin: 0 auto 100px;    border: 1px solid #fff; border-radius: 50px}
 #aboutWrap .aboutViewLink span{display: flex; align-items: center;
     gap: 0 16px; font-weight: 600; color: #fff;}
 #aboutWrap .aboutViewLink span::after {content: ''; width: 24px; height: 24px;
@@ -135,7 +184,7 @@
         url(../images/main/arrow_icon.svg)
         no-repeat center / contain;}
 #aboutWrap .aboutTextBox {display: flex; gap: 0 183px;}
-#aboutWrap .aboutTextBox .aboutText {will-change: transform;}
+
 #aboutWrap .aboutTextBox .aboutText span {display: block; margin-bottom: 20px;
    font-weight: 600; color: #fff;}
 #aboutWrap .aboutTextBox .aboutText p {font-size: 20px; font-weight: 700;
@@ -156,13 +205,7 @@
 #aboutWrap .aboutTextBox .aboutText span{display: block; margin-bottom: 20px; font-weight: 600; color: #fff;}
 #aboutWrap .aboutTextBox .aboutText p{font-size: 20px; font-weight: 700; color: #fff;}
 #aboutWrap .aboutText02{padding-top: 196px;}
-#aboutWrap .aboutTitleBox h2 strong,
-#aboutWrap .aboutTitleBox > span,
-#aboutWrap .aboutViewLink,
-#aboutWrap .aboutText01,
-#aboutWrap .aboutText02 { will-change: transform, opacity;}
-#aboutWrap .aboutTitleBox h2 strong:first-child{transform: translate3d(-500px, 0, 0);}
-#aboutWrap .aboutTitleBox h2 strong:last-child{ transform: translate3d(500px, 0, 0);}
+
 
 @media (max-width: 1199px){
 
@@ -212,8 +255,6 @@
 
 /* 프로젝트 영역 */
 #projectWrap {padding: 160px 0 80px; position: relative; overflow: hidden; background-color: #F5F5F5;}
-#projectWrap .projectTitleBox {opacity: 0; transform: translate3d(-500px, 0, 0); will-change: transform, opacity;}
-#projectWrap .projectList{opacity: 0; transform: translate3d(500px, 0, 0); will-change: transform, opacity;}
 #projectWrap .projectTitleBox{margin-bottom: 160px;}
 #projectWrap .projectTitleBox h2{font-size: 80px; color: #222; font-family: 'HelveticaNowDisplay'; font-weight: 500; line-height: 1;}
 #projectWrap .projectList{display: flex; width: 100%;}
@@ -286,7 +327,7 @@
 #companyInfoWrap .companyTitleBox p{color: #222; font-weight: 700; font-size: 32px;}
 #companyInfoWrap .companyVisualBox{flex: 1; position: sticky; top: 0; flex-shrink: 0; display: flex;
     flex-direction: column; align-items: flex-start; justify-content: flex-start; overflow: hidden;}
-#companyInfoWrap .companyVisualContentBox{width: 100%; opacity: 0; transform: translate3d(0, 350px, 0);   will-change: transform, opacity;}
+#companyInfoWrap .companyVisualContentBox{width: 100%;}
 #companyInfoWrap .companyImgBox {max-width: 360px;}
 #companyInfoWrap .companyImgBox img {display: block; width: 100%; height: 100%; object-fit: cover;
 }
@@ -367,8 +408,7 @@
 /* 문의하기 영역 */
 #contactWrap{padding: 40px 0; background-color: #FD3D32;}
 #contactWrap .contactTitleBox h2{margin-bottom: 235px; font-weight: 700; color: #222;
-    font-family: 'HelveticaNowDisplay'; font-size: 120px; line-height: 1; word-break: keep-all;
-    transform: scale(0.35); transform-origin: left center; will-change: transform;}
+    font-family: 'HelveticaNowDisplay'; font-size: 120px; line-height: 1; word-break: keep-all;}
 #contactWrap .contactContentBox{display: flex; align-items: center; justify-content: space-between;}
 #contactWrap .contactInfoTextBox span{display: block; margin-bottom: 20px; color: #fff; font-weight: 600;}
 #contactWrap .contactInfoTextBox p{font-size: 24px; font-weight: 700; color: #fff; font-family: 'HelveticaNowDisplay';}

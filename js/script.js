@@ -39,18 +39,18 @@ $(function () {
   });
 
   //로드
-  $(window).load(function () {
-    $('#headerWrap').addClass('active');
-  });
+  // $(window).load(function () {
+  //   $('#headerWrap').addClass('active');
+  // });
 
   //헤더 스크롤
-  $(window).scroll(function () {
-    if ($(window).scrollTop() > 50) {
-      $('#headerWrap').addClass('scroll');
-    } else {
-      $('#headerWrap').removeClass('scroll');
-    }
-  })
+  // $(window).scroll(function () {
+  //   if ($(window).scrollTop() > 50) {
+  //     $('#headerWrap').addClass('scroll');
+  //   } else {
+  //     $('#headerWrap').removeClass('scroll');
+  //   }
+  // })
 
 });
 
