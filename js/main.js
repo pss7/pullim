@@ -1,10 +1,13 @@
 $(function () {
+  /* 페이지 새로고침 시 최상단 이동 */
   if ('scrollRestoration' in history) {
     history.scrollRestoration = 'manual';
   }
 
   window.scrollTo(0, 0);
 
+
+  /* Lenis 초기화 */
   const lenis = new Lenis({
     duration: 1.2,
     smoothWheel: true,
@@ -13,10 +16,7 @@ $(function () {
   });
 
 
-  /* =========================
-     VISUAL
-  ========================= */
-
+  /* 비주얼 요소 */
   const visualWrap =
     document.querySelector('#visualWrap');
 
@@ -32,6 +32,8 @@ $(function () {
   let visualStep = 0;
   let visualAnimating = false;
 
+
+  /* 비주얼 첫 등장 */
   setTimeout(function () {
     if (visualBox) {
       visualBox.classList.add('active');
@@ -39,10 +41,7 @@ $(function () {
   }, 100);
 
 
-  /* =========================
-     PROJECT
-  ========================= */
-
+  /* 프로젝트 요소 */
   const projectWrap =
     document.querySelector('#projectWrap');
 
@@ -62,6 +61,8 @@ $(function () {
     )
   );
 
+
+  /* 프로젝트 설정 */
   const PROJECT_BREAKPOINT = 768;
   const PROJECT_DURATION = 800;
   const PROJECT_STEP_HEIGHT = 700;
@@ -71,21 +72,24 @@ $(function () {
   const CARD_VISIBLE = 60;
   const RIGHT_GAP = 60;
 
+
+  /* 프로젝트 상태 */
   let projectStep = -1;
-  let projectAnimating = false;
   let projectMode = false;
+  let projectAnimating = false;
   let projectLeaving = false;
   let lastCardReady = false;
   let projectExitRequested = false;
-  let projectFreeScroll = false;
 
 
+  /* 데스크톱 프로젝트 확인 */
   function isProjectDesktop() {
     return window.innerWidth > PROJECT_BREAKPOINT;
   }
 
 
-  function resetProjectInlineStyles() {
+  /* 프로젝트 카드 스타일 초기화 */
+  function resetProjectStyles() {
     projectItems.forEach(function (item) {
       item.classList.remove(
         'current',
@@ -99,6 +103,7 @@ $(function () {
   }
 
 
+  /* 프로젝트 영역 높이 설정 */
   function setProjectHeight() {
     if (!projectWrap) {
       return;
@@ -126,13 +131,16 @@ $(function () {
       stepCount * PROJECT_STEP_HEIGHT +
       'px';
 
-    if (typeof lenis.resize === 'function') {
+    if (
+      typeof lenis.resize === 'function'
+    ) {
       lenis.resize();
     }
   }
 
 
-  function updateProject() {
+  /* 프로젝트 카드 위치 변경 */
+  function updateProjectCards() {
     if (
       !projectList ||
       !isProjectDesktop()
@@ -161,7 +169,7 @@ $(function () {
       );
 
     projectItems.forEach(function (item, index) {
-      /* 아직 등장하지 않은 카드 */
+      /* 아직 나오지 않은 카드 */
       if (index > projectStep) {
         item.classList.remove(
           'current',
@@ -214,6 +222,7 @@ $(function () {
   }
 
 
+  /* 프로젝트 영역이 화면에 고정됐는지 확인 */
   function isProjectPinned() {
     if (
       !projectWrap ||
@@ -234,80 +243,80 @@ $(function () {
   }
 
 
-function enterProject() {
-  if (projectMode || projectLeaving) {
-    return;
+  /* 프로젝트 진입 */
+  function enterProject() {
+    if (
+      projectMode ||
+      projectLeaving
+    ) {
+      return;
+    }
+
+    projectMode = true;
+    projectExitRequested = false;
+
+    /*
+     * 마지막 카드 위치에서
+     * 다시 프로젝트에 진입할 수 있도록 처리
+     */
+    lastCardReady =
+      projectStep ===
+      projectItems.length - 1;
+
+    lenis.stop();
   }
 
-  projectMode = true;
 
-  lastCardReady =
-    projectStep === projectItems.length - 1;
-
-  projectExitRequested = false;
-
-  lenis.stop();
-}
-
-
+  /* 프로젝트 종료 */
   function exitProject() {
     projectMode = false;
     projectAnimating = false;
     lastCardReady = false;
     projectExitRequested = false;
-    projectFreeScroll = false;
 
     lenis.start();
   }
 
 
-  function releaseProjectToNext() {
-    if (
-      projectLeaving ||
-      !projectWrap
-    ) {
-      return;
-    }
-
+  /* 프로젝트에서 다음 영역으로 이동 */
+  function releaseProject() {
     projectLeaving = true;
     projectMode = false;
     lastCardReady = false;
     projectExitRequested = false;
-    projectFreeScroll = true;
 
-    /*
-     * 프로젝트 하단까지 카드 전환으로
-     * 이미 이동했으므로 Lenis만 재시작
-     */
     lenis.start();
 
-    projectLeaving = false;
+    setTimeout(function () {
+      projectLeaving = false;
+    }, 300);
   }
 
 
-  /*
-   * 카드 이동과 실제 페이지 스크롤을 함께 처리
-   */
-  function moveProjectPage(direction, done) {
+  /* 카드 이동과 페이지 스크롤을 함께 처리 */
+  function moveProjectPage(
+    direction,
+    complete
+  ) {
     const rect =
       projectWrap.getBoundingClientRect();
 
     const currentY =
       window.scrollY;
 
-    const minY =
+    const minimumY =
       currentY + rect.top;
 
-    const maxY =
+    const maximumY =
       currentY +
       rect.bottom -
       window.innerHeight;
 
     const targetY =
       Math.max(
-        minY,
+        minimumY,
         Math.min(
-          maxY,
+          maximumY,
           currentY +
             direction *
               PROJECT_STEP_HEIGHT
@@ -319,6 +328,7 @@ function enterProject() {
     lenis.scrollTo(targetY, {
       duration:
         PROJECT_DURATION / 1000,
+
       immediate: false,
       force: true,
       lock: true,
@@ -326,15 +336,19 @@ function enterProject() {
       onComplete: function () {
         lenis.stop();
 
-        if (typeof done === 'function') {
-          done();
+        if (
+          typeof complete ===
+          'function'
+        ) {
+          complete();
         }
       }
     });
   }
 
 
-  function projectNext() {
+  /* 다음 카드 표시 */
+  function showNextProject() {
     if (
       projectAnimating ||
       projectStep >=
@@ -349,7 +363,7 @@ function enterProject() {
 
     projectStep++;
 
-    updateProject();
+    updateProjectCards();
 
     moveProjectPage(1, function () {
       projectAnimating = false;
@@ -358,16 +372,12 @@ function enterProject() {
         projectStep ===
         projectItems.length - 1;
 
-      /*
-       * 마지막 카드 이동 중
-       * 추가 휠이 들어왔을 때
-       */
       if (
         lastCardReady &&
         projectExitRequested
       ) {
         setTimeout(
-          releaseProjectToNext,
+          releaseProject,
           100
         );
       }
@@ -377,7 +387,8 @@ function enterProject() {
   }
 
 
-  function projectPrev() {
+  /* 이전 카드 표시 */
+  function showPreviousProject() {
     if (
       projectAnimating ||
       projectStep <= -1
@@ -391,7 +402,7 @@ function enterProject() {
 
     projectStep--;
 
-    updateProject();
+    updateProjectCards();
 
     moveProjectPage(-1, function () {
       projectAnimating = false;
@@ -401,65 +412,8 @@ function enterProject() {
   }
 
 
+  /* 프로젝트 휠 제어 */
   function handleProjectWheel(e) {
-    /*
-     * 프로젝트가 끝난 뒤 일반 스크롤
-     */
-    if (projectFreeScroll) {
-      const projectRect =
-        projectWrap.getBoundingClientRect();
-
-      /*
-       * 회사소개에서 위로 올라와
-       * 프로젝트에 재진입
-       */
-if (
-  e.deltaY < 0 &&
-  projectRect.bottom > window.innerHeight - 1
-) {
- if (projectFreeScroll) {
-  projectFreeScroll = false;
-  projectMode = false;
-  projectLeaving = false;
-  lastCardReady = false;
-  projectExitRequested = false;
-
-  lenis.start();
-
-  return false;
-}
-}
-
-      /*
-       * 프로젝트를 완전히 벗어남
-       */
-      else if (
-        e.deltaY > 0 &&
-        projectRect.bottom <=
-          window.innerHeight - 1
-      ) {
-        projectFreeScroll = false;
-projectMode = false;
-
-  lenis.start();
-        /*
-         * 현재 wheel은 Lenis에 전달
-         */
-        return false;
-      }
-
-      /*
-       * 일반 Lenis 스크롤
-       */
-      else {
-        if (e.deltaY > 0) {
-    lenis.start();
-  }
-
-        return false;
-      }
-    }
-
     if (
       !projectMode &&
       !isProjectPinned()
@@ -468,7 +422,16 @@ projectMode = false;
     }
 
     /*
-     * 마지막 카드 이후
+     * 프로젝트 영역에 처음 들어왔을 때
+     * 프로젝트 모드를 시작합니다.
+     */
+    if (!projectMode) {
+      enterProject();
+    }
+
+    /*
+     * 마지막 카드 이후에는
+     * 페이지 일반 스크롤을 다시 시작합니다.
      */
     if (
       e.deltaY > 0 &&
@@ -478,21 +441,18 @@ projectMode = false;
     ) {
       e.preventDefault();
 
-      releaseProjectToNext();
+      releaseProject();
 
-      return true;
-    }
-
-    e.preventDefault();
-
-    if (projectLeaving) {
       return true;
     }
 
     /*
-     * 애니메이션 중 추가 휠 예약
+     * 카드 애니메이션 중에는
+     * 페이지 스크롤을 잠시 막습니다.
      */
     if (projectAnimating) {
+      e.preventDefault();
+
       if (
         e.deltaY > 0 &&
         projectStep ===
@@ -504,37 +464,43 @@ projectMode = false;
       return true;
     }
 
-    if (!projectMode) {
-      enterProject();
-    }
-
-    /* 아래로 스크롤 */
+    /*
+     * 아래로 스크롤
+     */
     if (e.deltaY > 0) {
-      if (
-        projectStep <
-        projectItems.length - 1
-      ) {
-        projectNext();
-      }
+      e.preventDefault();
+
+      showNextProject();
 
       return true;
     }
 
-    /* 위로 스크롤 */
+    /*
+     * 위로 스크롤
+     */
     if (e.deltaY < 0) {
       if (projectStep >= 0) {
-        projectPrev();
-      } else {
-        exitProject();
+        e.preventDefault();
+
+        showPreviousProject();
+
+        return true;
       }
 
-      return true;
+      /*
+       * 첫 카드 이전에는
+       * Lenis 일반 스크롤로 전환합니다.
+       */
+      exitProject();
+
+      return false;
     }
 
     return true;
   }
 
 
+  /* 모바일 프로젝트 클릭 */
   function setupMobileProject() {
     projectItems.forEach(function (item) {
       item.addEventListener(
@@ -567,6 +533,7 @@ projectMode = false;
   }
 
 
+  /* 프로젝트 반응형 초기화 */
   function refreshProjectLayout() {
     if (!projectWrap) {
       return;
@@ -578,12 +545,8 @@ projectMode = false;
           '100%';
       }
 
-      projectItems.forEach(function (item) {
-        item.classList.remove('active');
-      });
-
       setProjectHeight();
-      updateProject();
+      updateProjectCards();
 
       return;
     }
@@ -593,7 +556,6 @@ projectMode = false;
     }
 
     projectStep = -1;
-    projectFreeScroll = false;
 
     projectWrap.style.removeProperty(
       'height'
@@ -605,17 +567,14 @@ projectMode = false;
       );
     }
 
-    resetProjectInlineStyles();
+    resetProjectStyles();
   }
 
   setupMobileProject();
   refreshProjectLayout();
 
 
-  /* =========================
-     COMPANY INFORMATION
-  ========================= */
-
+  /* 회사 정보 요소 */
   const companyInfoWrap =
     document.querySelector(
       '#companyInfoWrap'
@@ -635,16 +594,16 @@ projectMode = false;
   let companyImageIndex = 0;
 
 
-  if (companyImages.length > 0) {
-    companyImages.forEach(function (image, index) {
-      image.classList.toggle(
-        'active',
-        index === 0
-      );
-    });
-  }
+  /* 회사 이미지 초기화 */
+  companyImages.forEach(function (image, index) {
+    image.classList.toggle(
+      'active',
+      index === 0
+    );
+  });
 
 
+  /* 회사 숫자 카운트 */
   function startCompanyCount() {
     if (
       companyCountStarted ||
@@ -674,11 +633,10 @@ projectMode = false;
         const ease =
           1 - Math.pow(1 - progress, 3);
 
-        const value =
-          Math.floor(target * ease);
-
         number.textContent =
-          value.toLocaleString();
+          Math.floor(
+            target * ease
+          ).toLocaleString();
 
         if (progress < 1) {
           requestAnimationFrame(count);
@@ -693,6 +651,7 @@ projectMode = false;
   }
 
 
+  /* 회사 이미지 변경 */
   function updateCompanyImage(progress) {
     if (companyImages.length === 0) {
       return;
@@ -727,6 +686,7 @@ projectMode = false;
   }
 
 
+  /* 회사 정보 스크롤 처리 */
   function updateCompanyScroll() {
     if (!companyInfoWrap) {
       return;
@@ -735,11 +695,11 @@ projectMode = false;
     const rect =
       companyInfoWrap.getBoundingClientRect();
 
-    const companyActive =
+    const isVisible =
       rect.top < window.innerHeight &&
       rect.bottom > 0;
 
-    if (!companyActive) {
+    if (!isVisible) {
       return;
     }
 
@@ -766,22 +726,19 @@ projectMode = false;
   }
 
 
-  /* =========================
-     WHEEL
-  ========================= */
-
+  /* 휠 이벤트 */
   window.addEventListener(
     'wheel',
     function (e) {
       /*
-       * 프로젝트 우선 처리
+       * 프로젝트를 먼저 처리합니다.
        */
       if (handleProjectWheel(e)) {
         return;
       }
 
       /*
-       * VISUAL
+       * 비주얼 영역 확인
        */
       if (
         !visualWrap ||
@@ -790,15 +747,15 @@ projectMode = false;
         return;
       }
 
-      const visualRect =
+      const rect =
         visualWrap.getBoundingClientRect();
 
-      const visualActive =
-        visualRect.top <= 0 &&
-        visualRect.bottom >=
+      const isVisible =
+        rect.top <= 0 &&
+        rect.bottom >=
           window.innerHeight;
 
-      if (!visualActive) {
+      if (!isVisible) {
         return;
       }
 
@@ -808,9 +765,10 @@ projectMode = false;
         return;
       }
 
-      /* 아래 방향 */
+      /*
+       * 비주얼 아래 방향
+       */
       if (e.deltaY > 0) {
-        /* STEP 0 → STEP 1 */
         if (visualStep === 0) {
           visualAnimating = true;
 
@@ -840,7 +798,6 @@ projectMode = false;
           return;
         }
 
-        /* STEP 1 → STEP 2 */
         if (visualStep === 1) {
           visualAnimating = true;
 
@@ -862,16 +819,16 @@ projectMode = false;
           return;
         }
 
-        /* STEP 2 → 다음 영역 */
         if (visualStep === 2) {
           lenis.start();
           return;
         }
       }
 
-      /* 위 방향 */
+      /*
+       * 비주얼 위 방향
+       */
       if (e.deltaY < 0) {
-        /* STEP 2 → STEP 1 */
         if (visualStep === 2) {
           visualAnimating = true;
 
@@ -893,7 +850,6 @@ projectMode = false;
           return;
         }
 
-        /* STEP 1 → STEP 0 */
         if (visualStep === 1) {
           visualAnimating = true;
 
@@ -923,10 +879,8 @@ projectMode = false;
           return;
         }
 
-        /* STEP 0 → 이전 영역 */
         if (visualStep === 0) {
           lenis.start();
-          return;
         }
       }
     },
@@ -936,18 +890,15 @@ projectMode = false;
   );
 
 
-  /* =========================
-     RESIZE
-  ========================= */
-
-  let projectResizeTimer;
+  /* 화면 크기 변경 */
+  let resizeTimer;
 
   window.addEventListener(
     'resize',
     function () {
-      clearTimeout(projectResizeTimer);
+      clearTimeout(resizeTimer);
 
-      projectResizeTimer =
+      resizeTimer =
         setTimeout(
           refreshProjectLayout,
           120
@@ -956,11 +907,11 @@ projectMode = false;
   );
 
 
-  /* =========================
-     LENIS SCROLL
-  ========================= */
-
-  lenis.on('scroll', function () {
-    updateCompanyScroll();
-  });
+  /* Lenis 스크롤 이벤트 */
+  lenis.on(
+    'scroll',
+    function () {
+      updateCompanyScroll();
+    }
+  );
 });
