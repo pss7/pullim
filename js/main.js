@@ -35,6 +35,7 @@ $(function () {
     document.querySelector('#visualWrap .visualBox');
 
   const popupContentBox = document.querySelector('#popupContentBox');
+  const proposalDownloadBtn = document.querySelector('.proposalDownloadBtn');
 
   let visualStep = 0;
 
@@ -420,6 +421,9 @@ $(function () {
           if (popupContentBox) {
             popupContentBox.classList.add('active');
           }
+          if (proposalDownloadBtn) {
+            proposalDownloadBtn.classList.add('active');
+          }
 
           setTimeout(function () {
 
@@ -548,6 +552,10 @@ $(function () {
           if (popupContentBox) {
             popupContentBox.classList.remove('active');
           }
+          if (proposalDownloadBtn) {
+            proposalDownloadBtn.classList.remove('active');
+          }
+
 
           setTimeout(function () {
 
