@@ -163,8 +163,8 @@ $(function () {
     const currentX =
       Math.max(
         listWidth -
-          cardWidth -
-          RIGHT_GAP,
+        cardWidth -
+        RIGHT_GAP,
         0
       );
 
@@ -238,7 +238,7 @@ $(function () {
     return (
       rect.top <= 1 &&
       rect.bottom >=
-        window.innerHeight - 1
+      window.innerHeight - 1
     );
   }
 
@@ -318,8 +318,8 @@ $(function () {
         Math.min(
           maximumY,
           currentY +
-            direction *
-              PROJECT_STEP_HEIGHT
+          direction *
+          PROJECT_STEP_HEIGHT
         )
       );
 
@@ -352,7 +352,7 @@ $(function () {
     if (
       projectAnimating ||
       projectStep >=
-        projectItems.length - 1
+      projectItems.length - 1
     ) {
       return false;
     }
@@ -436,7 +436,7 @@ $(function () {
     if (
       e.deltaY > 0 &&
       projectStep ===
-        projectItems.length - 1 &&
+      projectItems.length - 1 &&
       lastCardReady
     ) {
       e.preventDefault();
@@ -456,7 +456,7 @@ $(function () {
       if (
         e.deltaY > 0 &&
         projectStep ===
-          projectItems.length - 1
+        projectItems.length - 1
       ) {
         projectExitRequested = true;
       }
@@ -479,21 +479,42 @@ $(function () {
      * 위로 스크롤
      */
     if (e.deltaY < 0) {
-      if (projectStep >= 0) {
+      /*
+       * 첫 카드 또는 첫 카드 이전이면
+       * 프로젝트 제어를 종료합니다.
+       */
+      if (projectStep <= 0) {
         e.preventDefault();
 
-        showPreviousProject();
+        projectStep = -1;
+
+        updateProjectCards();
+        exitProject();
+
+        /*
+         * Lenis가 정지된 상태에서 받은 현재 휠도
+         * 위쪽 페이지 이동에 반영합니다.
+         */
+        const previousY = Math.max(
+          0,
+          window.scrollY + e.deltaY * 4
+        );
+
+        lenis.scrollTo(previousY, {
+          duration: 0.6,
+          immediate: false,
+          force: true
+        });
 
         return true;
       }
 
-      /*
-       * 첫 카드 이전에는
-       * Lenis 일반 스크롤로 전환합니다.
-       */
-      exitProject();
+      /* 두 번째 카드부터 이전 카드로 이동합니다. */
+      e.preventDefault();
 
-      return false;
+      showPreviousProject();
+
+      return true;
     }
 
     return true;
@@ -626,7 +647,7 @@ $(function () {
         const progress =
           Math.min(
             (currentTime - startTime) /
-              duration,
+            duration,
             1
           );
 
@@ -753,7 +774,7 @@ $(function () {
       const isVisible =
         rect.top <= 0 &&
         rect.bottom >=
-          window.innerHeight;
+        window.innerHeight;
 
       if (!isVisible) {
         return;
