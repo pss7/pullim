@@ -67,7 +67,7 @@
 #visualWrap .visualBox.step02 .visualText03 h2:nth-child(2) { transform: translateY(100vh) rotate(-50deg);
     opacity: 0; transition-delay: 0.2s;}
 
-#visualWrap .visualScrollBox{position: fixed; left: 50%;
+#visualWrap .visualScrollBox{position: absolute; left: 50%;
     bottom: 0; display: flex; flex-direction: column; align-items: center; gap: 1.04vw; transform: translateX(-50%);overflow: hidden; z-index: 9999999;}
 #visualWrap .visualScrollText{display: block; font-size: 0.83vw;  color: #B4B4B4; font-weight: 600;}
 #visualWrap .visualScrollLine{position: relative; width: 0.05vw; height: 3.13vw;
