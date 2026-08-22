@@ -204,6 +204,9 @@
 
 /* 문의 영역 */
 .contactWrap{background-color: #FD3D32;}
+.contactWrap #headerWrap .headerGnbBox .headerGnbList li h2 a{color: #fff;}
+.contactWrap #headerWrap .headerContactLink{background-color: #fff; color: #FD3D32;}
+.contactWrap #headerWrap .headerContactLink::after{background: url(../images/common/arrow_icon03.svg) no-repeat center}
 .contactWrap .topTitleBox h2{color: #fff;}
 .contactWrap .topTitleBox .topText01{color: #222;}
 .contactWrap .formWrap{margin-bottom: 68px; display: flex; gap: 40px 120px;}
