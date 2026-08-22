@@ -1,1 +1,196 @@
 @charset "UTF-8";
+
+/* 공통 */
+.subContentBox{padding: 100px 0;}
+.topTitleBox{display: flex; justify-content: space-between; gap: 0 20px;}
+.topTitleBox h2{flex-shrink: 0; color: #FD3D32; font-weight: 500; font-family: 'HelveticaNowDisplay'; font-size: 60px; line-height: 1;}
+.topTitleBox p{padding-top: 50px; align-self: flex-end; color: #fff; font-size: 80px; font-weight: 500; font-family: 'HelveticaNowDisplay'; line-height: 1; word-break: keep-all; text-align: right;}
+
+.titleBox span{display: block; margin-bottom: 20px; color: #222; font-weight: 600; font-size: 16px;}
+.titleBox p{font-size: 40px; font-weight: 500; color: #222; font-family: 'HelveticaNowDisplay'; line-height: 1; letter-spacing: -1px;}
+
+.infoTextBox{display: flex; gap: 80px;}
+.infoText{font-weight: 600; color: #222;}
+
+@media (max-width: 1199px){
+  
+
+  .topTitleBox h2{font-size: 50px;}
+  .topTitleBox p{font-size: 65px;}
+
+  .titleBox p{font-size: 36px;}
+
+}
+
+@media (max-width: 1024px){
+
+  .topTitleBox h2{font-size: 40px;}
+  .topTitleBox p{font-size: 50px;}
+
+}
+
+@media (max-width: 768px){
+
+  .subContentBox{padding: 50px 0;}
+
+  .topTitleBox h2{font-size: 30px;}
+  .topTitleBox p{padding-top: 36px; font-size: 36px;}
+
+  .titleBox p{font-size: 26px;}
+
+}
+
+@media (max-width: 480px){
+
+  .topTitleBox h2{font-size: 26px;}
+  .topTitleBox p{padding-top: 30px; font-size: 28px;}
+  .topTitleBox p br{display: none;}
+
+  .titleBox span{margin-bottom: 12px; font-size: 14px;}
+  .titleBox p{font-size: 22px;}
+  .infoText{font-size: 14px;}
+  .infoText br{display: none;}
+
+}
+
+@media (max-width: 360px){
+
+  .topTitleBox h2{font-size: 18px;}
+  .topTitleBox p{font-size: 24px;}
+
+  .titleBox span{font-size: 10px;}
+  .titleBox p{font-size: 18px;}
+  .infoText{font-size: 12px;}
+
+}
+
+
+/* 가운데영역 */
+.container{max-width: 1560px; width: 100%; margin: 0 auto; padding: 0 60px;}
+
+@media (max-widtH: 1199px){
+
+  .container{padding: 0 20px;}
+
+}
+
+/* 소개 영역 */
+.aboutWrap{background-color: #F5F5F5;}
+.aboutWrap #headerWrap .headerGnbBox .headerGnbList li h2 a{color: #fff; font-weight: 500; font-size: 20px;}
+.aboutWrap .subTopBox{padding-bottom: 40px; display: flex; align-items: flex-end; height: 800px; overflow: hidden; background: url(../images/sub/about_img.jpg)no-repeat center / cover;}
+.aboutWrap .subContentBox{padding: 160px 0 120px;}
+.aboutWrap .titleBox{margin-bottom: 4.17vw;}
+.aboutWrap .infoTextBox{margin-left: 4.17vw;}
+.aboutWrap .aboutVisionBox{margin: 0 0 6.25vw 0;}
+.aboutWrap .aboutMissionBox{margin:0 0 6.25vw 12.50vw;}
+.aboutWrap .aboutFutureBox{margin:0 0 6.25vw 25.00vw;}
+.aboutWrap .aboutJourneyBox{margin:0 0 6.25vw 37.50vw;}
+.aboutWrap .aboutJourneyList > li{border-bottom: 1px dashed #555;}
+.aboutWrap .aboutJourneyList li a{position: relative; display: flex; align-items: center; padding: 26px 20px 26px 40px; transition: all .3s;}
+.aboutWrap .aboutJourneyList li a .aboutJourneyYear{flex-shrink: 0; margin-right: 60px; font-weight: 500; font-size: 40px; color: #222; font-family: 'HelveticaNowDisplay';}
+.aboutWrap .aboutJourneyList li a .aboutJourneyTitle{max-width: 650px; width: 100%; font-weight: 500; font-size: 40px; color: #222; font-family: 'HelveticaNowDisplay';}
+.aboutWrap .aboutJourneyList li a .aboutJourneyDetailList li{display: flex;  margin-bottom: 5px; color: #222;}
+.aboutWrap .aboutJourneyList li a .aboutJourneyDetailList li::before{content: ''; flex-shrink: 0; margin: 9px 5px 0; width: 3px; height: 3px; background-color: #222; border-radius: 50%;}
+.aboutWrap .aboutJourneyList li a .aboutJourneyHoverImgBox{opacity: 0; visibility: hidden; position: absolute; left: 480px; top:0; transform: translateY(-50%); transition: all .3s; z-index: 9;}
+.aboutWrap .aboutJourneyList li a:hover .aboutJourneyHoverImgBox{opacity: 1; visibility: visible;}
+.aboutWrap .aboutJourneyList li a:hover .aboutJourneyHoverImgBox img{display: block; max-width: 100%; height: 100%; object-fit: cover;}
+.aboutWrap .channelBox{display: flex; gap: 80px 114px; padding: 200px 0 0;}
+.aboutWrap .channelBox .channelList li{width: 360px; margin-bottom: 80px;}
+.aboutWrap .channelBox .channelList li:last-child{margin-bottom: 0;}
+.aboutWrap .channelBox .channelList li a{display: block; padding: 24px 20px 20px 24px; background-color: #fff;}
+.aboutWrap .channelBox .channelList li a img{display: block; margin-bottom: 56px;}
+.aboutWrap .channelBox .channelList li a p{margin-bottom: 12px; color: #000;}
+.aboutWrap .channelBox .channelList li a span{display: block; color: #B4B4B4; font-weight: 600; font-size: 13px;}
+
+/* 호버 */
+.aboutWrap .aboutJourneyList li a:hover{background-color: #222;}
+.aboutWrap .aboutJourneyList li a:hover .aboutJourneyYear,
+.aboutWrap .aboutJourneyList li a:hover .aboutJourneyTitle,
+.aboutWrap .aboutJourneyList li a:hover .aboutJourneyDetailList li{color: #fff;}
+.aboutWrap .aboutJourneyList li a:hover .aboutJourneyDetailList li::before{background-color: #fff;}
+
+@media (max-width: 1199px){
+
+  .aboutWrap .subTopBox{height: 700px;}
+  .aboutWrap .subContentBox{padding: 120px 0;}
+
+  .aboutWrap .titleBox{margin-bottom: 5vw;}
+  .aboutWrap .infoTextBox{flex-direction: column; gap: 20px 0;}
+
+  .aboutWrap .aboutVisionBox{margin: 0 0 8vw 0;}
+  .aboutWrap .aboutMissionBox{margin:0 0 8vw 12.50vw;}
+  .aboutWrap .aboutFutureBox{margin:0 0 8vw 25.00vw;}
+  .aboutWrap .aboutJourneyBox{margin:0 0 8vw 37.50vw;}
+
+  .aboutWrap .aboutJourneyList li a{padding: 20px 12px;}
+  .aboutWrap .aboutJourneyList li a .aboutJourneyYear,
+  .aboutWrap .aboutJourneyList li a .aboutJourneyTitle{font-size: 26px;}
+
+  .aboutWrap .channelBox{flex-direction: column; padding: 80px 0 0;}
+  .aboutWrap .channelBox .channelList li{width: 100%; margin-bottom: 20px;}
+  .aboutWrap .channelBox .channelList li a{padding: 20px;}
+
+}
+
+@media (max-width: 1024px){
+
+  .aboutWrap .subTopBox{height: 500px;}
+  
+  .aboutWrap .aboutJourneyList li a{flex-wrap: wrap; justify-content: space-between;}
+  .aboutWrap .aboutJourneyList li a .aboutJourneyTitle{max-width: none; width: auto;}
+  .aboutWrap .aboutJourneyList li a .aboutJourneyYear{margin-right: 0;}
+  .aboutWrap .aboutJourneyList li a .aboutJourneyDetailList{margin-top: 20px; width: 100%;}
+  .aboutWrap .aboutJourneyList li a .aboutJourneyHoverImgBox{right:20px; left: auto;}
+  
+}
+
+@media (max-width: 768px){
+
+  .aboutWrap .subContentBox{padding: 80px 0;}
+
+  .aboutWrap .titleBox{margin-bottom: 7vw;}
+
+  .aboutWrap .aboutVisionBox{margin: 0 0 11vw 0;}
+  .aboutWrap .aboutMissionBox{margin:0 0 11vw 12.50vw;}
+  .aboutWrap .aboutFutureBox{margin:0 0 11vw 25.00vw;}
+  .aboutWrap .aboutJourneyBox{margin:0 0 11vw 37.50vw;}
+
+  .aboutWrap .aboutJourneyList li a .aboutJourneyYear,
+  .aboutWrap .aboutJourneyList li a .aboutJourneyTitle{font-size: 22px;}
+
+}
+
+@media (max-width: 480px){
+
+  .aboutWrap .subContentBox{padding: 60px 0;}
+
+  .aboutWrap .aboutJourneyList li a .aboutJourneyYear,
+  .aboutWrap .aboutJourneyList li a .aboutJourneyTitle{font-size: 20px;}
+  .aboutWrap .aboutJourneyList li a .aboutJourneyHoverImgBox{max-width: 200px; height: 110px;}
+
+  .aboutWrap .channelBox .channelList li a img{width: 32px; margin-bottom: 20px;}
+  .aboutWrap .channelBox .channelList li a p{font-size: 14px;}
+
+}
+
+@media (max-width: 360px){
+
+  .aboutWrap .subTopBox{padding-bottom: 16px;}
+  .aboutWrap .subTopBox{height: 360px;}
+
+  .aboutWrap .titleBox{margin-bottom: 11vw;}
+  
+  .aboutWrap .aboutVisionBox{margin: 0 0 16.6vw 0;}
+  .aboutWrap .aboutMissionBox{margin:0 0 16.6vw 12.50vw;}
+  .aboutWrap .aboutFutureBox{margin:0 0 16.6vw 25.00vw;}
+  .aboutWrap .aboutJourneyBox{margin:0 0 16.6vw 37.50vw;}
+
+  .aboutWrap .aboutJourneyList li a .aboutJourneyDetailList li{font-size: 12px;}
+  .aboutWrap .aboutJourneyList li a .aboutJourneyYear,
+  .aboutWrap .aboutJourneyList li a .aboutJourneyTitle{font-size: 18px;}
+  .aboutWrap .aboutJourneyList li a .aboutJourneyDetailList li::before{width: 2px; height: 2px; margin: 7px 5px 0;}
+  .aboutWrap .aboutJourneyList li a .aboutJourneyHoverImgBox{max-width: 160px; height: 90px;}
+  .aboutWrap .channelBox .channelList li a p{font-size: 12px;}
+  .aboutWrap .channelBox .channelList li a span{font-size: 10px;}
+
+}

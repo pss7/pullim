@@ -1,15 +1,21 @@
 @charset "UTF-8";
 
-#wrap{display: flex; flex-direction: column; height: 100%;}
+#wrap{display: flex; flex-direction: column;}
 main{flex: 1;}
 footer{margin-top: auto;}
+
+.container{max-width: 1680px; width: 100%; padding: 0 60px; margin: 0 auto;}
+
+@media (max-width: 1199px){
+
+  .container{padding: 0 20px;}
+
+}
  
 /* 헤더 */
 #headerWrap{position: fixed; top:0; left:0; right:0; padding: 0 40px; display: flex; align-items: center; justify-content: space-between; z-index: 999999999; transition: all .7s;}
 #headerWrap.scroll{background-color: #000}
 #headerWrap.scroll .headerGnbBox .headerGnbList li h2 a{color: #fff;}
-#headerWrap.scroll .headerLogoBox h1 a img.logo_img01{display: none;}
-#headerWrap.scroll .headerLogoBox h1 a img.logo_img02{display: block;}
 #headerWrap .headerLogoBox h1 a,
 #headerWrap .headerLogoBox h1 a img{display: block;}
 #headerWrap .headerLogoBox h1 a img.logo_img02{display: none;}
