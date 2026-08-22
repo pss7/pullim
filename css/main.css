@@ -59,7 +59,7 @@
     opacity: 0; transition-delay: 0.2s;}
 
 #visualWrap .visualScrollBox{position: absolute; left: 50%;
-    bottom: 0; display: flex; flex-direction: column; align-items: center; gap: 1.04vw; transform: translateX(-50%);overflow: hidden; z-index: 9999999;}
+    bottom: 0; display: flex; flex-direction: column; align-items: center; gap: 1.04vw; transform: translateX(-50%);overflow: hidden; z-index: 99;}
 #visualWrap .visualScrollText{display: block; font-size: 0.83vw;  color: #B4B4B4; font-weight: 600;}
 #visualWrap .visualScrollLine{position: relative; width: 0.05vw; height: 3.13vw;
     background: #E8E8E8;}
@@ -101,6 +101,64 @@
 #visualWrap .visualVideoBox video{display: block; object-fit: cover; width: 12.50vw;  height: 22.24vw; }
 #visualWrap.active .visualVideoBox video{transform: scale(1); opacity: 1;}
 
+
+/* 팝업 영역 */
+#popupContentBox{display: flex; align-items: center; justify-content: space-between; position: absolute; left:40px; right: 40px; bottom: -100%; z-index: 999; transition: all 1.3s;}
+#popupContentBox.active{ bottom: 28px;}
+#popupContentBox .popupSlideBox{width: 380px; position: relative; border: 1px solid #E8E8E8; border-radius: 4px; overflow: hidden;}
+#popupContentBox .popupSlideBox .popupSlide{display: flex; flex-direction: column; justify-content: center; position: relative; padding: 19px 48px 19px 32px; width: 380px; background-color: #fff;}
+#popupContentBox .popupSlideBox .popupSlide::before{content: ''; position: absolute; top:0; left:8px; bottom: 0; width: 3px; background-color: #FD3D32; border-radius: 50px;}
+#popupContentBox .popupSlideBox .popupSlide h3{margin-bottom: 16px; font-weight: 600; color: #222; font-size: 16px;}
+#popupContentBox .popupSlideBox .popupSlide p{font-size: 12px; color: #222;}
+#popupContentBox .popupSlideBox .controlBox{display: flex; flex-direction: column; position: absolute; top:0; bottom: 0; right:0;}
+#popupContentBox .popupSlideBox .controlBox .popupSlideBtn{ position: relative; width: 32px; flex: 1; border: 1px solid #E8E8E8; background-color: #fff; border-width: 0 0 1px 1px;}
+#popupContentBox .popupSlideBox .controlBox .popupSlideBtn::after{content: ''; width: 20px; height: 20px; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);}
+#popupContentBox .popupSlideBox .controlBox .popupSlideBtn:last-child{border-bottom: 0;}
+#popupContentBox .popupSlideBox .controlBox .popupPrevBtn::after{background: url(../images/common/arrow_icon02.svg)no-repeat center / contain;} 
+#popupContentBox .popupSlideBox .controlBox .popupNextBtn::after{background: url(../images/common/arrow_icon02.svg)no-repeat center / contain; transform: translate(-50%, -50%) rotate(180deg);}
+#popupContentBox .popupVideoBox a{padding: 19px 20px 19px 32px; width: 366px;display: flex; align-items: center; justify-content: space-between;  gap: 0 20px; border: 1px solid #E8E8E8; border-radius: 4px; background-color: #fff;}
+#popupContentBox .popupVideoBox .popupVideoInfoText h3{font-weight: 600; color: #222; font-size: 16px;}
+#popupContentBox .popupVideoBox .popupVideoInfoText{font-size: 12px; font-weight: 600; }
+#popupContentBox .popupVideoBox .popupVideoInfoText span{font-size: 12px; font-weight: 600; color: #B4B4B4;}
+#popupContentBox .popupVideoBox .popupVideoInfoText a img{display: block;}
+#popupContentBox .popupVideoBox .popupVideo{border-radius: 8px; overflow: hidden;}
+#popupContentBox .popupVideoBox .popupVideo img{display: block; width: 100%; height: 100%; object-fit: cover;}
+
+@media (max-width: 1199px){
+
+  #popupContentBox{left: 20px; right: 20px;}
+
+}
+
+@media (max-width: 768px){
+
+  #popupContentBox{flex-direction: column; gap: 12px 0;}
+  #popupContentBox .popupSlideBox,
+  #popupContentBox .popupVideoBox{width: 100%;}
+  #popupContentBox .popupSlideBox .popupSlide{padding: 12px 48px 12px 24px;}
+  #popupContentBox .popupSlideBox .popupSlide h3{margin-bottom: 8px; font-size: 12px;}
+  #popupContentBox .popupSlideBox .popupSlide p{font-size: 10px;}
+  #popupContentBox .popupSlideBox .controlBox .popupSlideBtn::after{width: 12px; height: 12px;}
+  #popupContentBox .popupSlideBox .controlBox .popupSlideBtn{width: 32px;}
+  #popupContentBox .popupVideoBox a{width: 100%; padding: 11px 20px 11px 24px;}
+  #popupContentBox .popupVideoBox .popupVideoInfoText h3{font-size: 12px;}
+  #popupContentBox .popupVideoBox .popupVideoInfoText span{font-size: 10px;}
+  #popupContentBox .popupVideoBox .popupVideo{width: 70px; border-radius: 4px;}
+
+}
+
+@media (max-width: 360px){
+
+  #popupContentBox .popupSlideBox .popupSlide h3{margin-bottom: 6px; font-size: 12px;}
+  #popupContentBox .popupSlideBox .popupSlide p{font-size: 10px;}
+  #popupContentBox .popupSlideBox .popupSlide{padding: 11px 48px 11px 24px;}
+  #popupContentBox .popupSlideBox .controlBox .popupSlideBtn::after{width: 12px; height: 12px;}
+  #popupContentBox .popupVideoBox .popupVideoInfoText h3{font-size: 12px;}
+  #popupContentBox .popupVideoBox .popupVideoInfoText span{font-size: 10px;}
+  #popupContentBox .popupVideoBox a{padding: 11px 11px 11px 24px;}
+  #popupContentBox .popupVideoBox .popupVideo{width: 72px; height: 40px;}
+
+}
 
 @media (max-width: 1199px){
 
