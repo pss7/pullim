@@ -1003,4 +1003,97 @@ $(function () {
   requestAnimationFrame(
     refreshMotion
   );
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ /* 프로젝트 타원선 요소 */
+  const $projectText =
+    $('#contactWrap .contactProjectText');
+
+  let projectLinePlayed = false;
+
+
+  /* 프로젝트 타원선 실행 확인 */
+  function updateProjectLine() {
+    if (
+      !$projectText.length ||
+      projectLinePlayed
+    ) {
+      return;
+    }
+
+    const windowTop =
+      $(window).scrollTop();
+
+    const windowHeight =
+      $(window).height();
+
+    const triggerPosition =
+      windowTop +
+      windowHeight * 0.8;
+
+    const projectTextTop =
+      $projectText.offset().top;
+
+
+    /*
+     * 프로젝트 문구가 화면의
+     * 80% 지점에 도착하면 실행합니다.
+     */
+    if (
+      triggerPosition >=
+      projectTextTop
+    ) {
+      projectLinePlayed = true;
+
+      $projectText.addClass(
+        'active'
+      );
+    }
+  }
+
+
+  /* 스크롤과 화면 크기 변경 확인 */
+  $(window).on(
+    'scroll.contactProjectLine resize.contactProjectLine',
+    updateProjectLine
+  );
+
+
+  /* 새로고침 위치에서도 상태 확인 */
+  updateProjectLine();
+
+
+
+
+
+
+
 });
