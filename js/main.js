@@ -998,102 +998,89 @@ $(function () {
     }
   );
 
-
   /* 초기 스크롤 위치 계산 */
   requestAnimationFrame(
     refreshMotion
   );
 
+  /* 문의 영역 프로젝트 */
+  const $contactProjectLine =
+    $('#contactWrap .contactProjectLine');
+
+  const $contactProjectPath =
+    $contactProjectLine.find('path');
 
 
+  if (
+    $contactProjectLine.length &&
+    $contactProjectPath.length
+  ) {
+    /* 실제 SVG path 요소 가져오기 */
+    const contactProjectPath =
+      $contactProjectPath.get(0);
 
 
+    /* SVG 경로의 실제 길이 계산 */
+    const pathLength =
+      contactProjectPath.getTotalLength();
 
 
+    /* 선이 보이지 않는 초기 상태 */
+    gsap.set(
+      contactProjectPath,
+      {
+        strokeDasharray:
+          `${pathLength} ${pathLength}`,
+
+        strokeDashoffset:
+          pathLength
+      }
+    );
 
 
+    /* 프로젝트 문구가 화면에 들어오면 실행 */
+    ScrollTrigger.create({
+      trigger:
+        $contactProjectLine.closest(
+          '.contactProjectText'
+        ).get(0),
+
+      start:
+        'top 80%',
+
+      once:
+        true,
+
+      onEnter:
+        function () {
+          /* SVG 표시 */
+          $contactProjectLine.css(
+            'visibility',
+            'visible'
+          );
 
 
+          /* 타원 선 그리기 */
+          gsap.fromTo(
+            contactProjectPath,
+            {
+              strokeDashoffset:
+                pathLength
+            },
+            {
+              strokeDashoffset:
+                0,
 
+              duration:
+                0.7,
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- /* 프로젝트 타원선 요소 */
-  const $projectText =
-    $('#contactWrap .contactProjectText');
-
-  let projectLinePlayed = false;
-
-
-  /* 프로젝트 타원선 실행 확인 */
-  function updateProjectLine() {
-    if (
-      !$projectText.length ||
-      projectLinePlayed
-    ) {
-      return;
-    }
-
-    const windowTop =
-      $(window).scrollTop();
-
-    const windowHeight =
-      $(window).height();
-
-    const triggerPosition =
-      windowTop +
-      windowHeight * 0.8;
-
-    const projectTextTop =
-      $projectText.offset().top;
-
-
-    /*
-     * 프로젝트 문구가 화면의
-     * 80% 지점에 도착하면 실행합니다.
-     */
-    if (
-      triggerPosition >=
-      projectTextTop
-    ) {
-      projectLinePlayed = true;
-
-      $projectText.addClass(
-        'active'
-      );
-    }
+              ease:
+                'none'
+            }
+          );
+        }
+    });
   }
-
-
-  /* 스크롤과 화면 크기 변경 확인 */
-  $(window).on(
-    'scroll.contactProjectLine resize.contactProjectLine',
-    updateProjectLine
-  );
-
-
-  /* 새로고침 위치에서도 상태 확인 */
-  updateProjectLine();
-
-
-
-
-
 
 
 });
