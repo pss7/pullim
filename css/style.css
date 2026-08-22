@@ -1,5 +1,9 @@
 @charset "UTF-8";
 
+#wrap{display: flex; flex-direction: column; height: 100%;}
+main{flex: 1;}
+footer{margin-top: auto;}
+ 
 /* 헤더 */
 #headerWrap{position: fixed; top:0; left:0; right:0; padding: 0 40px; display: flex; align-items: center; justify-content: space-between; z-index: 999999999; transition: all .7s;}
 #headerWrap.scroll{background-color: #000}
