@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="Keywords" content="" />
+  <meta name="Description" content="" />
+  <meta name="Author" content="" />
+  <meta name="viewport"
+    content="width=device-width, height=device-height, initial-scale=1.0, minimum-scale=1.0, maximum-scale=2.0, user-scalable=yes">
+  <title>소식</title>
+  <link rel="stylesheet" href="../css/fonts.css">
+  <link rel="stylesheet" href="../css/reset.css">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/sub.css">
+  <link rel="stylesheet" href="../css/aos.css">
+  <link rel="stylesheet" href="../css/slick.css">
+
+  <!-- Lenis CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/lenis@1/dist/lenis.css">
+
+  <script src="../js/jquery-1.12.4.min.js"></script>
+  <script src="../js/slick.min.js"></script>
+  <script src="../js/aos.js"></script>
+
+  <!-- Lenis -->
+  <script src="https://unpkg.com/lenis@1/dist/lenis.min.js"></script>
+
+  <!-- GSAP -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+
+  <!-- GSAP ScrollTrigger -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
+
+  <script src="../js/sub.js"></script>
+  <script src="../js/script.js"></script>
+
+</head>
+
+<body>
+
+  <div id="wrap" class="newsWrap">
+
+    <!-- 헤더영역 -->
+    <header id="headerWrap">
+
+      <!-- 로고 영역 -->
+      <div class="headerLogoBox">
+        <h1>
+          <a href="#">
+            <img src="../images/common/logo03.svg" alt="the pullim">
+          </a>
+        </h1>
+      </div>
+      <!-- //로고 영역 -->
+
+      <!-- 메뉴 영역 -->
+      <div class="headerGnbBox">
+
+        <!-- 네비게이션 영역 -->
+        <nav class="headerGnb">
+          <ul class="headerGnbList">
+            <li>
+              <h2>
+                <a href="#">
+                  ABOUT
+                </a>
+              </h2>
+            </li>
+            <li>
+              <h2>
+                <a href="#">
+                  TEAM
+                </a>
+              </h2>
+            </li>
+            <li>
+              <h2>
+                <a href="#">
+                  SERVICE
+                </a>
+              </h2>
+            </li>
+            <li>
+              <h2>
+                <a href="#">
+                  NEWS
+                </a>
+              </h2>
+            </li>
+          </ul>
+        </nav>
+        <!-- //네비게이션 영역 -->
+
+      </div>
+      <!-- //메뉴 영역 -->
+
+      <!-- 문의하기 링크-->
+      <a href="#" class="headerContactLink">CONTACT</a>
+
+      <!-- 모바일메뉴 영역 -->
+      <div id="mobileMenuWrap">
+        <button type="button" class="mobileMenuBtn toggleBtn" aria-controls="mobileMenuBox" aria-expanded="false"
+          aria-label="모바일메뉴 열기">
+        </button>
+        <div id="mobileMenuBox" class="mobileMenuBox">
+          <nav class="mobileMenuNav">
+            <ul class="mobileMenu">
+              <li>
+                <h2>
+                  <a href="#">
+                    <span>[ 01 ]</span>
+                    ABOUT
+                  </a>
+                </h2>
+              </li>
+              <li>
+                <h2>
+                  <a href="#">
+                    <span>[ 02 ]</span>
+                    TEAM
+                  </a>
+                </h2>
+              </li>
+              <li>
+                <h2>
+                  <a href="#">
+                    <span>[ 03 ]</span>
+                    SERVICE
+                  </a>
+                </h2>
+              </li>
+              <li>
+                <h2>
+                  <a href="#">
+                    <span>[ 04 ]</span>
+                    NEWS
+                  </a>
+                </h2>
+              </li>
+              <li>
+                <h2>
+                  <a href="#">
+                    <span>[ 05 ]</span>
+                    CONTACT
+                  </a>
+                </h2>
+              </li>
+            </ul>
+          </nav>
+
+          <div class="mobileInfoBox">
+            <div class="mobileSnsBox">
+              <ul class="mobileSnsList">
+                <li>
+                  <a href="#">
+                    <img src="../images/common/youtube_icon.svg" alt="유튜브">
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="../images/common/instagram_icon.svg" alt="인스타그램">
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="../images/common/blog_icon.svg" alt="블로그">
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="../images/common/kakao_icon.svg" alt="카카오톡">
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            <address>
+              서울특별시 강남구 테헤란로 77길 11-8, 1/2/3/4층
+            </address>
+          </div>
+
+          <a href="#" class="proposalDownload" download>
+            <span>
+              제안서 다운로드
+            </span>
+          </a>
+
+          <button type="button" class="mobileMenuCloseBtn" aria-label="모바일메뉴 닫기">
+          </button>
+        </div>
+      </div>
+      <!-- //모바일 메뉴 영역-->
+
+    </header>
+    <!-- //헤더영역 -->
+
+    <!-- 서브 영역 -->
+    <main id="subWrap">
+
+      <!-- 상단영역 -->
+      <div class="subTopBox">
+        <div class="container">
+          <div class="topTitleBox">
+            <h2>
+              NEWS
+            </h2>
+            <p class="topText01">
+              WHAT’S HAPPENING <br>
+              AT PULLIM
+            </p>
+            <p class="topText02">
+              트렌디한 비즈니스 소식부터 크고 작은 사내 행사, 구성원들의 생생한 오피스 라이프까지 <br>
+              우리가 함께 도전하고 성장해 나가는 다채롭고 자유로운 이야기들을 전합니다
+            </p>
+          </div>
+        </div>
+      </div>
+      <!-- //상단영역 -->
+
+      <!-- 서브 콘텐츠 영역 -->
+      <div class="subContentBox">
+
+        <!-- 뉴스영역 -->
+        <div class="newsBox">
+          <div class="container">
+
+            <!-- 탭 버튼 영역 -->
+            <div class="newsTabBox">
+              <button type="button" class="newsTabBtn active">ALL</button>
+              <button type="button" class="newsTabBtn">#Culutre</button>
+              <button type="button" class="newsTabBtn">#Business</button>
+              <button type="button" class="newsTabBtn">#People</button>
+            </div>
+            <!-- //탭 버튼 영역 -->
+
+            <!-- 탭 콘텐츠 영역 -->
+            <ul class="newsList">
+              <li class="newsItem">
+                <a href="#" class="newsLink">
+                  <div class="newsTopBox">
+                    <span class="newsCategory">
+                      #Culture
+                    </span>
+                    <span class="newsDate">
+                      26 / 01.09
+                    </span>
+                  </div>
+
+                  <p class="newsTitle">
+                    The Pullim, 2026 <br>
+                    New Office Tour
+                  </p>
+
+                  <div class="newsImgBox">
+                    <img src="../images/sub/news_img01.jpg" alt="">
+                  </div>
+                </a>
+              <li class="newsItem">
+                <a href="#" class="newsLink">
+                  <div class="newsTopBox">
+                    <span class="newsCategory">
+                      #Business
+                    </span>
+                    <span class="newsDate">
+                      26 / 01.09
+                    </span>
+                  </div>
+
+                  <p class="newsTitle">
+                    Performance Marketing의 <br>
+                    새로운 기준을 만들다
+                  </p>
+
+                  <div class="newsImgBox">
+                    <img src="../images/sub/news_img02.jpg" alt="">
+                  </div>
+                </a>
+              </li>
+              <li class="newsItem">
+                <a href="#" class="newsLink">
+                  <div class="newsTopBox">
+                    <span class="newsCategory">
+                      #Business
+                    </span>
+                    <span class="newsDate">
+                      26 / 01.09
+                    </span>
+                  </div>
+
+                  <p class="newsTitle">
+                    데이터로 발견하고, <br>
+                    크리에이티브로 완성하다
+                  </p>
+
+                  <div class="newsImgBox">
+                    <img src="../images/sub/news_img03.jpg" alt="">
+                  </div>
+                </a>
+              </li>
+
+              <li class="newsItem">
+                <a href="#" class="newsLink">
+                  <div class="newsTopBox">
+                    <span class="newsCategory">
+                      #People
+                    </span>
+                    <span class="newsDate">
+                      26 / 01.09
+                    </span>
+                  </div>
+
+                  <p class="newsTitle">
+                    Our People, Our Growth <br>
+                    성장을 만드는 사람들
+                  </p>
+
+                  <div class="newsImgBox">
+                    <img src="../images/sub/news_img04.jpg" alt="">
+                  </div>
+                </a>
+              <li class="newsItem">
+                <a href="#" class="newsLink">
+                  <div class="newsTopBox">
+                    <span class="newsCategory">
+                      #Business
+                    </span>
+                    <span class="newsDate">
+                      26 / 01.09
+                    </span>
+                  </div>
+
+                  <p class="newsTitle">
+                    2026 상반기 <br>
+                    주요 프로젝트 하이라이트
+                  </p>
+
+                  <div class="newsImgBox">
+                    <img src="../images/sub/news_img05.jpg" alt="">
+                  </div>
+                </a>
+              </li>
+              <li class="newsItem">
+                <a href="#" class="newsLink">
+                  <div class="newsTopBox">
+                    <span class="newsCategory">
+                      #Business
+                    </span>
+                    <span class="newsDate">
+                      26 / 01.09
+                    </span>
+                  </div>
+
+                  <p class="newsTitle">
+                    브랜드 성장을 이끄는 <br>
+                    전략적 크리에이티브
+                  </p>
+
+                  <div class="newsImgBox">
+                    <img src="../images/sub/news_img06.jpg" alt="">
+                  </div>
+                </a>
+              </li>
+
+              <li class="newsItem">
+                <a href="#" class="newsLink">
+                  <div class="newsTopBox">
+                    <span class="newsCategory">
+                      #People
+                    </span>
+                    <span class="newsDate">
+                      26 / 01.09
+                    </span>
+                  </div>
+
+                  <p class="newsTitle">
+                    우리가 AI를 실무에 활용하는 방식
+                  </p>
+
+                  <div class="newsImgBox">
+                    <img src="../images/sub/news_img07.jpg" alt="">
+                  </div>
+                </a>
+              <li class="newsItem">
+                <a href="#" class="newsLink">
+                  <div class="newsTopBox">
+                    <span class="newsCategory">
+                      #Business
+                    </span>
+                    <span class="newsDate">
+                      26 / 01.09
+                    </span>
+                  </div>
+
+                  <p class="newsTitle">
+                    The Pullim, <br>
+                    새로운 파트너십을 시작합니다
+                  </p>
+
+                  <div class="newsImgBox">
+                    <img src="../images/sub/news_img08.jpg" alt="">
+                  </div>
+                </a>
+              </li>
+              <li class="newsItem">
+                <a href="#" class="newsLink">
+                  <div class="newsTopBox">
+                    <span class="newsCategory">
+                      ##Culutre
+                    </span>
+                    <span class="newsDate">
+                      26 / 01.09
+                    </span>
+                  </div>
+
+                  <p class="newsTitle">
+                    아이디어가 모여 <br>
+                    성과로 이어지는 공간
+                  </p>
+
+                  <div class="newsImgBox">
+                    <img src="../images/sub/news_img09.jpg" alt="">
+                  </div>
+                </a>
+              </li>
+
+              <li class="newsItem">
+                <a href="#" class="newsLink">
+                  <div class="newsTopBox">
+                    <span class="newsCategory">
+                      #People
+                    </span>
+                    <span class="newsDate">
+                      26 / 01.09
+                    </span>
+                  </div>
+
+                  <p class="newsTitle">
+                    더 넓은 세상을 향한 <br>
+                    Pullim의 도전과 여정
+                  </p>
+
+                  <div class="newsImgBox">
+                    <img src="../images/sub/news_img10.jpg" alt="">
+                  </div>
+                </a>
+              <li class="newsItem">
+                <a href="#" class="newsLink">
+                  <div class="newsTopBox">
+                    <span class="newsCategory">
+                      #People
+                    </span>
+                    <span class="newsDate">
+                      26 / 01.09
+                    </span>
+                  </div>
+
+                  <p class="newsTitle">
+                    Meet the Team <br>
+                    Behind the Growth
+                  </p>
+
+                  <div class="newsImgBox">
+                    <img src="../images/sub/news_img11.jpg" alt="">
+                  </div>
+                </a>
+              </li>
+              <li class="newsItem">
+                <a href="#" class="newsLink">
+                  <div class="newsTopBox">
+                    <span class="newsCategory">
+                      #Culutre
+                    </span>
+                    <span class="newsDate">
+                      26 / 01.09
+                    </span>
+                  </div>
+
+                  <p class="newsTitle">
+                    기획부터 실행까지, <br>
+                    Pullim의 일하는 프로세스
+                  </p>
+
+                  <div class="newsImgBox">
+                    <img src="../images/sub/news_img12.jpg" alt="">
+                  </div>
+                </a>
+              </li>
+            </ul>
+            <!-- //탭 콘텐츠 영역 -->
+
+            <button type="button" class="newsLoadMoreBtn">
+              LOAD MORE
+            </button>
+
+          </div>
+
+        </div>
+        <!-- //뉴스영역 -->
+
+      </div>
+      <!-- //서브 콘텐츠 영역 -->
+
+    </main>
+    <!-- //메인 영역 -->
+
+    <!-- 푸터영역 -->
+    <footer id="footerWrap">
+      <div class="container">
+        <div class="footerBox">
+
+          <!-- 로고, 개인정보처림방침 영역 -->
+          <div class="footerLeftBox">
+            <div class="footerLogoBox">
+              <h1>
+                <img src="../../images/common/logo02.svg" alt="the pullim">
+              </h1>
+            </div>
+
+            <a href="#" class="footerPolicyLink">개인정보처리방침</a>
+          </div>
+          <!-- //로고 영역 -->
+
+          <!-- 정보 영역 -->
+          <div class="footerInfoTextBox">
+            <div class="footerInfoText">
+              <dl>
+                <dt>대표이사</dt>
+                <dd>김제현</dd>
+              </dl>
+              <dl>
+                <dt>사업자등록번호</dt>
+                <dd>267-09-02360</dd>
+              </dl>
+              <dl>
+                <dt>업태</dt>
+                <dd>과학 및 기술 서비스 </dd>
+              </dl>
+              <dl>
+                <dt>대표번호</dt>
+                <dd>02-555-9530</dd>
+              </dl>
+            </div>
+            <address>서울특별시 강남구 테헤란로 77길 11-8, 1/2/3/4층</address>
+          </div>
+          <!-- //정보 영역 -->
+
+          <!-- sns, copyright 영역 -->
+          <div class="footerInfoBox">
+            <div class="footerInfoSnsBox">
+              <ul class="footerInfoSnsList">
+                <li>
+                  <a href="#">
+                    <img src="../../images/common/youtube_icon.svg" alt="유튜브">
+                  </a>
+                </li>
+                <li>
+                  <a href="https://www.instagram.com/thepullim_official">
+                    <img src="../../images/common/instagram_icon.svg" alt="인스타그램">
+                  </a>
+                </li>
+                <li>
+                  <a href="https://blog.naver.com/pullim_official">
+                    <img src="../../images/common/blog_icon.svg" alt="블로그">
+                  </a>
+                </li>
+                <li>
+                  <a href="https://pf.kakao.com/_QxkJHn">
+                    <img src="../../images/common/kakao_icon.svg" alt="카카오톡">
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <span class="copyright">
+              Copyright@풀림.All Rights Reserved.
+            </span>
+          </div>
+          <!-- //sns 영역 -->
+
+        </div>
+      </div>
+    </footer>
+    <!-- //푸터영역 -->
+
+  </div>
+  <!-- //wrap -->
+
+</body>
+
+</html>

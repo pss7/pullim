@@ -6,7 +6,7 @@
 
 .topTitleBox{display: flex; flex-direction: column; justify-content: space-between; gap: 0 20px;}
 .topTitleBox h2{flex-shrink: 0; color: #FD3D32; font-weight: 500; font-family: 'HelveticaNowDisplay'; font-size: 60px; line-height: 1;}
-.topTitleBox .topText01{align-self: flex-end; color: #fff; font-size: 80px; font-weight: 500; font-family: 'HelveticaNowDisplay'; line-height: 1; word-break: keep-all; text-align: right;}
+.topTitleBox .topText01{align-self: flex-end; color: #222; font-size: 80px; font-weight: 500; font-family: 'HelveticaNowDisplay'; line-height: 1; word-break: keep-all; text-align: right;}
 .topTitleBox .topText02{margin-top: 60px; color: #222; font-size: 20px; font-weight: 600; text-align: right;}
 .titleBox span{display: block; margin-bottom: 20px; color: #222; font-weight: 600; font-size: 16px;}
 .titleBox p{font-size: 40px; font-weight: 500; color: #222; font-family: 'HelveticaNowDisplay'; line-height: 1; letter-spacing: -1px;}
@@ -72,6 +72,47 @@
 
 }
 
+
+/* 폼 */
+input{padding:12px 10px 12px 12px; border: 2px solid #222; border-width: 0 0 2px 0; font-weight: 600; font-size: 20px; background-color: transparent;}
+input::placeholder{color: #222;}
+input[type="checkbox"] + label{display: flex; align-items: center;color: #222; font-weight: 600; cursor: pointer;}
+input[type="checkbox"] + label::before{content: ''; flex-shrink: 0; margin-right: 20px; width: 32px; height: 32px; border: 1px solid #222;}
+input[type="checkbox"]:checked + label::before{background: url(../images/sub/check_icon.svg)no-repeat center / contain;}
+textarea{padding: 24px 20px 20px 24px; border: 2px solid #222; font-weight: 600; color: #222; font-size: 20px; background: transparent;}
+textarea::placeholder{color: #222;}
+
+/* 폼 - 포커스 */
+input:focus,
+textarea:focus{border-color: #fff; color: #fff;}
+input:focus::placeholder,
+textarea:focus::placeholder {color: #fff;}
+
+@media (max-width: 1199px){
+
+  input,
+  textarea{font-size: 18px;}
+
+}
+
+@media (max-width: 768px){
+
+  input,
+  textarea{font-size: 16px;}
+
+  input[type="checkbox"] + label::before{width: 28px; height: 28px;}
+  input[type="checkbox"]:checked + label::before{background-size: 20px;}
+
+}
+
+@media (max-width: 360px){
+  
+  input,
+  textarea{font-size: 13px;}
+  input[type="checkbox"] + label{font-size: 12px;}
+  input[type="checkbox"] + label::before{margin-right: 12px; width: 24px; height: 24px;}
+
+}
 
 /* 가운데영역 */
 .container{max-width: 1560px; width: 100%; margin: 0 auto; padding: 0 60px;}
@@ -204,6 +245,7 @@
 
 /* 문의 영역 */
 .contactWrap{background-color: #FD3D32;}
+.contactWrap .topTitleBox .topText01{color: #fff;}
 .contactWrap #headerWrap .headerGnbBox .headerGnbList li h2 a{color: #fff;}
 .contactWrap #headerWrap .headerContactLink{background-color: #fff; color: #FD3D32;}
 .contactWrap #headerWrap .headerContactLink::after{background: url(../images/common/arrow_icon03.svg) no-repeat center}
@@ -262,45 +304,52 @@
 
 }
 
-/* 폼 */
-input{padding:12px 10px 12px 12px; border: 2px solid #222; border-width: 0 0 2px 0; font-weight: 600; font-size: 20px; background-color: transparent;}
-input::placeholder{color: #222;}
-input[type="checkbox"] + label{display: flex; align-items: center;color: #222; font-weight: 600; cursor: pointer;}
-input[type="checkbox"] + label::before{content: ''; flex-shrink: 0; margin-right: 20px; width: 32px; height: 32px; border: 1px solid #222;}
-input[type="checkbox"]:checked + label::before{background: url(../images/sub/check_icon.svg)no-repeat center / contain;}
-textarea{padding: 24px 20px 20px 24px; border: 2px solid #222; font-weight: 600; color: #222; font-size: 20px; background: transparent;}
-textarea::placeholder{color: #222;}
+/* 뉴스영역 */
+.newsWrap{background-color: #F5F5F5;}
+.newsWrap .newsTabBox{margin-bottom: 40px; display: flex;flex-wrap: wrap; justify-content: flex-end; gap: 10px 20px;}
+.newsWrap .newsTabBox .newsTabBtn{padding: 6px 20px; border: 1px solid #222; border-radius: 50px; font-weight: 600; color: #222;}
+.newsWrap .newsTabBox .newsTabBtn.active{background-color: #FD3D32; color: #fff; border: 1px solid #FD3D32;}
 
-/* 폼 - 포커스 */
-input:focus,
-textarea:focus{border-color: #fff; color: #fff;}
-input:focus::placeholder,
-textarea:focus::placeholder {color: #fff;}
+.newsWrap .newsList{margin-bottom: 120px; padding-top: 80px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 60px; border-top: 1px solid #555;}
+.newsWrap .newsList li a{position: relative; display: block; padding: 24px; background-color: #fff;}
+.newsWrap .newsList li a .newsTopBox .newsCategory{display: inline-block; padding: 3px 12px; color: #222; font-size: 12px; font-weight: 600; border: 1px solid #222; border-radius: 50px; }
+.newsWrap .newsList li a .newsTitle{min-height: 60px; margin-bottom: 80px; color: #222; font-size: 20px; font-weight: 600;}
+.newsWrap .newsList li a .newsImgBox img{display: block; width: 100%;}
+.newsWrap .newsList li a .newsTopBox{margin-bottom: 38px;display: flex; align-items: center; gap: 10px; justify-content: space-between;}
+.newsWrap .newsList li a .newsTopBox .newsDate{font-size: 13px; font-weight: 600; color: #B4B4B4;}
+.newsWrap .newsLoadMoreBtn{display: block; margin: 0 auto; font-size: 40px; font-weight: 500; color: #B4B4B4; font-family: 'HelveticaNowDisplay';}
 
 @media (max-width: 1199px){
 
-  input,
-  textarea{font-size: 18px;}
+  .newsWrap .newsList{gap: 30px;}
+
+}
+
+@media (max-width: 1024px){
+
+  .newsWrap .newsList{padding-top: 60px; gap: 20px; grid-template-columns: repeat(2, 1fr);}
 
 }
 
 @media (max-width: 768px){
 
-  input,
-  textarea{font-size: 16px;}
-
-  input[type="checkbox"] + label::before{width: 28px; height: 28px;}
-  input[type="checkbox"]:checked + label::before{background-size: 20px;}
+  .newsWrap .newsList{gap: 20px; grid-template-columns: 1fr;}
+  .newsWrap .newsList li a .newsTopBox{margin-bottom: 30px;}
+  .newsWrap .newsList li a .newsTitle{min-height: auto; margin-bottom: 40px; font-size: 18px;}
 
 }
 
 @media (max-width: 360px){
+
+  .newsWrap .newsTabBox{gap: 8px;}
+  .newsWrap .newsTabBox{margin-bottom: 20px;}
+  .newsWrap .newsList{padding-top: 20px;}
+  .newsWrap .newsTabBox .newsTabBtn{font-size: 12px;}
+  .newsWrap .newsList li a{padding: 16px;}
+  .newsWrap .newsList li a .newsTopBox .newsDate,
+  .newsWrap .newsList li a .newsTopBox .newsCategory{font-size: 10px;}
+  .newsWrap .newsList li a .newsTitle{margin-bottom: 12px; font-size: 13px;}
+  .newsWrap .newsList li a .newsTopBox{margin-bottom: 16px;}
   
-
-  input,
-  textarea{font-size: 13px;}
-  input[type="checkbox"] + label{font-size: 12px;}
-  input[type="checkbox"] + label::before{margin-right: 12px; width: 24px; height: 24px;}
-
 
 }
