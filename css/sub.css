@@ -1,8 +1,9 @@
 @charset "UTF-8";
 
 /* 공통 */
+#subWrap{padding: 240px 0 0;}
 .subContentBox{padding: 0 0 100px;}
-.subTopBox{margin-bottom: 120px; padding: 240px 0 0;}
+.subTopBox{margin-bottom: 120px;}
 
 .topTitleBox{display: flex; flex-direction: column; justify-content: space-between; gap: 0 20px;}
 .topTitleBox h2{flex-shrink: 0; color: #FD3D32; font-weight: 500; font-family: 'HelveticaNowDisplay'; font-size: 60px; line-height: 1;}
@@ -34,7 +35,8 @@
 @media (max-width: 768px){
 
   .subContentBox{padding: 0 0 50px;}
-  .subTopBox{padding: 180px 0 0; margin-bottom: 80px;}
+  #subWrap{padding: 180px 0 0; }
+  .subTopBox{margin-bottom: 80px;}
 
   .topTitleBox h2{font-size: 30px;}
   .topTitleBox .topText01{font-size: 36px;}
@@ -46,7 +48,7 @@
 
 @media (max-width: 480px){
 
-  .subTopBox{padding: 110px 0 0;}
+  #subWrap{padding: 110px 0 0;}
 
   .topTitleBox h2{font-size: 26px;}
   .topTitleBox .topText01{font-size: 28px;}
@@ -318,6 +320,24 @@ textarea:focus::placeholder {color: #fff;}
 .newsWrap .newsList li a .newsTopBox .newsDate{font-size: 13px; font-weight: 600; color: #B4B4B4;}
 .newsWrap .newsLoadMoreBtn{display: block; margin: 0 auto; font-size: 40px; font-weight: 500; color: #B4B4B4; font-family: 'HelveticaNowDisplay';}
 
+
+
+/* 뉴스 상세 영역 */
+.newsWrap .newsViewBox .newsViewHeaderBox{margin-bottom: 24px; display: flex; align-items: center; gap: 20px; justify-content: space-between;}
+.newsWrap .newsViewBox .newsViewHeaderBox .newsViewBackLink{font-size: 20px; color: #B4B4B4; font-weight: 600;}
+.newsWrap .newsViewBox .newsViewHeaderBox .newsViewCategory{padding: 5px 20px; border: 1px solid #222; font-weight: 600; color: #222; border-radius: 50px;}
+.newsWrap .newsViewBox .newsViewHeaderBox .newsViewDate{color: #222; font-weight: 600;}
+.newsWrap .newsViewBox .newsViewTitle{margin-bottom: 40px; color: #222; font-weight: 700; font-size: 32px; text-align: center;}
+.newsWrap .newsViewBox .newsViewContentBox{margin-bottom: 85px;}
+.newsWrap .newsViewBox .newsViewContentBox .container{max-width: 720px; padding: 0;}
+.newsWrap .newsViewBox .newsViewContentBox .newsViewSubTitle{font-size: 20px; font-weight: 600; color: #222;}
+.newsWrap .newsViewBox .newsViewContentBox .newsViewImgBox img{display: block; max-width: 100%; margin: 20px auto;}
+.newsWrap .newsViewBox .newsViewContentBox .newsViewText{margin: 20px auto; color: #222;}
+.newsWrap .newsViewBox .newsViewNavBox{padding: 40px 0 0; display: flex; align-items: center; justify-content: space-between; border-top: 1px solid #555;}
+.newsWrap .newsViewBox .newsViewNavBox .newsViewNavLabel{display: block; margin-bottom: 10px; font-weight: 600; color: #222;}
+.newsWrap .newsViewBox .newsViewNavBox .newsViewNavTitle{font-weight: 600; color: #222; font-size: 20px;}
+.newsWrap .newsViewBox .newsViewNavBox .newsViewListLink{font-size: 40px; font-weight: 500; color: #B4B4B4; font-family: 'HelveticaNowDisplay';}
+
 /* 활성화, 호버 */
 .newsWrap .newsTabBox .newsTabBtn.active,
 .newsWrap .newsTabBox .newsTabBtn:hover{background-color: #FD3D32; color: #fff; border: 1px solid #FD3D32;}
@@ -326,12 +346,21 @@ textarea:focus::placeholder {color: #fff;}
 
   .newsWrap .newsList{gap: 30px;}
 
+  .newsWrap .newsViewBox .newsViewHeaderBox .newsViewBackLink{font-size: 18px;}
+  .newsWrap .newsViewBox .newsViewTitle{font-size: 28px;}
+  .newsWrap .newsViewBox .newsViewContentBox .newsViewSubTitle{font-size: 18px;}
+  .newsWrap .newsViewBox .newsViewNavBox .newsViewListLink{font-size: 30px;}
+  .newsWrap .newsViewBox .newsViewNavBox .newsViewNavTitle{font-size: 18px;}
+
 }
 
 @media (max-width: 1024px){
 
   .newsWrap .newsList{margin-bottom: 60px; padding-top: 60px; gap: 20px; grid-template-columns: repeat(2, 1fr);}
   .newsWrap .newsLoadMoreBtn{font-size: 26px;}
+  .newsWrap .newsViewBox .newsViewNavBox{flex-direction: column; align-items: flex-start; gap: 16px 0;}
+  .newsWrap .newsViewBox .newsViewNavBox .newsViewListLink{margin-top: 24px; order: 1; align-self: flex-end;}
+  
 
 }
 
@@ -340,6 +369,18 @@ textarea:focus::placeholder {color: #fff;}
   .newsWrap .newsList{gap: 20px; grid-template-columns: 1fr;}
   .newsWrap .newsList li a .newsTopBox{margin-bottom: 30px;}
   .newsWrap .newsList li a .newsTitle{min-height: auto; margin-bottom: 40px; font-size: 18px;}
+  
+  .newsWrap .newsViewBox .newsViewContentBox{margin-bottom: 55px;}
+  .newsWrap .newsViewBox .newsViewHeaderBox .newsViewBackLink{font-size: 16px;}
+  .newsWrap .newsViewBox .newsViewTitle{font-size: 26px;}
+  .newsWrap .newsViewBox .newsViewNavBox .newsViewNavLabel{margin-bottom: 4px;}
+
+}
+
+@media (max-width: 480px){
+
+  .newsWrap .newsViewBox .newsViewTitle{margin-bottom: 34px; font-size: 22px;}
+  .newsWrap .newsViewBox .newsViewNavBox .newsViewListLink{font-size: 26px;}
 
 }
 
@@ -355,6 +396,24 @@ textarea:focus::placeholder {color: #fff;}
   .newsWrap .newsList li a .newsTitle{margin-bottom: 12px; font-size: 13px;}
   .newsWrap .newsList li a .newsTopBox{margin-bottom: 16px;}
   .newsWrap .newsLoadMoreBtn{font-size: 16px;}
+
+  .newsWrap .newsViewBox .newsViewHeaderBox .newsViewBackLink{font-size: 13px;}
+  .newsWrap .newsViewBox .newsViewHeaderBox .newsViewCategory{font-size: 10px;}
+  .newsWrap .newsViewBox .newsViewHeaderBox .newsViewCategory{padding: 1px 7px;}
+  .newsWrap .newsViewBox .newsViewHeaderBox .newsViewDate{font-size: 10px;}
+  .newsWrap .newsViewBox .newsViewTitle,
+  .newsWrap .newsViewBox .newsViewHeaderBox{margin-bottom: 40px;}
+  .newsWrap .newsViewBox .newsViewTitle{font-size: 13px;}
+  .newsWrap .newsViewBox .newsViewContentBox .newsViewText{font-size: 12px;}
+  .newsWrap .newsViewBox .newsViewContentBox .newsViewSubTitle{font-size: 13px;}
+  .newsWrap .newsViewBox .newsViewContentBox .newsViewText{margin: 12px auto;}
+  .newsWrap .newsViewBox .newsViewContentBox{margin-bottom: 40px;}
+  .newsWrap .newsViewBox .newsViewNavBox{padding: 16px 0 0;}
+  .newsWrap .newsViewBox .newsViewNavBox .newsViewNavLabel{font-size: 10px;}
+  .newsWrap .newsViewBox .newsViewNavBox .newsViewNavTitle{font-size: 13px;}
+  .newsWrap .newsViewBox .newsViewNavBox .newsViewListLink{font-size: 16px;}
+
+
   
 }
 
@@ -448,6 +507,29 @@ textarea:focus::placeholder {color: #fff;}
 .teamWrap .teamWorkPlaceBox .teamBenefitList li a .teamBenefitImgBox{ position: absolute; top: 50%; left:286px; transform: translateY(-50%); display: none; align-items: flex-start; z-index: 9;}
 .teamWrap .teamWorkPlaceBox .teamBenefitList li a .teamBenefitImgBox img{display: block; max-width: 100%;}
 .teamWrap .teamWorkPlaceBox .teamBenefitList li a .teamBenefitImgBox img:nth-child(2){margin-top: 60px;}
+.teamWrap .teamCultureBox{position: relative; height: 800px;}
+.teamWrap .teamCultureBox .teamCultureImgBox{position: absolute; top:0; right:0; bottom: 0;}
+.teamWrap .teamCultureBox .teamCultureImgBox img{display: block;}
+.teamWrap .teamCultureBox .titleBox{margin-bottom: 80px;}
+.teamWrap .teamCultureBox .titleBox span,
+.teamWrap .teamCultureBox .titleBox p,
+.teamWrap .teamCultureBox .infoText{color: #fff}
+.teamWrap .teamCultureBox .infoText{padding-left: 120px;}
+.teamWrap .teamCultureBox .teamCultureTextBox{display: flex; gap: 20px 110px; position: absolute; bottom: 98px; left:0;}
+.teamWrap .teamCultureBox .teamCultureTextBox p{color: #fff; font-size: 16px;}
+.teamWrap .teamCultureBox .teamCultureTextBox p strong{font-weight: 600; font-size: 20px;}
+
+@media (max-width: 1480px){
+
+  .teamWrap .teamCultureBox{height: auto;}
+  .teamWrap .teamCultureBox .teamCultureImgBox{margin-bottom: 40px; width: 100%; display: flex; justify-content: flex-end;}
+  .teamWrap .teamCultureBox .teamCultureImgBox img{width: 500px;}
+  .teamWrap .teamCultureBox .teamCultureImgBox,
+  .teamWrap .teamCultureBox .teamCultureTextBox{position: static;}
+  .teamWrap .teamCultureBox .teamCultureTextBox{flex-direction: column;}
+  .teamWrap .teamCultureBox .infoText{margin-bottom: 40px; padding-left: 0;}
+
+}
 
 @media (max-width: 1199px){
 
@@ -471,6 +553,8 @@ textarea:focus::placeholder {color: #fff;}
   .teamWrap .teamWorkPlaceBox .teamBenefitList li a .teamBenefitImgBox{position: static; transform: none; display: flex; }
   .teamWrap .teamWorkPlaceBox .teamBenefitList li a .teamBenefitImgBox img:nth-child(2){margin: 0;}
 
+  .teamWrap .teamCultureBox .titleBox{margin-bottom: 40px;}
+
 }
 
 @media (max-width: 768px){
@@ -487,9 +571,13 @@ textarea:focus::placeholder {color: #fff;}
   .teamWrap .teamInterviewTeam{font-size: 18px;}
 
   .teamWrap .teamWorkPlaceBox .infoText{margin-bottom: 120px;}
+  .teamWrap .teamWorkPlaceBox .teamBenefitList{margin-bottom: 120px;}
   .teamWrap .teamWorkPlaceBox .teamBenefitList li a h3{font-size: 24px;}
   .teamWrap .teamWorkPlaceBox .teamBenefitList li a p{font-size: 16px;}
   .teamWrap .teamWorkPlaceBox .teamBenefitList li a .teamBenefitImgBox img{width: 50%;}
+
+  .teamWrap .teamCultureBox .teamCultureTextBox p strong{font-size: 18px;}
+  .teamWrap .teamCultureBox .teamCultureImgBox img{width: 350px;}
 
 }
 
@@ -504,9 +592,13 @@ textarea:focus::placeholder {color: #fff;}
   .teamWrap .teamInterviewLink{gap: 8px 0;}
   .teamWrap .teamInterviewItem:nth-child(2){transform: translateY(31vw);}
 
+  .teamWrap .teamWorkPlaceBox .teamBenefitList{margin-bottom: 80px;}
   .teamWrap .teamWorkPlaceBox .teamBenefitList li a{padding: 20px 0;}
   .teamWrap .teamWorkPlaceBox .teamBenefitList li a h3{font-size: 16px;}
   .teamWrap .teamWorkPlaceBox .teamBenefitList li a p{font-size: 12px;}
+
+  .teamWrap .teamCultureBox .teamCultureTextBox p strong{font-size: 16px;}
+  .teamWrap .teamCultureBox .teamCultureImgBox img{width: 250px;}
 
 }
 
@@ -520,5 +612,9 @@ textarea:focus::placeholder {color: #fff;}
   .teamWrap .teamMemberList li a .teamMemberTextBox h3{font-size: 12px;}
 
   .teamWrap .teamInterviewTitle{font-size: 24px;}
+
+  .teamWrap .teamCultureBox .teamCultureImgBox img{width: 188px;}
+  .teamWrap .teamCultureBox .teamCultureTextBox p strong{font-size: 13px;}
+  .teamWrap .teamCultureBox .teamCultureTextBox p{font-size: 12px;}
 
 }
