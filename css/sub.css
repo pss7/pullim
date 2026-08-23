@@ -79,7 +79,7 @@ input{padding:12px 10px 12px 12px; border: 2px solid #222; border-width: 0 0 2px
 input::placeholder{color: #222;}
 input[type="checkbox"] + label{display: flex; align-items: center;color: #222; font-weight: 600; cursor: pointer;}
 input[type="checkbox"] + label::before{content: ''; flex-shrink: 0; margin-right: 20px; width: 32px; height: 32px; border: 1px solid #222;}
-input[type="checkbox"]:checked + label::before{background: url(../images/sub/check_icon.svg)no-repeat center / contain;}
+input[type="checkbox"]:checked + label::before{ background: url(../images/sub/check_icon.svg)no-repeat center / contain; background-size: 22px;}
 textarea{padding: 24px 20px 20px 24px; border: 2px solid #222; font-weight: 600; color: #222; font-size: 20px; background: transparent;}
 textarea::placeholder{color: #222;}
 
@@ -408,3 +408,4 @@ textarea:focus::placeholder {color: #fff;}
 .teamWrap .topTitleBox .topText01,
 .teamWrap .topTitleBox .topText02{color: #fff;}
 .teamWrap .topTitleBox .topText02 span{font-weight: 300;}
+

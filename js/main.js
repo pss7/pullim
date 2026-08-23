@@ -84,6 +84,7 @@ jQuery(function ($) {
 
 
   /* 비주얼 영역 */
+  /* 비주얼 영역 */
   function initVisualMotion() {
     const $visualWrap =
       $('#visualWrap');
@@ -115,7 +116,7 @@ jQuery(function ($) {
     let visualStep = -1;
 
 
-    /* 비주얼 단계 적용 */
+    /* 비주얼 스크롤 단계 적용 */
     function applyVisualStep(
       nextStep
     ) {
@@ -125,33 +126,28 @@ jQuery(function ($) {
         return;
       }
 
+
       visualStep =
         nextStep;
 
 
+      /* 첫 번째 스크롤 단계 */
       $visualBox.toggleClass(
         'step01',
         visualStep >= 1
       );
 
+
+      /* 두 번째 스크롤 단계 */
       $visualBox.toggleClass(
         'step02',
         visualStep >= 2
       );
 
+
       $visualWrap.toggleClass(
         'step02',
         visualStep >= 2
-      );
-
-      $popupContentBox.toggleClass(
-        'active',
-        visualStep >= 1
-      );
-
-      $proposalDownloadBtn.toggleClass(
-        'active',
-        visualStep >= 1
       );
     }
 
@@ -160,6 +156,7 @@ jQuery(function ($) {
     function updateVisualStep(
       progress
     ) {
+      /* 첫 화면 */
       if (
         progress < 1 / 6
       ) {
@@ -169,6 +166,7 @@ jQuery(function ($) {
       }
 
 
+      /* 첫 번째 스크롤 */
       if (
         progress < 1 / 2
       ) {
@@ -178,14 +176,33 @@ jQuery(function ($) {
       }
 
 
+      /* 두 번째 스크롤 */
       applyVisualStep(2);
     }
 
 
-    /* 비주얼 첫 등장 */
+    /*
+     * 페이지 첫 진입
+     *
+     * 텍스트, 비디오, 팝업,
+     * PDF 버튼을 함께 등장시킵니다.
+     */
     setTimeout(
       function () {
+        /* 텍스트와 비디오 등장 */
         $visualBox.addClass(
+          'active'
+        );
+
+
+        /* 팝업 등장 */
+        $popupContentBox.addClass(
+          'active'
+        );
+
+
+        /* PDF 버튼 등장 */
+        $proposalDownloadBtn.addClass(
           'active'
         );
       },
@@ -195,36 +212,50 @@ jQuery(function ($) {
 
     /*
      * CSS sticky와 ScrollTrigger pin이
-     * 겹치지 않도록 정리합니다.
+     * 겹치지 않도록 설정합니다.
      */
     $visualWrap.css({
-      height: 'auto',
-      position: 'relative',
-      zIndex: 1
+      height:
+        'auto',
+
+      position:
+        'relative',
+
+      zIndex:
+        1
     });
 
 
     $visualBox.css({
-      position: 'relative',
-      top: 'auto'
+      position:
+        'relative',
+
+      top:
+        'auto'
     });
 
 
     /*
-     * 마지막 스크롤 구간에서
+     * 비주얼 마지막 스크롤 구간에서
      * 소개 영역이 아래에서 올라옵니다.
      */
     if (
       $aboutWrap.length
     ) {
       $aboutWrap.css({
-        position: 'relative',
-        zIndex: 2,
-        marginTop: '-100vh'
+        position:
+          'relative',
+
+        zIndex:
+          2,
+
+        marginTop:
+          '-100vh'
       });
     }
 
 
+    /* 첫 화면 상태 */
     applyVisualStep(0);
 
 
@@ -251,7 +282,7 @@ jQuery(function ($) {
 
       /*
        * 세 화면 높이만큼
-       * 비주얼 스크롤을 진행합니다.
+       * 비주얼 모션을 진행합니다.
        */
       end:
         function () {
@@ -262,6 +293,7 @@ jQuery(function ($) {
         },
 
 
+      /* 비주얼 화면 고정 */
       pin:
         $visualBox.get(0),
 
@@ -275,6 +307,7 @@ jQuery(function ($) {
         true,
 
 
+      /* 단계별 스냅 */
       snap: {
         snapTo:
           function (
@@ -287,7 +320,7 @@ jQuery(function ($) {
 
             /*
              * 소개 영역이 올라오는 구간에서는
-             * 스냅하지 않습니다.
+             * 스냅을 사용하지 않습니다.
              */
             if (
               value >
@@ -305,9 +338,13 @@ jQuery(function ($) {
 
 
         duration: {
-          min: 0.2,
-          max: 0.55
+          min:
+            0.2,
+
+          max:
+            0.55
         },
+
 
         delay:
           0.08,
@@ -317,6 +354,7 @@ jQuery(function ($) {
       },
 
 
+      /* 스크롤할 때 단계 변경 */
       onUpdate:
         function (self) {
           updateVisualStep(
@@ -324,7 +362,7 @@ jQuery(function ($) {
           );
         },
 
-
+      /* 화면 크기 재계산 후 단계 복구 */
       onRefresh:
         function (self) {
           updateVisualStep(
@@ -554,7 +592,7 @@ jQuery(function ($) {
             ) {
               projectTimeline.to(
                 projectItems[
-                  index - 1
+                index - 1
                 ],
 
                 {
