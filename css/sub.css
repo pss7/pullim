@@ -367,13 +367,22 @@ textarea:focus::placeholder {color: #fff;}
 .serviceWrap .serviceList li a .serviceImgBox img{display: block; position: absolute; top:0; left:0; right:0; bottom: 0;; width: 100%; height: 100%; object-fit: cover;} 
 .serviceWrap .serviceList li a .serviceCategory{display: block; margin-bottom: 20px; font-weight: 600; color: #222;}
 .serviceWrap .serviceList li a .serviceDescription{font-weight: 600; color: #222;}
-.serviceWrap .serviceBrandSloganBox p{font-family: 'HelveticaNowDisplay'; font-size: 80px; font-weight: 500; line-height: 1; text-align: center; color: #B4B4B4;} 
+.serviceWrap .serviceBrandSloganBox p{font-family: 'HelveticaNowDisplay'; font-size: 80px; font-weight: 500; line-height: 1; text-align: center; color: #B4B4B4; word-break: keep-all;} 
 
 @media (max-width: 1199px){
 
+  .serviceWrap .serviceList{margin-bottom: 120px;}
   .serviceWrap .serviceList li a{padding: 40px 0; flex-direction: column; gap: 40px 0;}
   .serviceWrap .serviceList li a .serviceImgBox{max-width: none; padding-top: 23%;}
   .serviceWrap .serviceList li a .serviceTextBox{width: 100%;}
+  .serviceWrap .serviceBrandSloganBox p{font-size: 50px;}
+
+}
+
+@media (max-width: 768px){
+
+  .serviceWrap .subContentBox{padding: 0 0 100px;}
+  .serviceWrap .serviceBrandSloganBox p{font-size: 30px;}
 
 }
 
@@ -389,5 +398,6 @@ textarea:focus::placeholder {color: #fff;}
   .serviceWrap .serviceList li a .serviceImgBox{padding-top: 31%;}
   .serviceWrap .serviceList li a .serviceCategory{margin-bottom: 12px; font-size: 10px;}
   .serviceWrap .serviceList li a .serviceDescription{font-size: 10px;}
+    .serviceWrap .serviceBrandSloganBox p{font-size: 24px;}
 
 }
