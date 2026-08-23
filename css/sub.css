@@ -52,6 +52,7 @@
   .topTitleBox .topText01{font-size: 28px;}
   .topTitleBox .topText01 br{display: none;}
   .topTitleBox .topText02{margin-top: 28px; font-size: 14px;}
+  .topTitleBox .topText02 br{display: none;}
 
   .titleBox span{margin-bottom: 12px; font-size: 14px;}
   .titleBox p{font-size: 22px;}
@@ -307,9 +308,7 @@ textarea:focus::placeholder {color: #fff;}
 /* 뉴스영역 */
 .newsWrap{background-color: #F5F5F5;}
 .newsWrap .newsTabBox{margin-bottom: 40px; display: flex;flex-wrap: wrap; justify-content: flex-end; gap: 10px 20px;}
-.newsWrap .newsTabBox .newsTabBtn{padding: 6px 20px; border: 1px solid #222; border-radius: 50px; font-weight: 600; color: #222;}
-.newsWrap .newsTabBox .newsTabBtn.active{background-color: #FD3D32; color: #fff; border: 1px solid #FD3D32;}
-
+.newsWrap .newsTabBox .newsTabBtn{padding: 6px 20px; border: 1px solid #222; border-radius: 50px; font-weight: 600; color: #222; transition: all .3s;}
 .newsWrap .newsList{margin-bottom: 120px; padding-top: 80px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 60px; border-top: 1px solid #555;}
 .newsWrap .newsList li a{position: relative; display: block; padding: 24px; background-color: #fff;}
 .newsWrap .newsList li a .newsTopBox .newsCategory{display: inline-block; padding: 3px 12px; color: #222; font-size: 12px; font-weight: 600; border: 1px solid #222; border-radius: 50px; }
@@ -319,6 +318,10 @@ textarea:focus::placeholder {color: #fff;}
 .newsWrap .newsList li a .newsTopBox .newsDate{font-size: 13px; font-weight: 600; color: #B4B4B4;}
 .newsWrap .newsLoadMoreBtn{display: block; margin: 0 auto; font-size: 40px; font-weight: 500; color: #B4B4B4; font-family: 'HelveticaNowDisplay';}
 
+/* 활성화, 호버 */
+.newsWrap .newsTabBox .newsTabBtn.active,
+.newsWrap .newsTabBox .newsTabBtn:hover{background-color: #FD3D32; color: #fff; border: 1px solid #FD3D32;}
+
 @media (max-width: 1199px){
 
   .newsWrap .newsList{gap: 30px;}
@@ -327,7 +330,8 @@ textarea:focus::placeholder {color: #fff;}
 
 @media (max-width: 1024px){
 
-  .newsWrap .newsList{padding-top: 60px; gap: 20px; grid-template-columns: repeat(2, 1fr);}
+  .newsWrap .newsList{margin-bottom: 60px; padding-top: 60px; gap: 20px; grid-template-columns: repeat(2, 1fr);}
+  .newsWrap .newsLoadMoreBtn{font-size: 26px;}
 
 }
 
@@ -350,6 +354,40 @@ textarea:focus::placeholder {color: #fff;}
   .newsWrap .newsList li a .newsTopBox .newsCategory{font-size: 10px;}
   .newsWrap .newsList li a .newsTitle{margin-bottom: 12px; font-size: 13px;}
   .newsWrap .newsList li a .newsTopBox{margin-bottom: 16px;}
+  .newsWrap .newsLoadMoreBtn{font-size: 16px;}
   
+}
+
+/* 서비스 영역 */
+.serviceWrap .subContentBox{padding: 0 0 200px;}
+.serviceWrap .serviceList{margin-bottom: 150px;}
+.serviceWrap .serviceList li{border-bottom: 1px solid #E8E8E8;}
+.serviceWrap .serviceList li a{padding: 40px; display: flex; align-items: center; gap: 20px 120px;}
+.serviceWrap .serviceList li a .serviceImgBox{position: relative; max-width: 720px; width: 100%; height: 0; padding-top: 14.7%;}
+.serviceWrap .serviceList li a .serviceImgBox img{display: block; position: absolute; top:0; left:0; right:0; bottom: 0;; width: 100%; height: 100%; object-fit: cover;} 
+.serviceWrap .serviceList li a .serviceCategory{display: block; margin-bottom: 20px; font-weight: 600; color: #222;}
+.serviceWrap .serviceList li a .serviceDescription{font-weight: 600; color: #222;}
+.serviceWrap .serviceBrandSloganBox p{font-family: 'HelveticaNowDisplay'; font-size: 80px; font-weight: 500; line-height: 1; text-align: center; color: #B4B4B4;} 
+
+@media (max-width: 1199px){
+
+  .serviceWrap .serviceList li a{padding: 40px 0; flex-direction: column; gap: 40px 0;}
+  .serviceWrap .serviceList li a .serviceImgBox{max-width: none; padding-top: 23%;}
+  .serviceWrap .serviceList li a .serviceTextBox{width: 100%;}
+
+}
+
+@media (max-width: 480px){
+
+  .serviceWrap .serviceList li a .serviceDescription br{display: none;}
+
+}
+
+@media (max-width: 360px){
+
+  .serviceWrap .serviceList li a{padding: 20px 0; gap: 20px 0;}
+  .serviceWrap .serviceList li a .serviceImgBox{padding-top: 31%;}
+  .serviceWrap .serviceList li a .serviceCategory{margin-bottom: 12px; font-size: 10px;}
+  .serviceWrap .serviceList li a .serviceDescription{font-size: 10px;}
 
 }
