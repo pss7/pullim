@@ -401,3 +401,10 @@ textarea:focus::placeholder {color: #fff;}
     .serviceWrap .serviceBrandSloganBox p{font-size: 24px;}
 
 }
+
+/* 팀 영역 */
+.teamWrap{background-color: #222;}
+.teamWrap #headerWrap .headerGnbBox .headerGnbList li h2 a{color: #fff;}
+.teamWrap .topTitleBox .topText01,
+.teamWrap .topTitleBox .topText02{color: #fff;}
+.teamWrap .topTitleBox .topText02 span{font-weight: 300;}
