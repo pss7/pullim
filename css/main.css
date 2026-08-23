@@ -1,5 +1,9 @@
 @charset "UTF-8";
 
+/* 공통 */
+.scrollRevealLine{display:block;overflow:hidden;}
+.scrollRevealText{display:block;font-style:normal;visibility:hidden;transition:none;will-change:transform;}
+
 /* 비주얼영역 */
 #visualWrap {position: relative; width: 100%; height: 120vh;}
 #visualWrap .visualBox{position: sticky; top: 0; width: 100%; height: 100vh; overflow: hidden; z-index: 10;}
@@ -10,23 +14,25 @@
 #visualWrap .visualText{display: flex; align-items: center; line-height: 1;}
 #visualWrap .visualText02 h2{display: flex; gap: 0 3.96vw}
 
-/* 모션 */
-#visualWrap .visualText,
-#visualWrap .visualVideoBox{transition: all 1.3s;}
-
 /* 초기 */
 #visualWrap .visualVideoBox,
-#visualWrap .visualText{opacity: 0;}
-#visualWrap .visualText{gap: 0 0;}
-#visualWrap .visualText02{gap: 0 10vw;}
-#visualWrap .visualText03{gap: 0 20vw;}
-#visualWrap .visualText01{transform: translateX(-10vw);}
-#visualWrap .visualText02{transform: translateX(20vw);}
-#visualWrap .visualText03{transform: translateX(-10vw);}
+#visualWrap .visualText{opacity:0;}
+
+#visualWrap .visualText{gap:0;}
+#visualWrap .visualText02{gap:0 10vw;}
+#visualWrap .visualText03{gap:0 20vw;}
+
+#visualWrap .visualText01{transform:translateX(-10vw);}
+#visualWrap .visualText02{transform:translateX(20vw);}
+#visualWrap .visualText03{transform:translateX(-10vw);}
 
 #visualWrap .visualText h2 {opacity: 1; transform: translateY(0) rotate(0deg); transition:
         transform 0.8s cubic-bezier(0.65, 0, 0.35, 1), opacity 0.6s ease;}
 
+/* 비주얼 텍스트 모션 */
+#visualWrap .visualText{transition:opacity .8s ease,gap .8s cubic-bezier(.65,0,.35,1),transform .8s cubic-bezier(.65,0,.35,1);will-change:opacity,gap,transform;}
+#visualWrap .visualVideoBox{transition:opacity 1.3s ease;will-change:opacity;}
+        
 /*  페이지 진입 */
 #visualWrap .visualBox.active .visualVideoBox{opacity: 1;}
 #visualWrap .visualBox.active .visualText {opacity: 1; gap: 0 16.67vw;}
@@ -34,17 +40,9 @@
 #visualWrap .visualBox.active .visualText02{transform: translateX(0);}
 #visualWrap .visualBox.active .visualText03{transform: translateX(12vw);}
 
-/* 스크롤 1회 비디오 + 텍스트 최종 위치 */
-#visualWrap .visualBox.step01 .visualVideoBox{opacity: 1;}
-#visualWrap .visualBox.step01 .visualText{gap: 0 16.67vw;}
-#visualWrap .visualBox.step01 .visualText01{transform: translateX(0);}
-#visualWrap .visualBox.step01 .visualText02{transform: translateX(0);}
-#visualWrap .visualBox.step01 .visualText03{transform: translateX(12vw);}
-
-/* 부모 transition */
-#visualWrap .visualText01,
-#visualWrap .visualText02,
-#visualWrap .visualText03 {transition: transform 0.8s cubic-bezier(0.65, 0, 0.35, 1);}
+/* 비디오 크기 모션 */
+#visualWrap .visualVideoBox video{display:block;width:12.50vw;height:22.24vw;object-fit:cover;transform:scale(.85);transition:transform 1.3s cubic-bezier(.65,0,.35,1);}
+#visualWrap .visualBox.active .visualVideoBox video{transform:scale(1);}
 
 /* 텍스트 하단 낙하 + 회전 + 페이드아웃
    순차적으로 떨어지는 효과 */
@@ -99,13 +97,78 @@
     }
 }
 
-#visualWrap .visualVideoBox video{display: block; object-fit: cover; width: 12.50vw;  height: 22.24vw; }
-#visualWrap.active .visualVideoBox video{transform: scale(1); opacity: 1;}
+@media (max-width: 1199px){
 
+  #visualWrap .visualVideoBox video{width:26vw;height:50vw;}
+  #visualWrap .proposalDownloadBtn{top:120px;}
+  #visualWrap .proposalDownloadBtn.active{right:50px;}
+  #visualWrap .visualTextBox{max-width:90vw;}
+
+  #visualWrap .visualBox.active .visualText,
+  #visualWrap .visualBox.step01 .visualText{gap:0 35vw;}
+
+}
+
+@media (max-width: 768px){
+
+  #visualWrap .visualTextBox{max-width:96vw;}
+  #visualWrap .visualVideoBox video{width:32vw;height:60vw;}
+
+  #visualWrap .visualBox.active .visualText,
+  #visualWrap .visualBox.step01 .visualText{gap:0 40.7vw;}
+
+}
+
+
+@media (max-width: 480px){
+
+  #visualWrap .visualVideoBox video{width:52vw;height:79vw;}
+  #visualWrap .visualBox .visualText{gap:0 16vw;}
+  #visualWrap .visualTextBox{max-width:none;padding:112px 20px 0;justify-content:flex-start;}
+  #visualWrap .visualTextBox h2{font-size:48px;}
+  #visualWrap .visualTextBox h2 span{margin-top:12px;font-size:10px;}
+  #visualWrap .visualText02{padding-left:9px;letter-spacing:1px;}
+  #visualWrap .visualText02 h2{gap:0 25px;}
+
+  #visualWrap .visualScrollBox{gap:8px;}
+  #visualWrap .visualScrollText{font-size:10px;}
+  #visualWrap .visualScrollLine{width:1px;height:52px;}
+  #visualWrap .visualScrollLine::after{width:1px;height:20px;}
+
+  #visualWrap .proposalDownloadBtn{width:90px;height:90px;top:409px;right:auto;left:28px;}
+  #visualWrap .proposalDownloadBtn.active{right:auto;left:28px;}
+  #visualWrap .proposalDownloadBtn span{width:60px;height:60px;font-size:18px;}
+
+  #visualWrap .visualBox.active .visualText02,
+  #visualWrap .visualBox.step01 .visualText02{gap:0 25.7vw;}
+
+  #visualWrap .visualBox.active .visualText03,
+  #visualWrap .visualBox.step01 .visualText03{transform:translateX(0);}
+
+}
+
+
+@media (max-width: 360px){
+
+  #visualWrap .visualVideoBox video{width:62vw;height:116vw;}
+  #visualWrap .visualTextBox h2{font-size:38px;}
+  #visualWrap .visualTextBox h2 span{font-size:8px;}
+  #visualWrap .visualText02 h2{gap:0 18px;}
+
+  #visualWrap .proposalDownloadBtn{width:64px;height:64px;}
+  #visualWrap .proposalDownloadBtn span{width:40px;height:40px;font-size:10px;}
+
+  #visualWrap .visualBox.active .visualText02,
+  #visualWrap .visualBox.step01 .visualText02{gap:0 19.7vw;}
+
+  #visualWrap .visualBox.active .visualText03,
+  #visualWrap .visualBox.step01 .visualText03{gap:0 33.7vw;transform:translateX(0);}
+
+}
 
 /* 팝업 영역 */
-#popupContentBox{display: flex; align-items: center; justify-content: space-between; position: absolute; left:40px; right: 40px; bottom: -100%; z-index: 999; transition: all 1.3s;}
-#popupContentBox.active{ bottom: 28px;}
+#popupContentBox{opacity: 0; visibility: hidden; display: flex; align-items: center; justify-content: space-between; position: absolute; left:40px; right: 40px; bottom: 28px; z-index: 999; transition: all 1.3s;}
+#popupContentBox.active{opacity: 1; visibility: visible;}
 #popupContentBox .popupSlideBox{width: 380px; position: relative; border: 1px solid #E8E8E8; border-radius: 4px; overflow: hidden;}
 #popupContentBox .popupSlideBox .popupSlide{display: flex; flex-direction: column; justify-content: center; position: relative; padding: 19px 48px 19px 32px; width: 380px; background-color: #fff;}
 #popupContentBox .popupSlideBox .popupSlide::before{content: ''; position: absolute; top:0; left:8px; bottom: 0; width: 3px; background-color: #FD3D32; border-radius: 50px;}
@@ -161,100 +224,17 @@
 
 }
 
-
-
-
-
-
-
-
-
-
-
-@media (max-width: 1199px){
-
-  #visualWrap .visualVideoBox video{width:26vw;height:50vw;}
-  #visualWrap .proposalDownloadBtn{top:120px;}
-  #visualWrap .proposalDownloadBtn.active{right:50px;}
-  #visualWrap .visualTextBox{max-width:90vw;}
-
-  /* 첫 등장과 첫 번째 스크롤 위치 */
-  #visualWrap .visualBox.active .visualText,
-  #visualWrap .visualBox.step01 .visualText{gap:0 35vw;}
-
-}
-
-
-@media (max-width: 768px){
-
-  #visualWrap .visualTextBox{max-width:96vw;}
-  #visualWrap .visualVideoBox video{width:32vw;height:60vw;}
-
-  /* 첫 등장과 첫 번째 스크롤 위치 */
-  #visualWrap .visualBox.active .visualText,
-  #visualWrap .visualBox.step01 .visualText{gap:0 40.7vw;}
-
-}
-
-
-@media (max-width: 480px){
-
-  #visualWrap .visualVideoBox video{width:52vw;height:79vw;}
-  #visualWrap .visualBox .visualText{gap:0 16vw;}
-  #visualWrap .visualTextBox{max-width:none;padding:112px 20px 0;justify-content:flex-start;}
-  #visualWrap .visualTextBox h2{font-size:48px;}
-  #visualWrap .visualTextBox h2 span{margin-top:12px;font-size:10px;}
-  #visualWrap .visualText02{padding-left:9px;letter-spacing:1px;}
-  #visualWrap .visualText02 h2{gap:0 25px;}
-
-  #visualWrap .visualScrollBox{gap:8px;}
-  #visualWrap .visualScrollText{font-size:10px;}
-  #visualWrap .visualScrollLine{width:1px;height:52px;}
-  #visualWrap .visualScrollLine::after{width:1px;height:20px;}
-
-  #visualWrap .proposalDownloadBtn{width:90px;height:90px;top:409px;right:auto;left:28px;}
-  #visualWrap .proposalDownloadBtn.active{right:auto;left:28px;}
-  #visualWrap .proposalDownloadBtn span{width:60px;height:60px;font-size:18px;}
-
-  /* 첫 등장과 첫 번째 스크롤 위치 */
-  #visualWrap .visualBox.active .visualText02,
-  #visualWrap .visualBox.step01 .visualText02{gap:0 25.7vw;}
-
-  #visualWrap .visualBox.active .visualText03,
-  #visualWrap .visualBox.step01 .visualText03{transform:translateX(0);}
-
-}
-
-
-@media (max-width: 360px){
-
-  #visualWrap .visualVideoBox video{width:62vw;height:116vw;}
-  #visualWrap .visualTextBox h2{font-size:38px;}
-  #visualWrap .visualTextBox h2 span{font-size:8px;}
-  #visualWrap .visualText02 h2{gap:0 18px;}
-
-  #visualWrap .proposalDownloadBtn{width:64px;height:64px;}
-  #visualWrap .proposalDownloadBtn span{width:40px;height:40px;font-size:10px;}
-
-  /* 첫 등장과 첫 번째 스크롤 위치 */
-  #visualWrap .visualBox.active .visualText02,
-  #visualWrap .visualBox.step01 .visualText02{gap:0 19.7vw;}
-
-  #visualWrap .visualBox.active .visualText03,
-  #visualWrap .visualBox.step01 .visualText03{gap:0 33.7vw;transform:translateX(0);}
-
-}
-
 /* 소개 영역 */
 #aboutWrap {padding: 160px 0; position: relative; width: 100%;
     background: #222; color: #fff; overflow: hidden;}
 #aboutWrap .aboutContentBox{display: flex; flex-direction: column; justify-content: center;}
+#aboutWrap .aboutTitleBox .aboutLabelText{display: block; margin-bottom: 20px;
+   font-weight: 600; color: #fff; }
+#aboutWrap .aboutTextBox .aboutTextNumber{margin-bottom: 20px;}
 #aboutWrap .container,
 #aboutWrap .aboutBox,
 #aboutWrap .aboutContentBox {height: 100%;}
 #aboutWrap .aboutTitleBox {margin-bottom: 60px; text-align: center;}
-#aboutWrap .aboutTitleBox > span {display: block; margin-bottom: 20px;
-    font-size: 16px; font-weight: 600}
 #aboutWrap .aboutTitleBox h2 {font-size: 80px; font-family: 'HelveticaNowDisplay'; font-weight: 500; line-height: 1;
     color: #fff; word-break: keep-all;}
 #aboutWrap .aboutTitleBox h2 strong {display: inline-block; font-weight: 500;}
@@ -267,8 +247,7 @@
         no-repeat center / contain;}
 #aboutWrap .aboutTextBox {display: flex; gap: 0 183px;}
 
-#aboutWrap .aboutTextBox .aboutText span {display: block; margin-bottom: 20px;
-   font-weight: 600; color: #fff;}
+
 #aboutWrap .aboutTextBox .aboutText p {font-size: 20px; font-weight: 700;
     color: #fff;}
 #aboutWrap .aboutText02 {padding-top: 196px;}
@@ -280,11 +259,8 @@
 #aboutWrap .aboutViewLink span{display: flex; align-items: center; gap: 0 16px; font-weight: 600; color: #fff;}
 #aboutWrap .aboutViewLink span::after{content: ''; width: 24px; height: 24px; background: url(../images/main/arrow_icon.svg)no-repeat center / contain;}
 #aboutWrap .aboutTitleBox{margin-bottom: 60px; text-align: center;}
-#aboutWrap .aboutTitleBox span{display: block; margin-bottom: 20px; font-size: 16px; font-weight: 600;}
 #aboutWrap .aboutTitleBox h2{font-size: 80px; font-weight: 500; font-family: 'HelveticaNowDisplay'; line-height: 1; word-break: keep-all; color: #fff;}
 #aboutWrap .aboutTitleBox h2 strong{display: inline-block; font-weight: 500;}
-#aboutWrap .aboutTextBox{display: flex; gap: 0 183px;}
-#aboutWrap .aboutTextBox .aboutText span{display: block; margin-bottom: 20px; font-weight: 600; color: #fff;}
 #aboutWrap .aboutTextBox .aboutText p{font-size: 20px; font-weight: 700; color: #fff;}
 #aboutWrap .aboutText02{padding-top: 196px;}
 
@@ -292,7 +268,7 @@
 
   #aboutWrap .aboutTitleBox{margin-bottom: 50px;}
   #aboutWrap .aboutTitleBox h2{font-size: 60px;}
-  #aboutWrap .aboutTextBox .aboutText span{margin-bottom: 12px; font-size: 14px;}
+  #aboutWrap .aboutTextBox .aboutTextNumber{margin-bottom: 12px; font-size: 14px;}
   #aboutWrap .aboutTextBox .aboutText p{font-size: 16px;}
 
 }
@@ -328,7 +304,7 @@
   #aboutWrap .aboutTitleBox h2 br{display: none;}
   #aboutWrap .aboutTitleBox span{font-size: 10px;}
   #aboutWrap .aboutTextBox .aboutText p br{display: none;}
-  #aboutWrap .aboutTextBox .aboutText span{font-size: 10px;}
+  #aboutWrap .aboutTextBox .aboutTextNumber{font-size: 10px;}
   #aboutWrap .aboutTextBox .aboutText p{font-size: 14px;}
   #aboutWrap .aboutViewLink span{gap: 0 8px; font-size: 12px;}
   #aboutWrap .aboutViewLink{padding-left: 12px; width: 109px; height: 22px;}
@@ -342,6 +318,7 @@
 #projectWrap .projectContentBox{width:100%;display:flex;flex-direction:column;gap:8.33vw 0;}
 #projectWrap .projectTitleBox{width:100%;margin:0;}
 #projectWrap .projectTitleBox h2{margin:0;font-size:70px;color:#222;font-family:'HelveticaNowDisplay';font-weight:500;line-height:1;text-align:left;}
+#projectWrap .projectTitleBox h2 strong{font-weight: 500;}
 #projectWrap .projectList{position:relative;width:100%;height:360px;margin:0;padding:0;list-style:none;}
 #projectWrap .projectList li{position:absolute;top:0;left:0;width:600px;height:360px;overflow:hidden;transition:width .8s cubic-bezier(.65,0,.35,1),transform .8s cubic-bezier(.65,0,.35,1);will-change:width,transform;}
 #projectWrap .projectList li .projectImgBox{position:absolute;inset:0;}
@@ -410,7 +387,6 @@
 #companyInfoWrap .companyInfoNumberBox .companyInfoNumber strong,
 #companyInfoWrap .companyInfoNumberBox .companyInfoNumber em{display: block; font-size: 120px; font-weight: 500; color: #222; font-family: 'HelveticaNowDisplay'; line-height: 1;}  
 
-#companyInfoWrap .companyInfoNumberBox{padding: 100px 0 0;}
 #companyInfoWrap .companyInfoNumberBox .companyInfoNumberValue{display: flex; gap: 0 30px;}
 
 @media (max-width: 1199px){
@@ -461,7 +437,6 @@
 
 @media (max-width: 360px){
   
-  #companyInfoWrap .companyInfoNumberBox{padding: 100px 0 0;}
   #companyInfoWrap .companyInfoLayoutBox{height: 53vh;}
   #companyInfoWrap .companyTitleBox{margin-bottom: 40px;}
   #companyInfoWrap .companyTitleBox span{font-size: 10px;}
@@ -479,7 +454,7 @@
 #contactWrap .contactProjectText {position: relative; display: inline-block;}
 #contactWrap .contactProjectLine {position: absolute; z-index: 1; top: -30%;
   left: -10%; width: 120%; height: 160%;  display: block; overflow: visible;
-  pointer-events: none; /* 처음 나타나는 현상 방지 */ visibility: hidden;}
+  pointer-events: none; visibility: hidden;}
 #contactWrap .contactProjectLine path {fill: none; stroke: #fff; stroke-width: 1;
  stroke-linecap: round; stroke-linejoin: round; vector-effect: non-scaling-stroke;}
 #contactWrap .contactInfoBox{display: flex; flex-direction: column; align-items: flex-end; gap : 28px 0;}

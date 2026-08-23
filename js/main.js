@@ -39,25 +39,25 @@ jQuery(function ($) {
       /* 낮을수록 스크롤이 천천히 따라옵니다. */
       lerp: 0.045,
 
-      /* PC 마우스 휠을 부드럽게 처리합니다. */
+      /* PC 마우스 휠 부드럽게 처리 */
       smoothWheel: true,
 
-      /* 휠 이동 거리를 조절합니다. */
+      /* 휠 이동 거리 조절 */
       wheelMultiplier: 0.75,
 
-      /* 세로 방향 스크롤을 사용합니다. */
+      /* 세로 방향 스크롤 */
       orientation: 'vertical',
       gestureOrientation: 'vertical',
 
-      /* 모바일은 기본 터치 스크롤을 사용합니다. */
+      /* 모바일은 기본 터치 스크롤 */
       syncTouch: false,
 
-      /* 모션 감소 설정과 관계없이 효과를 유지합니다. */
+      /* 모션 효과 유지 */
       respectReducedMotion: false
     });
 
 
-  /* 개발자 도구에서 Lenis 상태 확인 */
+  /* 개발자 도구에서 Lenis 확인 */
   window.lenis =
     lenis;
 
@@ -79,11 +79,10 @@ jQuery(function ($) {
   );
 
 
-  /* GSAP 프레임 지연 보정 해제 */
+  /* 프레임 지연 보정 해제 */
   gsap.ticker.lagSmoothing(0);
 
 
-  /* 비주얼 영역 */
   /* 비주얼 영역 */
   function initVisualMotion() {
     const $visualWrap =
@@ -175,40 +174,75 @@ jQuery(function ($) {
         return;
       }
 
-
       /* 두 번째 스크롤 */
       applyVisualStep(2);
     }
 
+    /*
+     * 첫 화면의 초기 상태를
+     * 확실하게 적용합니다.
+     */
+    $visualBox.removeClass(
+      'active'
+    );
+
+    $popupContentBox.removeClass(
+      'active'
+    );
+
+    $proposalDownloadBtn.removeClass(
+      'active'
+    );
 
     /*
-     * 페이지 첫 진입
-     *
-     * 텍스트, 비디오, 팝업,
-     * PDF 버튼을 함께 등장시킵니다.
+    * 비주얼 초기 상태
+    */
+    $visualBox.removeClass(
+      'active step01 step02'
+    );
+
+    $visualWrap.removeClass(
+      'step02'
+    );
+
+    $popupContentBox.removeClass(
+      'active'
+    );
+
+    $proposalDownloadBtn.removeClass(
+      'active'
+    );
+
+
+    /*
+     * 브라우저가 초기 위치를
+     * 먼저 계산하도록 강제합니다.
+     */
+    $visualBox
+      .get(0)
+      .offsetHeight;
+
+
+    /*
+     * 초기 위치가 그려진 다음
+     * 본래 위치로 이동시킵니다.
      */
     setTimeout(
       function () {
-        /* 텍스트와 비디오 등장 */
         $visualBox.addClass(
           'active'
         );
 
-
-        /* 팝업 등장 */
         $popupContentBox.addClass(
           'active'
         );
 
-
-        /* PDF 버튼 등장 */
         $proposalDownloadBtn.addClass(
           'active'
         );
       },
-      100
+      150
     );
-
 
     /*
      * CSS sticky와 ScrollTrigger pin이
@@ -320,7 +354,7 @@ jQuery(function ($) {
 
             /*
              * 소개 영역이 올라오는 구간에서는
-             * 스냅을 사용하지 않습니다.
+             * 스냅하지 않습니다.
              */
             if (
               value >
@@ -361,6 +395,7 @@ jQuery(function ($) {
             self.progress
           );
         },
+
 
       /* 화면 크기 재계산 후 단계 복구 */
       onRefresh:
@@ -568,8 +603,11 @@ jQuery(function ($) {
         const projectTimeline =
           gsap.timeline({
             defaults: {
-              duration: 1,
-              ease: 'none'
+              duration:
+                1,
+
+              ease:
+                'none'
             }
           });
 
@@ -694,9 +732,13 @@ jQuery(function ($) {
 
 
               duration: {
-                min: 0.2,
-                max: 0.55
+                min:
+                  0.2,
+
+                max:
+                  0.55
               },
+
 
               delay:
                 0.08,
@@ -1027,7 +1069,8 @@ jQuery(function ($) {
 
 
           const value = {
-            current: 0
+            current:
+              0
           };
 
 
@@ -1161,7 +1204,7 @@ jQuery(function ($) {
       $projectPath.get(0);
 
 
-    /* SVG 경로의 실제 길이 */
+    /* SVG 경로 실제 길이 */
     const pathLength =
       projectPath.getTotalLength();
 
@@ -1240,6 +1283,103 @@ jQuery(function ($) {
     });
   }
 
+  /* 한 줄씩 올라오는 텍스트 */
+  function initScrollTextReveal() {
+    const $groups =
+      $('.scrollRevealGroup');
+
+
+    /* 적용할 그룹이 없으면 실행하지 않습니다. */
+    if (
+      !$groups.length
+    ) {
+      return;
+    }
+
+
+    $groups.each(
+      function () {
+        const $group =
+          $(this);
+
+
+        const $texts =
+          $group.find(
+            '.scrollRevealText'
+          );
+
+
+        /* 움직일 텍스트가 없으면 실행하지 않습니다. */
+        if (
+          !$texts.length
+        ) {
+          return;
+        }
+
+
+        const texts =
+          $texts.toArray();
+
+
+        /*
+         * GSAP에서만 위치를 설정합니다.
+         *
+         * 위치를 먼저 아래로 내린 후
+         * 텍스트를 표시합니다.
+         */
+        gsap.set(
+          texts,
+          {
+            yPercent:
+              120,
+
+            visibility:
+              'visible'
+          }
+        );
+
+
+        /* 스크롤 위치 감지 */
+        ScrollTrigger.create({
+          trigger:
+            $group.get(0),
+
+          start:
+            'top 90%',
+
+          once:
+            true,
+
+
+          onEnter:
+            function () {
+              gsap.to(
+                texts,
+                {
+                  yPercent:
+                    0,
+
+                  duration:
+                    1.5,
+
+                  stagger:
+                    0.07,
+
+                  ease:
+                    'power4.out',
+
+                  overwrite:
+                    'auto',
+
+                  force3D:
+                    true
+                }
+              );
+            }
+        });
+      }
+    );
+  }
 
   /* 스크롤 위치 재계산 */
   function refreshMotion() {
@@ -1254,6 +1394,7 @@ jQuery(function ($) {
   initProjectMotion();
   initCompanyMotion();
   initContactProjectLine();
+  initScrollTextReveal();
 
 
   /* 이미지 로드 후 재계산 */

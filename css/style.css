@@ -1,6 +1,6 @@
 @charset "UTF-8";
 
-#wrap{display: flex; flex-direction: column; min-height: 100vh; overflow-x: hidden;}
+#wrap{display: flex; flex-direction: column; min-height: 100vh;}
 main{flex: 1;}
 footer{margin-top: auto;}
 
