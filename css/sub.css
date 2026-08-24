@@ -541,18 +541,31 @@ textarea:focus::placeholder {color: #fff;}
 .teamWrap .teamCultureBox .teamCultureTextBox{display: flex; gap: 20px 110px; position: absolute; bottom: 98px; left:0;}
 .teamWrap .teamCultureBox .teamCultureTextBox p{color: #fff; font-size: 16px;}
 .teamWrap .teamCultureBox .teamCultureTextBox p strong{font-weight: 600; font-size: 20px;}
+.teamWrap .teamRecruitLink{position: relative; margin-top: 60px; padding: 0 70px 0 20px; height: 84px; display: flex; align-items: center; justify-content: flex-end; background-color: #fff;} 
+.teamWrap .teamRecruitLink span{display: flex; align-items: center; gap: 0 32px; color: #222; font-weight: 500; font-size: 40px; font-family:'HelveticaNowDisplay';}
+.teamWrap .teamRecruitLink span::after{content: ''; width: 16px; height: 24px; background: url(../images/sub/arrow_icon02.svg)no-repeat center / contain;}
+.teamWrap .teamRecruitLink .teamRecruitDefault{transition:
+    opacity 0.3s ease, transform 0.3s ease;}
+.teamWrap .teamRecruitLink .teamRecruitRollingText{position: absolute; top: 0;
+  left: 0; display: flex; align-items: center; width: max-content; height: 100%;
+  opacity: 0; pointer-events: none; will-change: transform;}
+.teamWrap .teamRecruitLink .teamRecruitGroup {display: block; flex-shrink: 0;}
 
 /* 호버 */
 .teamWrap .teamMemberList li a:hover .teamInfoHoverBox{opacity: 1; visibility: visible;}
 .teamWrap .teamWorkPlaceBox .teamBenefitList li a:hover .teamBenefitImgBox{opacity: 1; visibility: visible;}
+.teamWrap .teamRecruitLink:hover .teamRecruitDefault{opacity: 0; transform: translateY(-10px);}
+.teamWrap .teamRecruitLink:hover .teamRecruitRollingText {opacity: 1; animation: rollingText 10s linear infinite;}
 
+@keyframes rollingText {
+  from {
+    transform: translateX(0);
+  }
 
-
-
-
-
-
-
+  to {
+    transform: translateX(-50%);
+  }
+}
 
 @media (max-width: 1480px){
 
@@ -591,6 +604,9 @@ textarea:focus::placeholder {color: #fff;}
 
   .teamWrap .teamCultureBox .titleBox{margin-bottom: 40px;}
 
+  .teamWrap .teamRecruitLink{height: 70px; padding: 0 20px;}
+  .teamWrap .teamRecruitLink span{gap: 0 20px; font-size: 36px;}
+
 }
 
 @media (max-width: 768px){
@@ -615,6 +631,9 @@ textarea:focus::placeholder {color: #fff;}
   .teamWrap .teamCultureBox .teamCultureTextBox p strong{font-size: 18px;}
   .teamWrap .teamCultureBox .teamCultureImgBox img{width: 350px;}
 
+
+    .teamWrap .teamRecruitLink span{font-size: 30px;}
+
 }
 
 @media (max-width: 480px){
@@ -637,6 +656,9 @@ textarea:focus::placeholder {color: #fff;}
   .teamWrap .teamCultureBox .teamCultureTextBox p strong{font-size: 16px;}
   .teamWrap .teamCultureBox .teamCultureImgBox img{width: 250px;}
 
+  .teamWrap .teamRecruitLink span{font-size: 26px;}
+  .teamWrap .teamRecruitLink span::after{width: 14px; height: 21px;}
+
 }
 
 @media (max-width: 360px){
@@ -653,5 +675,9 @@ textarea:focus::placeholder {color: #fff;}
   .teamWrap .teamCultureBox .teamCultureImgBox img{width: 188px;}
   .teamWrap .teamCultureBox .teamCultureTextBox p strong{font-size: 13px;}
   .teamWrap .teamCultureBox .teamCultureTextBox p{font-size: 12px;}
+
+  .teamWrap .teamRecruitLink{margin-top: 40px; height: 40px;}
+  .teamWrap .teamRecruitLink span{font-size: 16px;}
+  .teamWrap .teamRecruitLink span::after{width: 8px; height: 12px;}
 
 }
