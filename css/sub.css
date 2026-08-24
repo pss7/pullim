@@ -128,6 +128,8 @@ textarea:focus::placeholder {color: #fff;}
 
 /* 소개 영역 */
 .aboutWrap{background-color: #F5F5F5;}
+.aboutWrap #subWrap{padding: 0;}
+.aboutWrap .topTitleBox .topText01{color: #fff;}
 .aboutWrap #headerWrap .headerGnbBox .headerGnbList li h2 a{color: #fff; font-weight: 500; font-size: 20px;}
 .aboutWrap .subTopBox{margin-bottom: 0; padding:0 0 40px; display: flex; align-items: flex-end; height: 800px; overflow: hidden; background: url(../images/sub/about_img.jpg)no-repeat center / cover;}
 .aboutWrap .subContentBox{padding: 160px 0 120px;}
