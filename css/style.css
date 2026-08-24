@@ -109,3 +109,27 @@ footer{margin-top: auto;}
   #footerWrap .footerInfoTextBox dl dd{font-size: 12px;}
 
 }
+
+/* 비디오 팝업 */
+#popupVideoBox{display: flex; align-items: center; justify-content: center; position: fixed; top:0; left:0; right:0; bottom: 0; background-color: rgba(0,0,0,.8); z-index: 99999999999;}
+#popupVideoBox .popupVideo{max-width: 1000px; width: 100%; max-height: 580px; height: 100%; padding: 20px;}
+#popupVideoBox .popupVideo iframe{border: 0; width: 100%; height: 100%;}
+#popupVideoBox .popupCloaseBtn{width: 40px; height: 40px; position: absolute; right:40px; top:32px; background: url(../images/common/close_btn.svg)no-repeat center / contain; z-index: 99999;}
+
+@media (max-width: 768px){
+
+  #popupVideoBox .popupCloaseBtn{width: 28px; height: 28px;}
+
+}
+
+@media (max-width: 480px){
+
+  #popupVideoBox .popupCloaseBtn{width: 22px; height: 22px;}
+
+}
+
+@media (max-width: 360px){
+
+  #popupVideoBox .popupCloaseBtn{top: 24px; right: 24px; width: 16px; height: 16px;}
+
+}

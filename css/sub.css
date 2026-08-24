@@ -497,12 +497,21 @@ textarea:focus::placeholder {color: #fff;}
 .teamWrap .teamMemberList li:nth-child(5n+3){transform:translateY(160px);}
 .teamWrap .teamMemberList li:nth-child(5n+4){transform:translateY(240px);}
 .teamWrap .teamMemberList li:nth-child(5n+5){transform:translateY(320px);}
+
+
+
+
+
+
+
 .teamWrap .teamInterviewBox{position:relative; margin-bottom: 240px;}
 .teamWrap .teamInterviewTitle{position:absolute; top:-52px; left:50%; color:#fff;font-family:'HelveticaNowDisplay'; font-size:80px; font-weight:500;text-align:center;transform:translateX(-50%); line-height: 1;}
 .teamWrap .teamInterviewTitle span{display:block;}
 .teamWrap .teamInterviewList{position:relative; display:grid;grid-template-columns:repeat(3,1fr);justify-content:space-between;align-items:start; gap: 0 200px}
 .teamWrap .teamInterviewItem:nth-child(2){margin-top:292px;}
-.teamWrap .teamInterviewLink{display:grid;grid-template-columns:1fr auto;grid-template-areas:'team team' 'image image' '. member';align-items:center;gap:16px 0;color:#fff;}
+.teamWrap .teamInterviewLink{position: relative; display:grid;grid-template-columns:1fr auto;grid-template-areas:'team team' 'image image' '. member';align-items:center;gap:16px 0;color:#fff;}
+.teamWrap .teamInterviewLink::after{content: ''; opacity: 0; visibility: hidden; width: 80px; height: 80px; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: url(../images/sub/play_icon.svg)no-repeat center / contain; z-index: 9; transition: all .3s;}
+.teamWrap .teamInterviewLink:hover::after{opacity: 1; visibility: visible;}
 .teamWrap .teamInterviewItem:nth-child(2) .teamInterviewLink{grid-template-areas:'image image' 'team member';}
 .teamWrap .teamInterviewTeam{grid-area:team; font-size:24px; font-weight:700; color:#fff;}
 .teamWrap .teamInterviewImgBox{grid-area:image;position:relative;width:100%;aspect-ratio:1/1;overflow:hidden;background-color:#eee;}
@@ -518,7 +527,7 @@ textarea:focus::placeholder {color: #fff;}
 .teamWrap .teamWorkPlaceBox .teamBenefitList li a h3{font-size: 40px; font-weight: 500; color: #fff;}
 .teamWrap .teamWorkPlaceBox .teamBenefitList li a p{color: #fff; font-size: 20px;}
 
-.teamWrap .teamWorkPlaceBox .teamBenefitList li a .teamBenefitImgBox{ position: absolute; top: 50%; left:286px; transform: translateY(-50%); display: none; align-items: flex-start; z-index: 9;}
+.teamWrap .teamWorkPlaceBox .teamBenefitList li a .teamBenefitImgBox{opacity: 0; visibility: hidden; position: absolute; top: 50%; left:286px; transform: translateY(-50%); display: flex; align-items: flex-start; z-index: 9; transition: all .3s;}
 .teamWrap .teamWorkPlaceBox .teamBenefitList li a .teamBenefitImgBox img{display: block; max-width: 100%;}
 .teamWrap .teamWorkPlaceBox .teamBenefitList li a .teamBenefitImgBox img:nth-child(2){margin-top: 60px;}
 .teamWrap .teamCultureBox{position: relative; height: 800px;}
@@ -535,16 +544,7 @@ textarea:focus::placeholder {color: #fff;}
 
 /* 호버 */
 .teamWrap .teamMemberList li a:hover .teamInfoHoverBox{opacity: 1; visibility: visible;}
-
-
-
-
-
-
-
-
-
-
+.teamWrap .teamWorkPlaceBox .teamBenefitList li a:hover .teamBenefitImgBox{opacity: 1; visibility: visible;}
 
 
 
@@ -563,6 +563,7 @@ textarea:focus::placeholder {color: #fff;}
   .teamWrap .teamCultureBox .teamCultureTextBox{position: static;}
   .teamWrap .teamCultureBox .teamCultureTextBox{flex-direction: column;}
   .teamWrap .teamCultureBox .infoText{margin-bottom: 40px; padding-left: 0;}
+  .teamWrap .teamInterviewList{gap: 0 160px;}
 
 }
 
@@ -578,14 +579,14 @@ textarea:focus::placeholder {color: #fff;}
   .teamWrap .teamInterviewBox{margin-bottom: 200px;}
   .teamWrap .teamInterviewTitle{position: static; transform: none; margin-bottom: 80px; font-size: 60px;}
   .teamWrap .teamInterviewTeam{font-size: 20px;}
-  .teamWrap .teamInterviewList{gap: 0 100px;}
+  .teamWrap .teamInterviewList{gap: 0 8.34vw;}
 
   .teamWrap .teamWorkPlaceBox .infoText{margin-bottom: 130px;}
   .teamWrap .teamWorkPlaceBox .teamBenefitList li a{padding: 40px 0; flex-direction: column; align-items: normal;}
   .teamWrap .teamWorkPlaceBox .teamBenefitList li a h3{margin-bottom: 20px; font-size: 30px;}
   .teamWrap .teamWorkPlaceBox .teamBenefitList li a p{font-size: 18px;}
   .teamWrap .teamWorkPlaceBox .teamBenefitList li a p{margin-bottom: 20px; text-align: right;}
-  .teamWrap .teamWorkPlaceBox .teamBenefitList li a .teamBenefitImgBox{position: static; transform: none; display: flex; }
+  .teamWrap .teamWorkPlaceBox .teamBenefitList li a .teamBenefitImgBox{opacity: 1; visibility: visible; position: static; transform: none; display: flex; }
   .teamWrap .teamWorkPlaceBox .teamBenefitList li a .teamBenefitImgBox img:nth-child(2){margin: 0;}
 
   .teamWrap .teamCultureBox .titleBox{margin-bottom: 40px;}
@@ -599,7 +600,7 @@ textarea:focus::placeholder {color: #fff;}
 
   .teamWrap .teamInterviewBox{margin-bottom: 120px;}
   .teamWrap .teamInterviewTitle{margin-bottom: 60px; font-size: 40px;}
-  .teamWrap .teamInterviewList{grid-template-columns:repeat(2,1fr);gap:40px 50px;}
+  .teamWrap .teamInterviewList{grid-template-columns:repeat(2,1fr);gap:40px 6.51vw;}
   .teamWrap .teamInterviewItem:nth-child(2){margin-top:0;transform:translateY(35vw);}
   .teamWrap .teamInterviewLink,
   .teamWrap .teamInterviewItem:nth-child(2) .teamInterviewLink{grid-template-areas:'team team' 'image image' '. member';}
@@ -626,6 +627,7 @@ textarea:focus::placeholder {color: #fff;}
   .teamWrap .teamInterviewTeam{font-size: 12px;}
   .teamWrap .teamInterviewLink{gap: 8px 0;}
   .teamWrap .teamInterviewItem:nth-child(2){transform: translateY(31vw);}
+  .teamWrap .teamInterviewLink::after{width: 40px; height: 40px;}
 
   .teamWrap .teamWorkPlaceBox .teamBenefitList{margin-bottom: 80px;}
   .teamWrap .teamWorkPlaceBox .teamBenefitList li a{padding: 20px 0;}
