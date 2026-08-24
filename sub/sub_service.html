@@ -32,6 +32,9 @@
   <!-- GSAP ScrollTrigger -->
   <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
 
+  <!-- GSAP Flip -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/Flip.min.js"></script>
+
   <script src="../js/sub.js"></script>
   <script src="../js/script.js"></script>
 
@@ -48,7 +51,7 @@
       <div class="headerLogoBox">
         <h1>
           <a href="#">
-            <img src="../images/common/logo03.svg" alt="the pullim">
+            <img src="../images/common/logo.svg" alt="the pullim">
           </a>
         </h1>
       </div>
@@ -227,7 +230,7 @@
             <!-- 서비스 목록 영역 -->
             <ul class="serviceList">
               <li>
-                <a href="#">
+                <a href="#" class="servicePopupOpenBtn">
 
                   <div class="serviceImgBox">
                     <img src="../images/sub/service_img01.jpg" alt="the pullim">
@@ -248,7 +251,7 @@
               </li>
 
               <li>
-                <a href="#">
+                <a href="#" class="servicePopupOpenBtn">
 
                   <div class="serviceImgBox">
                     <img src="../images/sub/service_img02.jpg" alt="ZR ZERO EXCHANGE">
@@ -268,7 +271,7 @@
               </li>
 
               <li>
-                <a href="#">
+                <a href="#" class="servicePopupOpenBtn">
 
                   <div class="serviceImgBox">
                     <img src="../images/sub/service_img03.jpg" alt="Limeclass">
@@ -287,7 +290,7 @@
               </li>
 
               <li>
-                <a href="#">
+                <a href="#" class="servicePopupOpenBtn">
 
                   <div class="serviceImgBox">
                     <img src="../images/sub/service_img04.jpg" alt="Iux studio">
@@ -307,17 +310,17 @@
             </ul>
             <!-- //서비스 목록 영역 -->
 
-<div class="serviceBrandSloganBox">
-  <p class="serviceBrandSlogan">
-    <span class="serviceBrandSloganLine">
-      NO FIXED ANSWERS
-    </span>
- <br>
-    <span class="serviceBrandSloganLine">
-      WE BUILD WHAT MATTERS
-    </span>
-  </p>
-</div>
+            <div class="serviceBrandSloganBox">
+              <p class="serviceBrandSlogan">
+                <span class="serviceBrandSloganLine">
+                  NO FIXED ANSWERS
+                </span>
+                <br>
+                <span class="serviceBrandSloganLine">
+                  WE BUILD WHAT MATTERS
+                </span>
+              </p>
+            </div>
 
           </div>
 
@@ -412,14 +415,14 @@
   <!-- //wrap -->
 
   <!-- 서비스 팝업 영역 -->
-  <div id="servicePopupWrap">
+  <div id="servicePopupWrap" aria-hidden="true">
     <div class="servicePopupBox">
       <div class="servicePopupImgBox">
         <span class="servicePopupKeyword servicePopupKeywordTop">
           AD TECH
         </span>
 
-        <img src="../images/sub/service_popup_img01.jpg" alt="">
+        <img src="../images/sub/service_popup_img01.jpg" class="servicePopupImage" alt="">
 
         <span class="servicePopupKeyword servicePopupKeywordBottom">
           SOLUTION
@@ -429,7 +432,6 @@
           성장의 기술,<br>
           비즈니스의 확장
         </p>
-
       </div>
 
       <div class="servicePopupTextBox">

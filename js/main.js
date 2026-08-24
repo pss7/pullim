@@ -1,17 +1,4 @@
 jQuery(function ($) {
-  /* CDN 라이브러리 확인 */
-  if (
-    !window.Lenis ||
-    !window.gsap ||
-    !window.ScrollTrigger
-  ) {
-    console.error(
-      'Lenis, GSAP, ScrollTrigger CDN을 먼저 불러와야 합니다.'
-    );
-
-    return;
-  }
-
 
   /* 페이지 새로고침 시 최상단 이동 */
   if ('scrollRestoration' in history) {
