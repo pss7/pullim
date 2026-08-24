@@ -414,8 +414,6 @@ textarea:focus::placeholder {color: #fff;}
   .newsWrap .newsViewBox .newsViewNavBox .newsViewNavLabel{font-size: 10px;}
   .newsWrap .newsViewBox .newsViewNavBox .newsViewNavTitle{font-size: 13px;}
   .newsWrap .newsViewBox .newsViewNavBox .newsViewListLink{font-size: 16px;}
-
-
   
 }
 
@@ -428,7 +426,44 @@ textarea:focus::placeholder {color: #fff;}
 .serviceWrap .serviceList li a .serviceImgBox img{display: block; position: absolute; top:0; left:0; right:0; bottom: 0;; width: 100%; height: 100%; object-fit: cover;} 
 .serviceWrap .serviceList li a .serviceCategory{display: block; margin-bottom: 20px; font-weight: 600; color: #222;}
 .serviceWrap .serviceList li a .serviceDescription{font-weight: 600; color: #222;}
-.serviceWrap .serviceBrandSloganBox p{font-family: 'HelveticaNowDisplay'; font-size: 80px; font-weight: 500; line-height: 1; text-align: center; color: #B4B4B4; word-break: keep-all;} 
+
+
+
+/* 브랜드 슬로건 */
+.serviceWrap .serviceBrandSloganBox{position: relative; }
+.serviceWrap .serviceBrandSloganBox p{text-align: center;}
+.serviceWrap .serviceBrandSloganBox span{font-size: 80px; font-weight: 500; font-family: 'HelveticaNowDisplay'; line-height: 1;}
+.serviceWrap .serviceBrandSloganBox .serviceBrandSloganLine{display: inline-block; width: max-content; max-width: 100%; color: transparent;
+  background:
+    linear-gradient(
+      to right,
+      #222 0%,
+      #222 100%
+    )
+    no-repeat left center / 0% 100%,
+
+    linear-gradient(
+      to right,
+      #b4b4b4 0%,
+      #b4b4b4 100%
+    )
+    no-repeat left center / 100% 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  will-change: background-size;
+}
+
+/* 팝업 영역 */
+#servicePopupWrap{padding: 60px; display: none; align-items: center; justify-content: center; position: fixed; top:0; left:0; right:0; bottom: 0; z-index: 99999; background-color: #F5F5F5;}
+#servicePopupWrap .servicePopupBox{display: flex; align-items: center; justify-content: center; gap: 40px 110px;}
+#servicePopupWrap .servicePopupImgBox{position: relative;}
+#servicePopupWrap .servicePopupImgBox img{display: block; max-width: 100%;}
+#servicePopupWrap .servicePopupImgBox .servicePopupKeyword{position: absolute; font-size: 80px; font-weight: 500; font-family: 'HelveticaNowDisplay'; color: #0A0A0A;}
+#servicePopupWrap .servicePopupImgBox .servicePopupKeywordTop{left:40px; top:-72px;}
+#servicePopupWrap .servicePopupImgBox .servicePopupKeywordBottom{right:40px; bottom:-56px;} 
+#servicePopupWrap .servicePopupImgBox p{position: absolute; top:40px; right:-159px; color: #0A0A0A; font-size: 32px; font-weight: 700;}
+#servicePopupWrap .servicePopupTextBox .servicePopupText{font-weight: 600; color: #0A0A0A;}
+#servicePopupWrap .servicePopupCloseBtn{width: 40px; height: 40px; position: absolute; top:32px; right:40px; background: url(../images/sub/close_icon.svg)no-repeat center / contain;}
 
 @media (max-width: 1199px){
 
@@ -436,14 +471,25 @@ textarea:focus::placeholder {color: #fff;}
   .serviceWrap .serviceList li a{padding: 40px 0; flex-direction: column; gap: 40px 0;}
   .serviceWrap .serviceList li a .serviceImgBox{max-width: none; padding-top: 23%;}
   .serviceWrap .serviceList li a .serviceTextBox{width: 100%;}
-  .serviceWrap .serviceBrandSloganBox p{font-size: 50px;}
+  .serviceWrap .serviceBrandSloganBox span{font-size: 50px;}
 
+/* 
+  #servicePopupWrap{padding: 20px;}
+  #servicePopupWrap .servicePopupBox{flex-direction: column; align-items: flex-start; gap: 40px;}
+  #servicePopupWrap .servicePopupImgBox .servicePopupKeyword{ font-size: 60px;}
+  #servicePopupWrap .servicePopupImgBox .servicePopupKeywordTop{top: -56px; left: 20px;}
+  #servicePopupWrap .servicePopupImgBox .servicePopupKeywordBottom{bottom: -53px; right: 20px;}
+  #servicePopupWrap .servicePopupImgBox p{right: -108px; font-size: 22px;}
+  #servicePopupWrap .servicePopupCloseBtn{top: 20px; right: 20px; width: 20px; height: 20px;}
+
+ */
+  
 }
 
 @media (max-width: 768px){
 
   .serviceWrap .subContentBox{padding: 0 0 100px;}
-  .serviceWrap .serviceBrandSloganBox p{font-size: 30px;}
+ .serviceWrap .serviceBrandSloganBox span{font-size: 30px;}
 
 }
 
@@ -459,7 +505,7 @@ textarea:focus::placeholder {color: #fff;}
   .serviceWrap .serviceList li a .serviceImgBox{padding-top: 31%;}
   .serviceWrap .serviceList li a .serviceCategory{margin-bottom: 12px; font-size: 10px;}
   .serviceWrap .serviceList li a .serviceDescription{font-size: 10px;}
-    .serviceWrap .serviceBrandSloganBox p{font-size: 24px;}
+  .serviceWrap .serviceBrandSloganBox span{font-size: 24px;}
 
 }
 

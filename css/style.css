@@ -13,7 +13,7 @@ footer{margin-top: auto;}
 }
  
 /* 헤더 */
-#headerWrap{position: fixed; top:0; left:0; right:0; padding: 0 40px; display: flex; align-items: center; justify-content: space-between; z-index: 999999999; transition: all .7s;}
+#headerWrap{position: fixed; top:0; left:0; right:0; padding: 0 40px; display: flex; align-items: center; justify-content: space-between; z-index: 999; transition: all .7s;}
 #headerWrap.scroll{background-color: #000}
 #headerWrap.scroll .headerGnbBox .headerGnbList li h2 a{color: #fff;}
 #headerWrap .headerLogoBox h1 a,
