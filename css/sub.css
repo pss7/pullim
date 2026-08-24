@@ -470,16 +470,28 @@ textarea:focus::placeholder {color: #fff;}
 .teamWrap .topTitleBox .topText02{color: #fff;}
 .teamWrap .topTitleBox .topText02 span{font-weight: 300;}
 .teamWrap .teamMemberList{margin-bottom: 560px; display: grid; grid-template-columns: repeat(5, 1fr); gap: 60px;}
-.teamWrap .teamMemberList li a{position: relative;}
+.teamWrap .teamMemberList li a{position: relative; container-type: inline-size;}
 .teamWrap .teamMemberList li a,
 .teamWrap .teamMemberList li a .teamMemberImgBox img{display: block; width: 100%;}
 .teamWrap .teamMemberList li a .teamMemberTextBox{display: none;}
 .teamWrap .teamMemberList li a .teamMemberTextBox h3{display: flex; align-items: center; justify-content: space-between; color: #fff; font-size: 16px;}
 .teamWrap .teamMemberList li a .teamMemberTextBox h3::after{content: ''; width: 16px; height: 16px; background: url(../images/sub/plus_icon.svg)no-repeat center;} 
-.teamWrap .teamMemberList li a .teamInfoHoverBox{display: none; width: 320px; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); }
-.teamWrap .teamMemberList li a .teamInfoHoverBox h3{margin-bottom: 12px; color: #fff; font-weight: 700; font-size: 24px;}
-.teamWrap .teamMemberList li a .teamInfoHoverBox p{padding: 20px; color: #222; background-color: rgba(255, 255, 255, 0.4);
-  -webkit-backdrop-filter: blur(40px); backdrop-filter: blur(40px);}
+.teamWrap .teamMemberList li a .teamInfoHoverBox{opacity: 0; visibility: visible; width: 320px; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);  transition: all 1.3s; z-index: 9;}
+.teamWrap .teamMemberList li a .teamInfoHoverBox h3 {--outside-width: max(0px, calc((320px - 100cqi) / 2)); margin-bottom: 12px; font-weight: 700; font-size: 24px; color: transparent;
+  background: linear-gradient(
+    to right,
+    #fff 0,
+    #fff var(--outside-width),
+    #1D1D1D var(--outside-width),
+    #1D1D1D calc(100% - var(--outside-width)),
+    #fff calc(100% - var(--outside-width)),
+    #fff 100%
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+}
+.teamWrap .teamMemberList li a .teamInfoHoverBox p {padding: 20px; color: #222;
+  background-color: rgba(255, 255, 255, 0.4); backdrop-filter: blur(40px);-webkit-backdrop-filter: blur(40px);}  
 .teamWrap .teamMemberList li:nth-child(5n+1){transform:translateY(0);}
 .teamWrap .teamMemberList li:nth-child(5n+2){transform:translateY(80px);}
 .teamWrap .teamMemberList li:nth-child(5n+3){transform:translateY(160px);}
@@ -520,6 +532,27 @@ textarea:focus::placeholder {color: #fff;}
 .teamWrap .teamCultureBox .teamCultureTextBox{display: flex; gap: 20px 110px; position: absolute; bottom: 98px; left:0;}
 .teamWrap .teamCultureBox .teamCultureTextBox p{color: #fff; font-size: 16px;}
 .teamWrap .teamCultureBox .teamCultureTextBox p strong{font-weight: 600; font-size: 20px;}
+
+/* 호버 */
+.teamWrap .teamMemberList li a:hover .teamInfoHoverBox{opacity: 1; visibility: visible;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 @media (max-width: 1480px){
 
