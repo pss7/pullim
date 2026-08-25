@@ -32,7 +32,7 @@
   <!-- GSAP ScrollTrigger -->
   <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
 
-  <script src="../js/sub.js"></script>
+  <script src="../js/motion.js"></script>
   <script src="../js/script.js"></script>
 
 </head>
@@ -229,7 +229,7 @@
           <div class="container">
 
             <!-- 팀원 목록 -->
-            <ul class="teamMemberList">
+            <ul class="teamMemberList" data-aos="fade-up">
               <li class="teamMemberItem">
                 <a href="#" class="teamMemberLink">
                   <div class="teamMemberImgBox">
@@ -443,18 +443,32 @@
             <!-- //팀원 목록 -->
 
             <!-- 팀 인터뷰 영역 -->
-            <div class="teamInterviewBox">
+            <div class="teamInterviewBox" data-aos="fade-up">
 
               <!-- 인터뷰 타이틀 -->
-              <h2 class="teamInterviewTitle">
-                <span>INTERVIEWS</span>
-                <span>WITH OUR</span>
-                <span>SPECIALISTS</span>
+              <h2 class="teamInterviewTitle scrollRevealGroup">
+                <span class="scrollRevealLine">
+                  <strong class="scrollRevealText">
+                    INTERVIEWS
+                  </strong>
+                </span>
+
+                <span class="scrollRevealLine">
+                  <strong class="scrollRevealText">
+                    WITH OUR
+                  </strong>
+                </span>
+
+                <span class="scrollRevealLine">
+                  <strong class="scrollRevealText">
+                    SPECIALISTS
+                  </strong>
+                </span>
               </h2>
               <!-- //인터뷰 타이틀 -->
 
               <!-- 인터뷰 목록 -->
-              <ul class="teamInterviewList">
+              <ul class="teamInterviewList" data-aos="fade-up">
                 <li class="teamInterviewItem">
                   <a href="#" class="teamInterviewLink">
                     <h3 class="teamInterviewTeam">
@@ -514,27 +528,48 @@
             <div class="teamWorkPlaceBox">
 
               <!-- 제목 영역 -->
-              <div class="titleBox">
-                <span>
-                  ( / 01 )
+              <div class="titleBox scrollRevealGroup">
+                <span class="scrollRevealLine">
+                  <strong class="scrollRevealText">
+                    ( / 01 )
+                  </strong>
                 </span>
+
                 <p>
-                  A WORKSPACE DESIGNED <br>
-                  FOR PERFORMANCE
+                  <em class="scrollRevealLine">
+                    <strong class="scrollRevealText">
+                      A WORKSPACE DESIGNED
+                    </strong>
+                  </em>
+
+                  <em class="scrollRevealLine">
+                    <strong class="scrollRevealText">
+                      FOR PERFORMANCE
+                    </strong>
+                  </em>
                 </p>
               </div>
               <!-- //제목 영역 -->
 
               <!-- 소개 문구 영역 -->
-              <p class="infoText">
-                더 풀림은 구성원들이 제약 없이 역량을 펼치고 <br>
-                최고의 퍼포먼스를 낼 수 있도록 스마트한 업무 환경을 제공합니다.
+              <p class="infoText scrollRevealGroup">
+                <span class="scrollRevealLine">
+                  <span class="scrollRevealText">
+                    더 풀림은 구성원들이 제약 없이 역량을 펼치고
+                  </span>
+                </span>
+
+                <span class="scrollRevealLine">
+                  <span class="scrollRevealText">
+                    최고의 퍼포먼스를 낼 수 있도록 스마트한 업무 환경을 제공합니다.
+                  </span>
+                </span>
               </p>
               <!-- //소개 문구 영역 -->
 
               <!-- 업무 환경 목록 -->
               <ul class="teamBenefitList">
-                <li>
+                <li data-aos="fade-up">
                   <a href="#">
                     <h3>
                       WORK ENVIRONMENT
@@ -553,7 +588,7 @@
                   </a>
                 </li>
 
-                <li>
+                <li data-aos="fade-up">
                   <a href="#">
                     <h3>
                       PREMIUM GEAR
@@ -572,7 +607,7 @@
                   </a>
                 </li>
 
-                <li>
+                <li data-aos="fade-up">
                   <a href="#">
                     <h3>
                       AI-POWERED WORKFLOW
@@ -600,33 +635,53 @@
             <div class="teamCultureBox">
 
               <!-- 제목 영역 -->
-              <div class="titleBox">
-                <span>
-                  ( / 02 )
+              <div class="titleBox scrollRevealGroup">
+                <span class="scrollRevealLine">
+                  <strong class="scrollRevealText">
+                    ( / 02 )
+                  </strong>
                 </span>
 
                 <p>
-                  DRIVEN BY PASSION <br>
-                  UNITED BY TRUST
+                  <em class="scrollRevealLine">
+                    <strong class="scrollRevealText">
+                      DRIVEN BY PASSION
+                    </strong>
+                  </em>
+
+                  <em class="scrollRevealLine">
+                    <strong class="scrollRevealText">
+                      UNITED BY TRUST
+                    </strong>
+                  </em>
                 </p>
               </div>
               <!-- //제목 영역 -->
 
               <!-- 소개 문구 -->
-              <p class="infoText">
-                아무리 뛰어난 기술력이 존재하더라도 <br>
-                결국 그 기술을 혁신으로 완성하는 것은
-                사람의 단단한 결속력입니다.
+              <p class="infoText scrollRevealGroup">
+                <span class="scrollRevealLine">
+                  <span class="scrollRevealText">
+                    아무리 뛰어난 기술력이 존재하더라도
+                  </span>
+                </span>
+
+                <span class="scrollRevealLine">
+                  <span class="scrollRevealText">
+                    결국 그 기술을 혁신으로 완성하는 것은 사람의 단단한 결속력입니다.
+                  </span>
+                </span>
               </p>
+              <!-- //소개문구 -->
 
               <!-- 이미지 영역 -->
-              <div class="teamCultureImgBox">
+              <div class="teamCultureImgBox" data-aos="fade-up">
                 <img src="../images/sub/team_culture_img.jpg" alt="협업하고 있는 더 풀림 구성원">
               </div>
               <!-- //이미지 영역 -->
 
               <!-- 설명 영역 -->
-              <div class="teamCultureTextBox">
+              <div class="teamCultureTextBox" data-aos="fade-up">
                 <p>
                   <strong>
                     우리는 서로의 전문성을 깊이 존중하고 자유롭게 <br>

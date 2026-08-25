@@ -4,7 +4,12 @@
 #subWrap{padding: 240px 0 0;}
 .subContentBox{padding: 0 0 100px;}
 .subTopBox{margin-bottom: 120px;}
-
+.subTopBox .topTitleBox h2,
+.subTopBox .topTitleBox .topText01,
+.subTopBox .topTitleBox .topText02{opacity: 0; transform: translateY(50px); transition: all 1.7s;}
+.subTopBox.active .topTitleBox h2,
+.subTopBox.active .topTitleBox .topText01,
+.subTopBox.active .topTitleBox .topText02{opacity: 1; transform: translateY(0);}
 .topTitleBox{display: flex; flex-direction: column; justify-content: space-between; gap: 0 20px;}
 .topTitleBox h2{flex-shrink: 0; color: #FD3D32; font-weight: 500; font-family: 'HelveticaNowDisplay'; font-size: 60px; line-height: 1;}
 .topTitleBox .topText01{align-self: flex-end; color: #222; font-size: 80px; font-weight: 500; font-family: 'HelveticaNowDisplay'; line-height: 1; word-break: keep-all; text-align: right;}
@@ -131,8 +136,12 @@ textarea:focus::placeholder {color: #fff;}
 .aboutWrap #subWrap{padding: 0;}
 .aboutWrap .topTitleBox .topText01{color: #fff;}
 .aboutWrap #headerWrap .headerGnbBox .headerGnbList li h2 a{color: #fff; font-weight: 500; font-size: 20px;}
-.aboutWrap .subTopBox{margin-bottom: 0; padding:0 0 40px; display: flex; align-items: flex-end; height: 800px; overflow: hidden; background: url(../images/sub/about_img.jpg)no-repeat center / cover;}
-.aboutWrap .subContentBox{padding: 160px 0 120px;}
+.aboutWrap .subTopBox{position: relative; margin-bottom: 0; padding:0 0 40px; display: flex; align-items: flex-end; height: 800px; overflow: hidden; background: url(../images/sub/about_img.jpg)no-repeat center / cover; z-index: 1;}
+
+.aboutWrap .subTopBox::after{content: ''; position: absolute; top:0; left:0; right:0; bottom: 0; background: url(../images/sub/about_img.jpg)no-repeat center / cover; transform: scale(1.7); z-index: -1; transition: all 5s;}
+.aboutWrap .subTopBox.active::after{transform: scale(1);}
+
+.aboutWrap .subContentBox{position: relative; padding: 160px 0 120px; z-index: 2;  background-color: #f5f5f5;}
 .aboutWrap .titleBox{margin-bottom: 4.17vw;}
 .aboutWrap .infoTextBox{margin-left: 4.17vw;}
 .aboutWrap .aboutVisionBox{margin: 0 0 6.25vw 0;}
@@ -148,13 +157,15 @@ textarea:focus::placeholder {color: #fff;}
 .aboutWrap .aboutJourneyList li a .aboutJourneyHoverImgBox{opacity: 0; visibility: hidden; position: absolute; left: 480px; top:0; transform: translateY(-50%); transition: all .3s; z-index: 9;}
 .aboutWrap .aboutJourneyList li a:hover .aboutJourneyHoverImgBox{opacity: 1; visibility: visible;}
 .aboutWrap .aboutJourneyList li a:hover .aboutJourneyHoverImgBox img{display: block; max-width: 100%; height: 100%; object-fit: cover;}
-.aboutWrap .channelBox{display: flex; gap: 80px 114px; padding: 200px 0 0;}
+.aboutWrap .channelBox{ display: flex; gap: 80px 114px; padding: 200px 0 0;}
+.aboutWrap .channelBox .channelTitleBox{height: 100%; position: sticky; top:150px;}
 .aboutWrap .channelBox .channelList li{width: 360px; margin-bottom: 80px;}
 .aboutWrap .channelBox .channelList li:last-child{margin-bottom: 0;}
 .aboutWrap .channelBox .channelList li a{display: block; padding: 24px 20px 20px 24px; background-color: #fff;}
 .aboutWrap .channelBox .channelList li a img{display: block; margin-bottom: 56px;}
 .aboutWrap .channelBox .channelList li a p{margin-bottom: 12px; color: #000;}
 .aboutWrap .channelBox .channelList li a span{display: block; color: #B4B4B4; font-weight: 600; font-size: 13px;}
+.aboutWrap .channelBox .channelList li:nth-child(2n){transform: translateX(240px);}
 
 /* 호버 */
 .aboutWrap .aboutJourneyList li a:hover{background-color: #222;}
@@ -183,6 +194,8 @@ textarea:focus::placeholder {color: #fff;}
   .aboutWrap .channelBox{flex-direction: column; padding: 80px 0 0;}
   .aboutWrap .channelBox .channelList li{width: 100%; margin-bottom: 20px;}
   .aboutWrap .channelBox .channelList li a{padding: 20px;}
+  .aboutWrap .channelBox .channelList li:nth-child(2n){transform:none;}
+  .aboutWrap .channelBox .channelTitleBox{position: static;}
 
 }
 
@@ -314,15 +327,13 @@ textarea:focus::placeholder {color: #fff;}
 .newsWrap .newsTabBox{margin-bottom: 40px; display: flex;flex-wrap: wrap; justify-content: flex-end; gap: 10px 20px;}
 .newsWrap .newsTabBox .newsTabBtn{padding: 6px 20px; border: 1px solid #222; border-radius: 50px; font-weight: 600; color: #222; transition: all .3s;}
 .newsWrap .newsList{margin-bottom: 120px; padding-top: 80px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 60px; border-top: 1px solid #555;}
-.newsWrap .newsList li a{position: relative; display: block; padding: 24px; background-color: #fff;}
+.newsWrap .newsList li a{position: relative; display: block; padding: 24px; background-color: #fff; border: 3px solid transparent; transition: all .3s;}
 .newsWrap .newsList li a .newsTopBox .newsCategory{display: inline-block; padding: 3px 12px; color: #222; font-size: 12px; font-weight: 600; border: 1px solid #222; border-radius: 50px; }
-.newsWrap .newsList li a .newsTitle{min-height: 60px; margin-bottom: 80px; color: #222; font-size: 20px; font-weight: 600;}
+.newsWrap .newsList li a .newsTitle{min-height: 60px; margin-bottom: 80px; color: #222; font-size: 20px; font-weight: 600; transition: all .3s;}
 .newsWrap .newsList li a .newsImgBox img{display: block; width: 100%;}
 .newsWrap .newsList li a .newsTopBox{margin-bottom: 38px;display: flex; align-items: center; gap: 10px; justify-content: space-between;}
 .newsWrap .newsList li a .newsTopBox .newsDate{font-size: 13px; font-weight: 600; color: #B4B4B4;}
 .newsWrap .newsLoadMoreBtn{display: block; margin: 0 auto; font-size: 40px; font-weight: 500; color: #B4B4B4; font-family: 'HelveticaNowDisplay';}
-
-
 
 /* 뉴스 상세 영역 */
 .newsWrap .newsViewBox .newsViewHeaderBox{margin-bottom: 24px; display: flex; align-items: center; gap: 20px; justify-content: space-between;}
@@ -343,6 +354,8 @@ textarea:focus::placeholder {color: #fff;}
 /* 활성화, 호버 */
 .newsWrap .newsTabBox .newsTabBtn.active,
 .newsWrap .newsTabBox .newsTabBtn:hover{background-color: #FD3D32; color: #fff; border: 1px solid #FD3D32;}
+.newsWrap .newsList li a:hover .newsTitle{color: #FD3D32;}
+.newsWrap .newsList li a:hover{border: 3px solid #FD3D32;}
 
 @media (max-width: 1199px){
 
@@ -600,32 +613,30 @@ body.servicePopupOpen{overflow:hidden;}
 .teamWrap .teamCultureBox .teamCultureTextBox{display: flex; gap: 20px 110px; position: absolute; bottom: 98px; left:0;}
 .teamWrap .teamCultureBox .teamCultureTextBox p{color: #fff; font-size: 16px;}
 .teamWrap .teamCultureBox .teamCultureTextBox p strong{font-weight: 600; font-size: 20px;}
-.teamWrap .teamRecruitLink{position: relative; margin-top: 60px; padding: 0 70px 0 20px; height: 84px; display: flex; align-items: center; justify-content: flex-end; background-color: #fff;} 
-.teamWrap .teamRecruitLink span{display: flex; align-items: center; gap: 0 32px; color: #222; font-weight: 500; font-size: 40px; font-family:'HelveticaNowDisplay';}
-.teamWrap .teamRecruitLink span::after{content: ''; width: 16px; height: 24px; background: url(../images/sub/arrow_icon02.svg)no-repeat center / contain;}
-.teamWrap .teamRecruitLink .teamRecruitDefault{transition:
-    opacity 0.3s ease, transform 0.3s ease;}
-.teamWrap .teamRecruitLink .teamRecruitRollingText{position: absolute; top: 0;
-  left: 0; display: flex; align-items: center; width: max-content; height: 100%;
-  opacity: 0; pointer-events: none; will-change: transform;}
-.teamWrap .teamRecruitLink .teamRecruitGroup {display: block; flex-shrink: 0;}
+.teamWrap .teamRecruitLink{position:relative; margin-top:60px; padding:0 70px 0 20px; height:84px; display:flex; align-items:center; justify-content:flex-end; overflow:hidden; white-space:nowrap; background-color:#fff;}
+.teamWrap .teamRecruitLink .teamRecruitDefault{display:flex; align-items:center; gap:0 32px; color:#222; font-weight:500; font-size:40px; font-family:'HelveticaNowDisplay'; transition:opacity .3s ease, transform .3s ease;}
+.teamWrap .teamRecruitLink .teamRecruitDefault::after{content:''; flex-shrink:0; width:16px; height:24px; background:url(../images/sub/arrow_icon02.svg) no-repeat center / contain;}
+.teamWrap .teamRecruitLink .teamRecruitMarquee{position:absolute; top:0; left:0; display:flex; flex-direction:row; align-items:center; width:max-content; height:100%; opacity:0; color:#222; font-weight:500; font-size:40px; font-family:'HelveticaNowDisplay'; pointer-events:none; will-change:transform; transition:opacity .3s ease;}
+.teamWrap .teamRecruitLink .teamRecruitGroup{display:block; flex-shrink:0; white-space:nowrap;}
+
+@keyframes rollingText {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
 
 /* 호버 */
 .teamWrap .teamMemberList li a:hover .teamInfoHoverBox {opacity: 1;
   visibility: visible; transition:opacity 0.35s ease, visibility 0s;}
 .teamWrap .teamWorkPlaceBox .teamBenefitList li a:hover .teamBenefitImgBox{opacity: 1; visibility: visible;}
-.teamWrap .teamRecruitLink:hover .teamRecruitDefault{opacity: 0; transform: translateY(-10px);}
-.teamWrap .teamRecruitLink:hover .teamRecruitRollingText {opacity: 1; animation: rollingText 10s linear infinite;}
+.teamWrap .teamRecruitLink:hover .teamRecruitDefault{opacity: 0; transform: translateY(-20px);}
+.teamWrap .teamRecruitLink:hover .teamRecruitMarquee{opacity: 1; animation:
+    rollingText 12s linear infinite;}
 
-@keyframes rollingText {
-  from {
-    transform: translateX(0);
-  }
-
-  to {
-    transform: translateX(-50%);
-  }
-}
 
 @media (max-width: 1480px){
 
