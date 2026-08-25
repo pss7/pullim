@@ -319,7 +319,7 @@
 #projectWrap .projectTitleBox{width:100%;margin:0;}
 #projectWrap .projectTitleBox h2{margin:0;font-size:70px;color:#222;font-family:'HelveticaNowDisplay';font-weight:500;line-height:1;text-align:left;}
 #projectWrap .projectTitleBox h2 strong{font-weight: 500;}
-#projectWrap .projectList{position:relative;width:100%;height:360px;margin:0;padding:0;list-style:none;}
+#projectWrap .projectList{position:relative;width:100%;height:360px;}
 #projectWrap .projectList li{position:absolute;top:0;left:0;width:600px;height:360px;overflow:hidden;transition:width .8s cubic-bezier(.65,0,.35,1),transform .8s cubic-bezier(.65,0,.35,1);will-change:width,transform;}
 #projectWrap .projectList li .projectImgBox{position:absolute;inset:0;}
 #projectWrap .projectList li .projectImgBox img{display:block;width:100%;height:100%;object-fit:cover;}
